@@ -51,8 +51,16 @@ const showInstagram = Boolean(instagramUrl);
 </header>
 
 <script>
+  const siteHeader = document.querySelector('.site-header');
   const menuButton = document.querySelector('.menu-button');
   const mobileMenu = document.querySelector('#mobile-menu');
+
+  const updateHeaderSize = () => {
+    siteHeader?.classList.toggle('is-compact', window.scrollY > 40);
+  };
+
+  updateHeaderSize();
+  window.addEventListener('scroll', updateHeaderSize, { passive: true });
 
   menuButton?.addEventListener('click', () => {
     const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
@@ -75,9 +83,11 @@ const showInstagram = Boolean(instagramUrl);
     position: sticky;
     top: 0;
     z-index: 100;
+    isolation: isolate;
     border-bottom: 1px solid rgba(220, 231, 235, 0.85);
     background: rgba(250, 252, 252, 0.9);
     backdrop-filter: blur(18px);
+    transition: background-color 240ms ease, box-shadow 240ms ease;
   }
 
   .header-shell {
@@ -88,6 +98,7 @@ const showInstagram = Boolean(instagramUrl);
     width: min(calc(100% - 64px), 1440px);
     min-height: 104px;
     margin-inline: auto;
+    transition: min-height 240ms ease;
   }
 
   .brand {
@@ -101,6 +112,7 @@ const showInstagram = Boolean(instagramUrl);
     width: 90px;
     height: 90px;
     object-fit: contain;
+    transition: width 240ms ease, height 240ms ease;
   }
 
   .desktop-nav {
@@ -171,6 +183,22 @@ const showInstagram = Boolean(instagramUrl);
     display: none;
   }
 
+  @media (min-width: 1021px) {
+    .site-header.is-compact {
+      background: rgba(250, 252, 252, 0.96);
+      box-shadow: 0 10px 32px rgba(17, 33, 46, 0.08);
+    }
+
+    .site-header.is-compact .header-shell {
+      min-height: 86px;
+    }
+
+    .site-header.is-compact .brand-logo {
+      width: 72px;
+      height: 72px;
+    }
+  }
+
   @media (max-width: 1020px) {
     .header-shell {
       grid-template-columns: 1fr auto;
@@ -206,11 +234,21 @@ const showInstagram = Boolean(instagramUrl);
     }
 
     .mobile-menu {
-      position: fixed;
-      inset: 88px 0 0;
+      position: absolute;
+      z-index: 1;
+      top: 100%;
+      right: 0;
+      left: 0;
       display: block;
+      height: calc(100vh - 88px);
+      height: calc(100dvh - 88px);
       padding: 34px 32px;
-      background: var(--paper);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      border-top: 1px solid var(--line);
+      background: #fafcfc;
+      box-shadow: 0 24px 60px rgba(17, 33, 46, 0.14);
+      -webkit-overflow-scrolling: touch;
     }
 
     .mobile-menu[hidden] {
@@ -220,6 +258,8 @@ const showInstagram = Boolean(instagramUrl);
     .mobile-menu nav {
       display: grid;
       gap: 24px;
+      width: min(100%, 720px);
+      margin-inline: auto;
     }
 
     .mobile-menu nav > a:not(.button) {
