@@ -14,8 +14,7 @@ const showInstagram = Boolean(instagramUrl);
 <header class="site-header">
   <div class="header-shell">
     <a class="brand" href="/" aria-label="Sparkclean home">
-      <span class="brand-mark" aria-hidden="true">S</span>
-      <span>SPARKCLEAN</span>
+      <img class="brand-logo" src="/images/sparkclean-logo.png" alt="" width="640" height="640" />
     </a>
 
     <nav class="desktop-nav" aria-label="Primary navigation">
@@ -87,31 +86,21 @@ const showInstagram = Boolean(instagramUrl);
     gap: 36px;
     align-items: center;
     width: min(calc(100% - 64px), 1280px);
-    min-height: 76px;
+    min-height: 88px;
     margin-inline: auto;
   }
 
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 11px;
     width: fit-content;
-    color: var(--navy);
-    font-size: 0.8rem;
-    font-weight: 850;
-    letter-spacing: 0.04em;
     text-decoration: none;
   }
 
-  .brand-mark {
-    display: grid;
-    width: 34px;
-    height: 34px;
-    place-items: center;
-    border-radius: 10px;
-    color: white;
-    background: var(--navy);
-    font-size: 1rem;
+  .brand-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
   }
 
   .desktop-nav {
@@ -211,7 +200,7 @@ const showInstagram = Boolean(instagramUrl);
 
     .mobile-menu {
       position: fixed;
-      inset: 76px 0 0;
+      inset: 88px 0 0;
       display: block;
       padding: 34px 32px;
       background: var(--paper);
@@ -238,6 +227,11 @@ const showInstagram = Boolean(instagramUrl);
   @media (max-width: 640px) {
     .header-shell {
       width: calc(100% - 32px);
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
     }
   }
 </style>

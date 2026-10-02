@@ -8,7 +8,9 @@ const showInstagram = Boolean(instagramUrl);
 <footer class="site-footer">
   <div class="shell footer-grid">
     <div class="footer-brand">
-      <a class="brand-name" href="/">SPARKCLEAN</a>
+      <a class="footer-logo-link" href="/" aria-label="Sparkclean home">
+        <img class="footer-logo" src="/images/sparkclean-logo.png" alt="Sparkclean Cleaning Services" width="640" height="640" loading="lazy" />
+      </a>
       <p>Thoughtful residential cleaning for Concord and communities throughout the East Bay.</p>
       <div class="footer-company-links">
         <a href="/about/">About Sparkclean</a>
@@ -57,12 +59,16 @@ const showInstagram = Boolean(instagramUrl);
     max-width: 430px;
   }
 
-  .brand-name {
-    color: white;
-    font-size: 1rem;
-    font-weight: 850;
-    letter-spacing: 0.05em;
+  .footer-logo-link {
+    display: inline-flex;
+    width: fit-content;
     text-decoration: none;
+  }
+
+  .footer-logo {
+    width: 164px;
+    height: 164px;
+    object-fit: contain;
   }
 
   .footer-brand p,
