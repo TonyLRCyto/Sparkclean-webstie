@@ -1,0 +1,127 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <a class="brand-name" href="/">SPARKCLEAN</a>
+      <p>Thoughtful residential cleaning for Concord and communities throughout the East Bay.</p>
+    </div>
+
+    <div>
+      <p class="footer-label">Services</p>
+      <a href="/recurring-cleaning-concord-ca/">Recurring cleaning</a>
+      <a href="/deep-cleaning-concord-ca/">Deep cleaning</a>
+      <a href="/move-in-move-out-cleaning-concord-ca/">Move-in &amp; move-out</a>
+    </div>
+
+    <div>
+      <p class="footer-label">Contact</p>
+      <a href="tel:+19258341815">(925) 834-1815</a>
+      <a href="mailto:companysparkclean@gmail.com">companysparkclean@gmail.com</a>
+      <span>Mon–Sat · 9:00 AM–4:00 PM</span>
+    </div>
+  </div>
+
+  <div class="shell footer-bottom">
+    <span>© {year} Sparkclean Cleaning Services</span>
+    <a href="/privacy/">Privacy</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 88px 0 30px;
+    color: rgba(255, 255, 255, 0.76);
+    background: var(--ink);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr 1fr;
+    gap: 80px;
+    padding-bottom: 70px;
+  }
+
+  .footer-brand {
+    max-width: 430px;
+  }
+
+  .brand-name {
+    color: white;
+    font-size: 1rem;
+    font-weight: 850;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .footer-brand p,
+  .footer-grid span,
+  .footer-grid a {
+    color: rgba(255, 255, 255, 0.67);
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .footer-grid > div:not(.footer-brand) {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+  }
+
+  .footer-grid a {
+    text-decoration: none;
+  }
+
+  .footer-grid a:hover {
+    color: white;
+  }
+
+  .footer-label {
+    margin: 0 0 10px;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 26px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.78rem;
+  }
+
+  .footer-bottom a {
+    color: inherit;
+  }
+
+  @media (max-width: 800px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+
+    .footer-brand {
+      grid-column: auto;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

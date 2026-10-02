@@ -1,0 +1,759 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScrollStory from '../components/ScrollStory.astro';
+
+const areas = ['Concord', 'Pleasant Hill', 'Martinez', 'Walnut Creek', 'Lafayette', 'Moraga', 'Orinda', 'Berkeley'];
+
+const faqs = [
+  {
+    question: 'What types of home cleaning does Sparkclean provide?',
+    answer: 'Sparkclean currently focuses on recurring residential cleaning, deep cleaning, and move-in or move-out cleaning for homes in Concord and surrounding East Bay communities.',
+  },
+  {
+    question: 'Which areas do you serve?',
+    answer: 'Our service area includes Concord, Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, Orinda, Berkeley, and select nearby Bay Area communities. Contact us to confirm availability for your address.',
+  },
+  {
+    question: 'How do I request a cleaning quote?',
+    answer: 'Call (925) 834-1815 or use the quote request section below. Sharing your city, approximate home size, and preferred service helps us provide a more accurate response.',
+  },
+  {
+    question: 'Can cleaning priorities be adjusted for my home?',
+    answer: 'Yes. Every home is different, so we discuss the rooms and surfaces that need the most attention before service begins.',
+  },
+];
+---
+
+<BaseLayout
+  title="House Cleaning in Concord, CA | Sparkclean Cleaning Services"
+  description="Sparkclean provides recurring, deep, and move-in or move-out house cleaning in Concord and communities throughout the East Bay. Request a personalized cleaning quote."
+>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Professional home cleaning · Concord &amp; the East Bay</p>
+        <h1 class="display-title">A cleaner Concord home, thoughtfully done.</h1>
+        <p class="lead">Sparkclean provides recurring, deep, and move-in/move-out cleaning for homes in Concord and communities throughout the East Bay.</p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#quote">Request a Quote</a>
+          <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+        </div>
+
+        <div class="trust-row" aria-label="Service information">
+          <span>Monday–Saturday</span>
+          <span>9:00 AM–4:00 PM</span>
+          <span>Concord-based service</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-photo" role="img" aria-label="Placeholder for a Sparkclean kitchen cleaning photograph">
+          <span>Real Sparkclean photo</span>
+          <strong>Place the approved hero image here.</strong>
+        </div>
+        <div class="hero-note">
+          <span>Home cleaning with intention</span>
+          <strong>Care in the details. Calm in the result.</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="shell intro-grid reveal">
+      <div>
+        <p class="eyebrow">A more thoughtful clean</p>
+        <h2 class="section-title">Professional care for the spaces that shape your day.</h2>
+      </div>
+      <div class="intro-copy">
+        <p>A clean home should feel comfortable, refreshed, and easier to enjoy. Sparkclean focuses on the kitchens, bathrooms, floors, bedrooms, and everyday living spaces that make the greatest difference.</p>
+        <p>Each service begins with clear priorities, so the cleaning fits your home instead of forcing every household into the same routine.</p>
+      </div>
+    </div>
+  </section>
+
+  <ScrollStory />
+
+  <section class="results" id="results">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Real work. Visible care.</p>
+          <h2 class="section-title">Cleaning details you can see and feel.</h2>
+        </div>
+        <p>Use Sparkclean’s real project photographs here to show the difference made in kitchens, bathrooms, floors, fixtures, and overlooked surfaces.</p>
+      </div>
+
+      <div class="results-grid">
+        <article class="result-card result-card-large reveal">
+          <span>Before &amp; after</span>
+          <h3>Kitchen detailing</h3>
+          <p>Replace with the approved range hood or kitchen transformation.</p>
+        </article>
+        <article class="result-card reveal">
+          <span>Bathroom care</span>
+          <h3>A fresher reset</h3>
+          <p>Replace with a real bathroom cleaning photograph.</p>
+        </article>
+        <article class="result-card reveal">
+          <span>Finishing details</span>
+          <h3>Thoughtful from edge to edge</h3>
+          <p>Replace with a detail-focused cleaning photograph.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="shell">
+      <div class="section-heading process-heading reveal">
+        <div>
+          <p class="eyebrow">A simple process</p>
+          <h2 class="section-title">From quote request to a cleaner home.</h2>
+        </div>
+        <p>Clear communication keeps the experience straightforward before, during, and after your cleaning.</p>
+      </div>
+
+      <div class="process-grid">
+        <article class="reveal">
+          <span>01</span>
+          <h3>Tell us about your home</h3>
+          <p>Share your location, approximate home size, preferred service, and the areas that need attention.</p>
+        </article>
+        <article class="reveal">
+          <span>02</span>
+          <h3>Confirm the priorities</h3>
+          <p>We discuss the cleaning scope, scheduling, and any room-specific priorities before service begins.</p>
+        </article>
+        <article class="reveal">
+          <span>03</span>
+          <h3>Enjoy the refreshed result</h3>
+          <p>Sparkclean completes the agreed service with focused care throughout the home.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="shell why-grid">
+      <div class="why-copy reveal">
+        <p class="eyebrow">Why Sparkclean</p>
+        <h2 class="section-title">Consistency built through years of trusted care.</h2>
+        <p class="lead">Local customers describe Sparkclean as thorough, punctual, adaptable, and attentive to the details that other cleaning routines can miss.</p>
+
+        <div class="why-list">
+          <div><span>01</span><p>Detailed attention to commonly overlooked surfaces</p></div>
+          <div><span>02</span><p>Cleaning priorities adapted to the needs of each home</p></div>
+          <div><span>03</span><p>Dependable service trusted by returning local customers</p></div>
+        </div>
+      </div>
+
+      <blockquote class="review-card reveal">
+        <p>“They care about their work, are thorough in the cleaning, and adapt to you as a client.”</p>
+        <footer>
+          <strong>Long-term Sparkclean customer</strong>
+          <span>Google review</span>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="areas" id="areas">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Local residential cleaning</p>
+          <h2 class="section-title">Concord-based service throughout the East Bay.</h2>
+        </div>
+        <p>We are building dedicated local pages so homeowners can quickly confirm services and availability in their community.</p>
+      </div>
+
+      <div class="area-grid">
+        {areas.map((area, index) => (
+          <a class="reveal" href={`/service-areas/${area.toLowerCase().replaceAll(' ', '-')}-ca/`}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{area}</strong>
+            <i aria-hidden="true">→</i>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="shell faq-grid">
+      <div class="faq-intro reveal">
+        <p class="eyebrow">Frequently asked questions</p>
+        <h2 class="section-title">Planning your first cleaning.</h2>
+        <p>Have another question? Call <a href="tel:+19258341815">(925) 834-1815</a>.</p>
+      </div>
+
+      <div class="faq-list reveal">
+        {faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" id="quote">
+    <div class="shell quote-card reveal">
+      <div>
+        <p class="eyebrow">Ready for a cleaner home?</p>
+        <h2 class="section-title">Tell us what your home needs.</h2>
+        <p>Contact Sparkclean for recurring, deep, or move-in and move-out cleaning in Concord and nearby East Bay communities.</p>
+      </div>
+      <div class="quote-actions">
+        <a class="button quote-button" href="tel:+19258341815">Call (925) 834-1815</a>
+        <a class="email-link" href="mailto:companysparkclean@gmail.com">companysparkclean@gmail.com</a>
+        <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 88px 0 110px;
+    background: linear-gradient(115deg, #ffffff 0%, #f8fcfd 58%, #e5f4f8 100%);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 90px;
+    align-items: center;
+  }
+
+  .hero .lead {
+    margin: 30px 0 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 34px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 650;
+  }
+
+  .trust-row span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .trust-row span::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-photo {
+    display: flex;
+    min-height: 650px;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 48px;
+    overflow: hidden;
+    border-radius: 36px;
+    background: linear-gradient(145deg, #eaf6f9 0%, #cce7ef 55%, #96cad9 100%);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-photo span {
+    color: var(--navy);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-photo strong {
+    max-width: 440px;
+    font-size: clamp(2rem, 3.3vw, 3.5rem);
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .hero-note {
+    position: absolute;
+    right: -24px;
+    bottom: 42px;
+    display: grid;
+    gap: 9px;
+    max-width: 280px;
+    padding: 22px 24px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 45px rgba(17, 33, 46, 0.14);
+  }
+
+  .hero-note span {
+    color: var(--blue);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-note strong {
+    line-height: 1.35;
+  }
+
+  .intro,
+  .results,
+  .why,
+  .areas,
+  .faq {
+    padding: 112px 0;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    gap: 100px;
+  }
+
+  .intro-copy {
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .intro-copy p {
+    margin: 0 0 22px;
+  }
+
+  .results {
+    background: #f3f8fa;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .result-card {
+    display: flex;
+    min-height: 360px;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 34px;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #dceff4, #a9d3df);
+  }
+
+  .result-card-large {
+    grid-row: span 2;
+    min-height: 742px;
+    background: linear-gradient(160deg, #eaf6f8, #89becd);
+  }
+
+  .result-card span {
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .result-card h3 {
+    margin: 12px 0 10px;
+    font-size: clamp(2rem, 3.5vw, 3.7rem);
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .result-card:not(.result-card-large) h3 {
+    font-size: clamp(1.8rem, 2.7vw, 2.8rem);
+  }
+
+  .result-card p {
+    max-width: 470px;
+    margin: 0;
+    color: rgba(17, 33, 46, 0.7);
+  }
+
+  .process {
+    padding: 112px 0;
+    color: white;
+    background: var(--ink);
+  }
+
+  .process-heading .section-title,
+  .process-heading > p {
+    color: white;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 52px;
+  }
+
+  .process-grid article {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .process-grid span {
+    color: #8cc9dc;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .process-grid h3 {
+    margin: 38px 0 18px;
+    font-size: 1.65rem;
+    font-weight: 650;
+    letter-spacing: -0.03em;
+  }
+
+  .process-grid p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.75fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .why-copy .lead {
+    margin: 28px 0 0;
+  }
+
+  .why-list {
+    display: grid;
+    margin-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+
+  .why-list div {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .why-list span {
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .why-list p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .review-card {
+    display: flex;
+    min-height: 560px;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 46px;
+    border-radius: 32px;
+    color: white;
+    background: var(--navy);
+    box-shadow: var(--shadow);
+  }
+
+  .review-card > p {
+    margin: 0;
+    font-size: clamp(2rem, 3.2vw, 3.3rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.12;
+  }
+
+  .review-card footer {
+    display: grid;
+    gap: 4px;
+  }
+
+  .review-card footer span {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.85rem;
+  }
+
+  .areas {
+    background: var(--pale);
+  }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .area-grid a {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    min-height: 112px;
+    padding: 24px 28px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.74);
+    text-decoration: none;
+    transition: transform 180ms ease, background-color 180ms ease;
+  }
+
+  .area-grid a:hover {
+    transform: translateY(-3px);
+    background: white;
+  }
+
+  .area-grid span {
+    color: var(--blue);
+    font-size: 0.73rem;
+    font-weight: 800;
+  }
+
+  .area-grid strong {
+    font-size: 1.35rem;
+  }
+
+  .area-grid i {
+    color: var(--navy);
+    font-style: normal;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+    gap: 110px;
+  }
+
+  .faq-intro {
+    position: sticky;
+    top: 110px;
+    align-self: start;
+  }
+
+  .faq-intro > p:not(.eyebrow) {
+    margin: 28px 0 0;
+    color: var(--muted);
+  }
+
+  .faq-intro a {
+    color: var(--navy);
+    font-weight: 750;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-list details {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-list summary {
+    color: var(--ink);
+    font-size: 1.2rem;
+    font-weight: 650;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .faq-list details p {
+    max-width: 720px;
+    margin: 18px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .quote {
+    padding: 28px 0 112px;
+  }
+
+  .quote-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.55fr);
+    gap: 70px;
+    align-items: center;
+    padding: 68px;
+    border-radius: 32px;
+    color: white;
+    background: var(--navy);
+    box-shadow: var(--shadow);
+  }
+
+  .quote-card .eyebrow {
+    color: #92d1e4;
+  }
+
+  .quote-card .section-title {
+    color: white;
+  }
+
+  .quote-card > div > p:not(.eyebrow) {
+    max-width: 700px;
+    margin: 24px 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+  }
+
+  .quote-actions {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+
+  .quote-button {
+    color: var(--navy);
+    background: white;
+  }
+
+  .email-link {
+    color: white;
+    font-weight: 700;
+  }
+
+  .quote-actions span {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .intro-grid,
+    .why-grid,
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-grid,
+    .why-grid {
+      gap: 64px;
+    }
+
+    .intro-grid,
+    .faq-grid {
+      gap: 44px;
+    }
+
+    .hero-photo {
+      min-height: 570px;
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+
+    .faq-intro {
+      position: static;
+    }
+
+    .quote-card {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 62px 0 80px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .trust-row {
+      display: grid;
+    }
+
+    .hero-photo {
+      min-height: 450px;
+      padding: 30px 26px;
+      border-radius: 26px;
+    }
+
+    .hero-note {
+      position: static;
+      max-width: none;
+      margin-top: 14px;
+    }
+
+    .intro,
+    .results,
+    .process,
+    .why,
+    .areas,
+    .faq {
+      padding: 82px 0;
+    }
+
+    .results-grid,
+    .area-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .result-card,
+    .result-card-large {
+      grid-row: auto;
+      min-height: 430px;
+    }
+
+    .review-card {
+      min-height: 460px;
+      padding: 34px 28px;
+      border-radius: 26px;
+    }
+
+    .area-grid a {
+      grid-template-columns: 36px 1fr auto;
+      padding: 20px;
+    }
+
+    .quote {
+      padding: 16px 0 82px;
+    }
+
+    .quote-card {
+      gap: 42px;
+      padding: 44px 26px;
+      border-radius: 26px;
+    }
+
+    .quote-actions,
+    .quote-actions .button {
+      width: 100%;
+    }
+  }
+</style>

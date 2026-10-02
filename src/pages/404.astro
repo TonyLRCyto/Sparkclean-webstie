@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found | Sparkclean" description="The requested Sparkclean page could not be found.">
+  <section class="not-found">
+    <div class="shell">
+      <p class="eyebrow">404 · Page not found</p>
+      <h1 class="display-title">This page needs a little tidying up.</h1>
+      <p class="lead">The page you requested does not exist or may have moved.</p>
+      <a class="button button-primary" href="/">Return home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 70vh;
+    place-items: center;
+    padding: 100px 0;
+  }
+
+  .not-found .lead {
+    margin: 28px 0 34px;
+  }
+</style>

@@ -1,0 +1,289 @@
+---
+const services = [
+  {
+    number: '01',
+    kicker: 'Recurring cleaning',
+    title: 'A consistently clean home, without losing your time.',
+    copy: 'Scheduled residential cleaning keeps kitchens, bathrooms, floors, and everyday living spaces feeling cared for. We follow a thoughtful routine while giving extra attention where your home needs it most.',
+    label: 'Everyday care',
+    href: '/recurring-cleaning-concord-ca/',
+  },
+  {
+    number: '02',
+    kicker: 'Deep cleaning',
+    title: 'A detailed reset for the spaces that need more.',
+    copy: 'Deep cleaning reaches beyond regular upkeep to address built-up dust, kitchen residue, bathroom buildup, and commonly overlooked areas throughout the home.',
+    label: 'Detailed reset',
+    href: '/deep-cleaning-concord-ca/',
+  },
+  {
+    number: '03',
+    kicker: 'Move-in & move-out',
+    title: 'Leave one home fresh. Begin the next one clean.',
+    copy: 'We help prepare empty homes for a smoother transition with detailed cleaning for renters, homeowners, and property changes throughout the Concord area.',
+    label: 'Move-ready finish',
+    href: '/move-in-move-out-cleaning-concord-ca/',
+  },
+];
+---
+
+<section class="story" id="services">
+  <div class="shell">
+    <div class="story-intro reveal">
+      <p class="eyebrow">Thoughtful cleaning, room by room</p>
+      <h2 class="section-title">The right level of clean for every season of home.</h2>
+      <p class="lead">From dependable recurring care to detailed move-in and move-out cleaning, Sparkclean gives Concord-area homes the focused attention they need.</p>
+    </div>
+
+    <div class="story-layout">
+      <div class="story-visual" aria-live="polite">
+        <div class="story-photo active" data-photo="0">
+          <span>Kitchen care</span>
+          <strong>Everyday spaces, consistently refreshed.</strong>
+        </div>
+        <div class="story-photo" data-photo="1">
+          <span>Bathroom reset</span>
+          <strong>Focused attention beyond routine upkeep.</strong>
+        </div>
+        <div class="story-photo" data-photo="2">
+          <span>Move-ready finish</span>
+          <strong>A cleaner transition from one home to the next.</strong>
+        </div>
+        <p class="story-photo-note" data-story-label>{services[0].label}</p>
+      </div>
+
+      <div class="story-steps">
+        {services.map((service, index) => (
+          <article class="story-step" data-step={index}>
+            <p class="story-number">{service.number}</p>
+            <p class="story-kicker">{service.kicker}</p>
+            <h3>{service.title}</h3>
+            <p>{service.copy}</p>
+            <a href={service.href}>Explore this service <span aria-hidden="true">→</span></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ labels: services.map((service) => service.label) }}>
+  const steps = document.querySelectorAll('[data-step]');
+  const photos = document.querySelectorAll('[data-photo]');
+  const label = document.querySelector('[data-story-label]');
+
+  if ('IntersectionObserver' in window && steps.length) {
+    const storyObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visibleEntry) return;
+        const index = Number(visibleEntry.target.getAttribute('data-step'));
+        photos.forEach((photo, photoIndex) => photo.classList.toggle('active', photoIndex === index));
+        if (label) label.textContent = labels[index];
+      },
+      { rootMargin: '-30% 0px -30% 0px', threshold: [0.2, 0.5, 0.8] },
+    );
+
+    steps.forEach((step) => storyObserver.observe(step));
+  }
+</script>
+
+<style>
+  .story {
+    padding: 120px 0;
+    overflow: visible;
+  }
+
+  .story-intro {
+    max-width: 900px;
+    margin-bottom: 78px;
+  }
+
+  .story-intro .lead {
+    margin: 28px 0 0;
+  }
+
+  .story-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 96px;
+    align-items: start;
+  }
+
+  .story-visual {
+    position: sticky;
+    top: 112px;
+    min-height: min(680px, calc(100vh - 150px));
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: #dceff4;
+    box-shadow: var(--shadow);
+  }
+
+  .story-photo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 58px 46px;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 650ms ease, transform 900ms ease;
+  }
+
+  .story-photo:nth-child(1) {
+    background: linear-gradient(150deg, #edf8fa 0%, #bfdfe8 50%, #7fb9ca 100%);
+  }
+
+  .story-photo:nth-child(2) {
+    background: linear-gradient(150deg, #e4f2f6 0%, #9fcfdd 52%, #4d93ad 100%);
+  }
+
+  .story-photo:nth-child(3) {
+    background: linear-gradient(150deg, #eaf5f7 0%, #c2dfe5 48%, #6f9fae 100%);
+  }
+
+  .story-photo.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .story-photo span {
+    color: var(--navy);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .story-photo strong {
+    max-width: 480px;
+    color: var(--ink);
+    font-size: clamp(2.1rem, 3.6vw, 3.8rem);
+    font-weight: 650;
+    letter-spacing: -0.045em;
+    line-height: 1.03;
+  }
+
+  .story-photo-note {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    z-index: 3;
+    margin: 0;
+    padding: 12px 17px;
+    border-radius: 999px;
+    color: var(--navy);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 30px rgba(17, 33, 46, 0.12);
+    font-size: 0.78rem;
+    font-weight: 750;
+  }
+
+  .story-step {
+    display: flex;
+    min-height: 72vh;
+    flex-direction: column;
+    justify-content: center;
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .story-number {
+    margin: 0 0 40px;
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+  }
+
+  .story-kicker {
+    margin: 0 0 18px;
+    color: var(--navy);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .story-step h3 {
+    margin: 0 0 24px;
+    font-size: clamp(2.25rem, 3.7vw, 3.65rem);
+    font-weight: 650;
+    letter-spacing: -0.045em;
+    line-height: 1.06;
+  }
+
+  .story-step > p:not(.story-number, .story-kicker) {
+    max-width: 590px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.72;
+  }
+
+  .story-step a {
+    width: fit-content;
+    margin-top: 28px;
+    color: var(--navy);
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .story-step a span {
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 180ms ease;
+  }
+
+  .story-step a:hover span {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .story-layout {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .story-visual {
+      position: relative;
+      top: 0;
+      min-height: 560px;
+    }
+
+    .story-step {
+      min-height: auto;
+      padding: 64px 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .story {
+      padding: 82px 0;
+    }
+
+    .story-intro {
+      margin-bottom: 48px;
+    }
+
+    .story-visual {
+      min-height: 430px;
+      border-radius: 26px;
+    }
+
+    .story-photo {
+      padding: 42px 26px;
+    }
+
+    .story-photo-note {
+      top: 18px;
+      right: 18px;
+    }
+  }
+</style>
