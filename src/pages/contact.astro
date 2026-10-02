@@ -1,0 +1,456 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  'Recurring cleaning',
+  'Deep cleaning',
+  'Move-in or move-out cleaning',
+  'Post-construction or remodel cleaning',
+  'Not sure yet',
+];
+---
+
+<BaseLayout
+  title="Request a House Cleaning Quote | Sparkclean Concord, CA"
+  description="Contact Sparkclean Cleaning Services for recurring, deep, move-in, move-out, or post-construction cleaning in Concord and nearby East Bay communities."
+>
+  <section class="contact-hero">
+    <div class="shell contact-hero-grid">
+      <div class="reveal">
+        <p class="eyebrow">Contact Sparkclean</p>
+        <h1 class="display-title">Tell us what your home needs.</h1>
+        <p class="lead">Share a few details about your home, location, and preferred cleaning service. Sparkclean will use that information to discuss availability and the appropriate service scope.</p>
+      </div>
+
+      <div class="contact-card reveal">
+        <p class="contact-label">Prefer to speak directly?</p>
+        <a class="contact-primary" href="tel:+19258341815">(925) 834-1815</a>
+        <a href="mailto:companysparkclean@gmail.com">companysparkclean@gmail.com</a>
+        <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="shell quote-grid">
+      <div class="quote-intro reveal">
+        <p class="eyebrow">Request a quote</p>
+        <h2 class="section-title">A few details help us understand the job.</h2>
+        <p>Submitting this form prepares an email in your device’s email application. No information is stored by the website.</p>
+
+        <div class="help-list">
+          <div><span>01</span><p>Include the city and approximate home size.</p></div>
+          <div><span>02</span><p>Select the cleaning service that best matches your needs.</p></div>
+          <div><span>03</span><p>Mention special priorities, timing, or detailed requests.</p></div>
+        </div>
+      </div>
+
+      <form class="quote-form reveal" data-quote-form>
+        <div class="field-grid">
+          <label>
+            <span>Name *</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Phone *</span>
+            <input type="tel" name="phone" autocomplete="tel" required />
+          </label>
+        </div>
+
+        <div class="field-grid">
+          <label>
+            <span>Email *</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>
+            <span>City *</span>
+            <input type="text" name="city" autocomplete="address-level2" required />
+          </label>
+        </div>
+
+        <label>
+          <span>Cleaning service *</span>
+          <select name="service" required>
+            <option value="">Choose a service</option>
+            {services.map((service) => <option value={service}>{service}</option>)}
+          </select>
+        </label>
+
+        <div class="field-grid">
+          <label>
+            <span>Approximate home size</span>
+            <input type="text" name="homeSize" placeholder="Example: 3 bed / 2 bath" />
+          </label>
+          <label>
+            <span>Preferred timing</span>
+            <input type="text" name="timing" placeholder="Example: Next week" />
+          </label>
+        </div>
+
+        <label>
+          <span>Cleaning details *</span>
+          <textarea name="details" rows="6" placeholder="Tell us about the home, its current condition, and the areas that need attention." required></textarea>
+        </label>
+
+        <button class="button button-primary" type="submit">Prepare Email Request</button>
+        <p class="form-note">Your email application will open with these details addressed to Sparkclean.</p>
+        <p class="form-status" data-form-status aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="service-choice">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Not sure which service fits?</p>
+          <h2 class="section-title">Start with the situation your home is in.</h2>
+        </div>
+        <p>Each service page explains the typical focus and the information to include when requesting a quote.</p>
+      </div>
+
+      <div class="choice-grid">
+        <a class="reveal" href="/recurring-cleaning-concord-ca/"><span>01</span><strong>Ongoing home upkeep</strong><p>Explore recurring cleaning</p></a>
+        <a class="reveal" href="/deep-cleaning-concord-ca/"><span>02</span><strong>A detailed home reset</strong><p>Explore deep cleaning</p></a>
+        <a class="reveal" href="/move-in-move-out-cleaning-concord-ca/"><span>03</span><strong>A moving transition</strong><p>Explore moving cleaning</p></a>
+        <a class="reveal" href="/post-construction-cleaning-concord-ca/"><span>04</span><strong>A completed home project</strong><p>Explore post-construction cleaning</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-local">
+    <div class="shell local-card reveal">
+      <div>
+        <p class="eyebrow">Concord-based service</p>
+        <h2 class="section-title">Cleaning throughout nearby East Bay communities.</h2>
+      </div>
+      <div>
+        <p>Contact Sparkclean to confirm availability for your address in Concord, Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, Orinda, or another nearby community.</p>
+        <a href="/service-areas/">View service areas <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const quoteForm = document.querySelector('[data-quote-form]');
+  const formStatus = document.querySelector('[data-form-status]');
+
+  quoteForm?.addEventListener('submit', (event) => {
+    if (!(quoteForm instanceof HTMLFormElement)) return;
+    event.preventDefault();
+    if (!quoteForm.reportValidity()) return;
+
+    const data = new FormData(quoteForm);
+    const value = (name: string) => String(data.get(name) || '').trim();
+    const subject = `Sparkclean quote request — ${value('service')} — ${value('city')}`;
+    const body = [
+      `Name: ${value('name')}`,
+      `Phone: ${value('phone')}`,
+      `Email: ${value('email')}`,
+      `City: ${value('city')}`,
+      `Service: ${value('service')}`,
+      `Approximate home size: ${value('homeSize') || 'Not provided'}`,
+      `Preferred timing: ${value('timing') || 'Not provided'}`,
+      '',
+      'Cleaning details:',
+      value('details'),
+    ].join('\n');
+
+    if (formStatus) {
+      formStatus.textContent = 'Opening your email application with the quote details…';
+    }
+
+    window.location.href = `mailto:companysparkclean@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+
+<style>
+  .contact-hero {
+    padding: 92px 0 110px;
+    background: linear-gradient(115deg, #ffffff 0%, #f8fcfd 58%, #e5f4f8 100%);
+  }
+
+  .contact-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 0.55fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .contact-card {
+    display: grid;
+    gap: 14px;
+    padding: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: var(--shadow);
+  }
+
+  .contact-card a {
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .contact-card .contact-primary {
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+  }
+
+  .contact-card span,
+  .contact-label {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .contact-label {
+    margin: 0 0 10px;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .quote-section,
+  .service-choice,
+  .contact-local {
+    padding: 112px 0;
+  }
+
+  .quote-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1fr);
+    gap: 110px;
+    align-items: start;
+  }
+
+  .quote-intro {
+    position: sticky;
+    top: 110px;
+  }
+
+  .quote-intro > p:not(.eyebrow) {
+    margin: 28px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .help-list {
+    display: grid;
+    margin-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .help-list div {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .help-list span {
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .help-list p {
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .quote-form {
+    display: grid;
+    gap: 22px;
+    padding: 42px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0 24px 60px rgba(20, 70, 120, 0.1);
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  label {
+    display: grid;
+    gap: 9px;
+  }
+
+  label > span {
+    color: var(--ink);
+    font-size: 0.82rem;
+    font-weight: 750;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid #cbdce2;
+    border-radius: 14px;
+    color: var(--ink);
+    background: #fbfdfd;
+    outline: none;
+  }
+
+  input,
+  select {
+    min-height: 52px;
+    padding: 0 15px;
+  }
+
+  textarea {
+    resize: vertical;
+    padding: 15px;
+    line-height: 1.55;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(88, 168, 199, 0.14);
+  }
+
+  .quote-form .button {
+    width: fit-content;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .form-note,
+  .form-status {
+    margin: -8px 0 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .form-status {
+    min-height: 1.2em;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .service-choice {
+    background: #f4f9fa;
+  }
+
+  .choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .choice-grid a {
+    display: grid;
+    min-height: 230px;
+    align-content: end;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--paper);
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .choice-grid a:hover {
+    box-shadow: 0 18px 38px rgba(20, 70, 120, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .choice-grid span {
+    margin-bottom: 52px;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .choice-grid strong {
+    font-size: 1.55rem;
+    letter-spacing: -0.025em;
+  }
+
+  .choice-grid p {
+    margin: 10px 0 0;
+    color: var(--navy);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .contact-local {
+    background: var(--pale);
+  }
+
+  .local-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+    gap: 80px;
+    align-items: center;
+  }
+
+  .local-card > div:last-child p {
+    margin: 0 0 28px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .local-card a {
+    color: var(--navy);
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .contact-hero-grid,
+    .quote-grid,
+    .local-card {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-hero-grid,
+    .quote-grid {
+      gap: 56px;
+    }
+
+    .quote-intro {
+      position: static;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-hero {
+      padding: 62px 0 78px;
+    }
+
+    .quote-section,
+    .service-choice,
+    .contact-local {
+      padding: 78px 0;
+    }
+
+    .contact-card,
+    .quote-form {
+      padding: 28px;
+      border-radius: 24px;
+    }
+
+    .field-grid,
+    .choice-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quote-form .button {
+      width: 100%;
+    }
+  }
+</style>

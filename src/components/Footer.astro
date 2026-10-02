@@ -7,7 +7,10 @@ const year = new Date().getFullYear();
     <div class="footer-brand">
       <a class="brand-name" href="/">SPARKCLEAN</a>
       <p>Thoughtful residential cleaning for Concord and communities throughout the East Bay.</p>
-      <a class="footer-about" href="/about/">About Sparkclean</a>
+      <div class="footer-company-links">
+        <a href="/about/">About Sparkclean</a>
+        <a href="/service-areas/">Service areas</a>
+      </div>
     </div>
 
     <div>
@@ -66,9 +69,14 @@ const year = new Date().getFullYear();
     line-height: 1.7;
   }
 
-  .footer-about {
-    display: inline-block;
+  .footer-company-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
     margin-top: 8px;
+  }
+
+  .footer-company-links a {
     font-weight: 700;
   }
 

@@ -1,0 +1,70 @@
+---
+import LocationPage from '../../components/LocationPage.astro';
+
+const page = {
+  city: 'Pleasant Hill',
+  metaTitle: 'House Cleaning in Pleasant Hill, CA | Sparkclean',
+  metaDescription:
+    'Sparkclean provides recurring, deep, move-in, move-out, and post-remodel house cleaning in Pleasant Hill, CA. Request service availability for your home.',
+  heroTitle: 'Thoughtful house cleaning for Pleasant Hill homes.',
+  heroLead:
+    'Sparkclean helps Pleasant Hill households maintain everyday spaces, reset areas that need more detail, and prepare homes for moves or the final stage of a remodel.',
+  introEyebrow: 'Cleaning that supports everyday life',
+  introTitle: 'More time for home—without the constant catching up.',
+  introParagraphs: [
+    'A consistently clean home can make a busy week feel more manageable. Sparkclean focuses on the kitchens, bathrooms, floors, bedrooms, and living areas that influence how the whole home feels.',
+    'Service priorities can be adjusted around the size of the home, its current condition, and whether you need dependable maintenance or a more detailed one-time visit.',
+  ],
+  focusTitle: 'Cleaning options for different stages of home care.',
+  focusDescription:
+    'Pleasant Hill appointments are planned around the home, service type, and priorities discussed before cleaning begins.',
+  focusItems: [
+    {
+      title: 'Keep up with the week',
+      copy: 'Recurring cleaning helps maintain high-use rooms and everyday surfaces on a dependable schedule.',
+    },
+    {
+      title: 'Reset the details',
+      copy: 'Deep cleaning gives more focused attention to buildup, fixtures, edges, and commonly overlooked areas.',
+    },
+    {
+      title: 'Prepare for what comes next',
+      copy: 'Moving and post-remodel cleaning help a changing home feel fresher, clearer, and more ready to use.',
+    },
+  ],
+  routineTitle: 'A cleaning plan shaped around your Pleasant Hill home.',
+  routineCopy:
+    'Sparkclean keeps the process simple: understand the home, confirm the most important cleaning priorities, and plan service around current availability.',
+  routineItems: [
+    'Share your Pleasant Hill address area and approximate home size.',
+    'Choose recurring, deep, moving, or post-construction cleaning.',
+    'Describe the rooms and surfaces that need the most attention.',
+  ],
+  faqTitle: 'Before scheduling in Pleasant Hill.',
+  faqs: [
+    {
+      question: 'What cleaning services are available in Pleasant Hill?',
+      answer:
+        'Sparkclean offers recurring cleaning, deep cleaning, move-in and move-out cleaning, and residential post-construction cleaning. Availability and service scope are confirmed for each home.',
+    },
+    {
+      question: 'Can I request recurring cleaning for a Pleasant Hill home?',
+      answer:
+        'Yes. Share the home size, the main rooms you want maintained, and the schedule you have in mind. Sparkclean will discuss current recurring-service availability with you.',
+    },
+    {
+      question: 'How do I receive a cleaning quote?',
+      answer:
+        'Use the quote request page or call (925) 834-1815. Include your city, approximate home size, preferred service, timing, and any detailed priorities.',
+    },
+    {
+      question: 'Does Sparkclean bring cleaning products?',
+      answer:
+        'Cleaning-product and home-specific considerations should be discussed when scheduling, especially if your household has surface, fragrance, pet, or other sensitivities.',
+    },
+  ],
+  nearby: ['Concord', 'Martinez', 'Walnut Creek', 'Lafayette'],
+};
+---
+
+<LocationPage {page} />

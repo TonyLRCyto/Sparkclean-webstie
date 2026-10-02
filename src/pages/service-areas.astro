@@ -1,0 +1,454 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const areas = [
+  {
+    name: 'Concord',
+    description: 'Sparkclean’s home base and primary service area.',
+    href: '/contact/',
+    featured: true,
+  },
+  {
+    name: 'Pleasant Hill',
+    description: 'Recurring, deep, moving, and post-remodel cleaning.',
+    href: '/service-areas/pleasant-hill-ca/',
+  },
+  {
+    name: 'Martinez',
+    description: 'Residential cleaning for everyday care and home transitions.',
+    href: '/service-areas/martinez-ca/',
+  },
+  {
+    name: 'Walnut Creek',
+    description: 'Residential service availability confirmed by address.',
+    href: '/contact/',
+  },
+  {
+    name: 'Lafayette',
+    description: 'Contact Sparkclean to discuss your home and preferred timing.',
+    href: '/contact/',
+  },
+  {
+    name: 'Moraga',
+    description: 'Residential cleaning appointments based on availability.',
+    href: '/contact/',
+  },
+  {
+    name: 'Orinda',
+    description: 'Request a quote with your address and service priorities.',
+    href: '/contact/',
+  },
+  {
+    name: 'Berkeley',
+    description: 'Select residential appointments; contact us to confirm.',
+    href: '/contact/',
+  },
+  {
+    name: 'San Francisco',
+    description: 'Limited availability; contact Sparkclean before scheduling.',
+    href: '/contact/',
+  },
+];
+---
+
+<BaseLayout
+  title="House Cleaning Service Areas | Sparkclean Concord, CA"
+  description="Sparkclean provides residential cleaning in Concord, Pleasant Hill, Martinez, Walnut Creek, and select East Bay communities. Confirm availability for your address."
+>
+  <section class="areas-hero">
+    <div class="shell areas-hero-grid">
+      <div class="reveal">
+        <p class="eyebrow">Sparkclean service areas</p>
+        <h1 class="display-title">Concord-based cleaning throughout the East Bay.</h1>
+      </div>
+      <div class="hero-copy reveal">
+        <p class="lead">Sparkclean serves homes in Concord and nearby communities with recurring, deep, move-in/move-out, and post-construction cleaning.</p>
+        <p>Availability can vary by address, schedule, and service type. Contact us with your city and preferred timing to confirm your appointment area.</p>
+        <a class="button button-primary" href="/contact/">Check Availability</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="area-directory">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Communities we serve</p>
+          <h2 class="section-title">Find residential cleaning near you.</h2>
+        </div>
+        <p>Dedicated city pages are being added carefully so each one provides useful local information instead of repeating the same content.</p>
+      </div>
+
+      <div class="area-grid">
+        {areas.map((area, index) => (
+          <a class:list={['area-card', { featured: area.featured }, 'reveal']} href={area.href}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{area.name}</strong>
+            <p>{area.description}</p>
+            <i aria-hidden="true">→</i>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="availability">
+    <div class="shell availability-grid">
+      <div class="availability-visual reveal">
+        <div>
+          <span>Local availability</span>
+          <strong>Your address helps us confirm scheduling.</strong>
+        </div>
+      </div>
+
+      <div class="availability-copy reveal">
+        <p class="eyebrow">How service-area availability works</p>
+        <h2 class="section-title">Start with your city, home, and preferred service.</h2>
+        <p>Sparkclean is a service-area business, so appointments are completed at clients’ homes rather than at a storefront. Travel time and scheduling are considered when confirming availability.</p>
+
+        <div class="availability-list">
+          <div><span>01</span><p>Share your city and address area.</p></div>
+          <div><span>02</span><p>Describe the home and cleaning service needed.</p></div>
+          <div><span>03</span><p>Confirm timing and service availability directly with Sparkclean.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="area-services">
+    <div class="shell">
+      <div class="section-heading section-heading-light reveal">
+        <div>
+          <p class="eyebrow">Services across our coverage area</p>
+          <h2 class="section-title">The right level of cleaning for the home you are in.</h2>
+        </div>
+        <p>Service availability and exact scope are confirmed for each home before scheduling.</p>
+      </div>
+
+      <div class="service-grid">
+        <a href="/recurring-cleaning-concord-ca/"><span>01</span><strong>Recurring cleaning</strong><p>Dependable upkeep for everyday living spaces.</p></a>
+        <a href="/deep-cleaning-concord-ca/"><span>02</span><strong>Deep cleaning</strong><p>A detailed reset beyond regular maintenance.</p></a>
+        <a href="/move-in-move-out-cleaning-concord-ca/"><span>03</span><strong>Move-in &amp; move-out</strong><p>Cleaning support during a home transition.</p></a>
+        <a href="/post-construction-cleaning-concord-ca/"><span>04</span><strong>Post-construction</strong><p>Final residential cleaning after remodeling.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="areas-cta">
+    <div class="shell cta-card reveal">
+      <div>
+        <p class="eyebrow">Is your community nearby?</p>
+        <h2 class="section-title">Ask Sparkclean to confirm availability for your address.</h2>
+      </div>
+      <div class="cta-actions">
+        <a class="button button-white" href="/contact/">Request a Quote</a>
+        <a href="tel:+19258341815">Call (925) 834-1815</a>
+        <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .areas-hero {
+    padding: 110px 0;
+    background: linear-gradient(115deg, #ffffff 0%, #f8fcfd 58%, #e5f4f8 100%);
+  }
+
+  .areas-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.55fr);
+    gap: 100px;
+    align-items: end;
+  }
+
+  .hero-copy > p:not(.lead) {
+    margin: 22px 0 30px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .area-directory,
+  .availability {
+    padding: 112px 0;
+  }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .area-card {
+    display: grid;
+    min-height: 260px;
+    align-content: end;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--paper);
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .area-card:hover {
+    box-shadow: 0 18px 38px rgba(20, 70, 120, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .area-card.featured {
+    color: white;
+    border-color: var(--navy);
+    background: var(--navy);
+  }
+
+  .area-card > span {
+    margin-bottom: 48px;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .area-card strong {
+    font-size: 1.65rem;
+    letter-spacing: -0.03em;
+  }
+
+  .area-card p {
+    margin: 10px 0 22px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .area-card.featured p {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .area-card i {
+    color: var(--blue);
+    font-style: normal;
+  }
+
+  .availability {
+    background: var(--pale);
+  }
+
+  .availability-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .availability-visual {
+    display: flex;
+    min-height: 590px;
+    align-items: flex-end;
+    padding: 34px;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #dff1f5 0%, #b9dce6 55%, #8fc4d5 100%);
+  }
+
+  .availability-visual > div {
+    display: grid;
+    width: 100%;
+    gap: 9px;
+    padding: 27px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 45px rgba(17, 33, 46, 0.12);
+  }
+
+  .availability-visual span {
+    color: var(--blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .availability-visual strong {
+    color: var(--navy);
+    font-size: 1.7rem;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .availability-copy > p:not(.eyebrow) {
+    margin: 28px 0 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .availability-list {
+    display: grid;
+    margin-top: 42px;
+    border-top: 1px solid #c8dce3;
+  }
+
+  .availability-list div {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid #c8dce3;
+  }
+
+  .availability-list span {
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .availability-list p {
+    margin: 0;
+  }
+
+  .area-services {
+    padding: 112px 0;
+    color: white;
+    background: var(--ink);
+  }
+
+  .section-heading-light .section-title,
+  .section-heading-light > p {
+    color: white;
+  }
+
+  .section-heading-light .eyebrow {
+    color: #8cc9dc;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .service-grid a {
+    display: grid;
+    min-height: 235px;
+    align-content: end;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+  }
+
+  .service-grid span {
+    margin-bottom: 48px;
+    color: #8cc9dc;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .service-grid strong {
+    color: white;
+    font-size: 1.55rem;
+  }
+
+  .service-grid p {
+    margin: 10px 0 0;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .areas-cta {
+    padding: 112px 0;
+  }
+
+  .cta-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.55fr);
+    gap: 70px;
+    align-items: center;
+    padding: 68px;
+    border-radius: 32px;
+    color: white;
+    background: var(--navy);
+    box-shadow: 0 28px 70px rgba(20, 70, 120, 0.2);
+  }
+
+  .cta-card .eyebrow { color: #8cc9dc; }
+  .cta-card .section-title { color: white; }
+
+  .cta-actions {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+
+  .button-white {
+    color: var(--navy);
+    background: white;
+  }
+
+  .cta-actions > a:not(.button) {
+    color: white;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .cta-actions span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 900px) {
+    .areas-hero-grid,
+    .availability-grid,
+    .cta-card {
+      grid-template-columns: 1fr;
+    }
+
+    .areas-hero-grid,
+    .availability-grid {
+      gap: 56px;
+    }
+
+    .area-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .areas-hero {
+      padding: 72px 0 82px;
+    }
+
+    .area-directory,
+    .availability,
+    .area-services,
+    .areas-cta {
+      padding: 78px 0;
+    }
+
+    .area-grid,
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .area-card,
+    .service-grid a {
+      min-height: 220px;
+    }
+
+    .availability-visual {
+      min-height: 430px;
+      padding: 20px;
+      border-radius: 26px;
+    }
+
+    .cta-card {
+      gap: 42px;
+      padding: 42px 26px;
+      border-radius: 26px;
+    }
+
+    .cta-actions,
+    .cta-actions .button {
+      width: 100%;
+    }
+  }
+</style>

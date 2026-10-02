@@ -1,0 +1,626 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface FocusItem {
+  title: string;
+  copy: string;
+}
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+interface PageData {
+  city: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroTitle: string;
+  heroLead: string;
+  introEyebrow: string;
+  introTitle: string;
+  introParagraphs: string[];
+  focusTitle: string;
+  focusDescription: string;
+  focusItems: FocusItem[];
+  routineTitle: string;
+  routineCopy: string;
+  routineItems: string[];
+  faqTitle: string;
+  faqs: Faq[];
+  nearby: string[];
+}
+
+interface Props {
+  page: PageData;
+}
+
+const { page } = Astro.props;
+
+const localSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `House Cleaning in ${page.city}, CA`,
+  description: page.metaDescription,
+  serviceType: 'Residential cleaning',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Sparkclean Cleaning Services',
+    telephone: '+1-925-834-1815',
+  },
+  areaServed: `${page.city}, CA`,
+};
+---
+
+<BaseLayout title={page.metaTitle} description={page.metaDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(localSchema)} />
+
+  <section class="location-hero">
+    <div class="shell location-hero-grid">
+      <div class="reveal">
+        <p class="eyebrow">House cleaning · {page.city}, California</p>
+        <h1 class="display-title">{page.heroTitle}</h1>
+        <p class="lead">{page.heroLead}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/contact/">Request a Quote</a>
+          <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+        </div>
+      </div>
+
+      <div class="location-visual reveal">
+        <span>{page.city}</span>
+        <strong>Residential cleaning with thoughtful attention to the details.</strong>
+        <div class="location-note">Concord-based East Bay service</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="location-intro">
+    <div class="shell intro-grid reveal">
+      <div>
+        <p class="eyebrow">{page.introEyebrow}</p>
+        <h2 class="section-title">{page.introTitle}</h2>
+      </div>
+      <div class="intro-copy">
+        {page.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="location-services">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Residential cleaning options</p>
+          <h2 class="section-title">{page.focusTitle}</h2>
+        </div>
+        <p>{page.focusDescription}</p>
+      </div>
+
+      <div class="focus-grid">
+        {page.focusItems.map((item, index) => (
+          <article class:list={['focus-card', { featured: index === 1 }, 'reveal']}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="service-links reveal">
+        <a href="/recurring-cleaning-concord-ca/">Recurring cleaning <span>→</span></a>
+        <a href="/deep-cleaning-concord-ca/">Deep cleaning <span>→</span></a>
+        <a href="/move-in-move-out-cleaning-concord-ca/">Move-in &amp; move-out <span>→</span></a>
+        <a href="/post-construction-cleaning-concord-ca/">Post-construction <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="routine">
+    <div class="shell routine-grid">
+      <div class="routine-visual reveal">
+        <div>
+          <span>Thoughtful local care</span>
+          <strong>{page.city} appointments confirmed by address and availability.</strong>
+        </div>
+      </div>
+
+      <div class="routine-copy reveal">
+        <p class="eyebrow">A straightforward process</p>
+        <h2 class="section-title">{page.routineTitle}</h2>
+        <p>{page.routineCopy}</p>
+
+        <div class="routine-list">
+          {page.routineItems.map((item, index) => (
+            <div><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="location-faq">
+    <div class="shell faq-grid">
+      <div class="faq-intro reveal">
+        <p class="eyebrow">Frequently asked questions</p>
+        <h2 class="section-title">{page.faqTitle}</h2>
+        <p>Have another question? Call <a href="tel:+19258341815">(925) 834-1815</a> or send a quote request.</p>
+      </div>
+
+      <div class="faq-list reveal">
+        {page.faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="nearby">
+    <div class="shell nearby-grid reveal">
+      <div>
+        <p class="eyebrow">Nearby service areas</p>
+        <h2 class="section-title">Sparkclean also serves surrounding communities.</h2>
+      </div>
+      <div>
+        <p>{page.nearby.join(' · ')}</p>
+        <a href="/service-areas/">View all service areas <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="location-cta">
+    <div class="shell cta-card reveal">
+      <div>
+        <p class="eyebrow">Ready for a cleaner {page.city} home?</p>
+        <h2 class="section-title">Tell Sparkclean what service would make the greatest difference.</h2>
+      </div>
+      <div class="cta-actions">
+        <a class="button button-white" href="/contact/">Request a Quote</a>
+        <a href="tel:+19258341815">Call (925) 834-1815</a>
+        <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .location-hero {
+    padding: 92px 0 110px;
+    background: linear-gradient(115deg, #ffffff 0%, #f8fcfd 58%, #e5f4f8 100%);
+  }
+
+  .location-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 90px;
+    align-items: center;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .location-visual {
+    position: relative;
+    display: flex;
+    min-height: 620px;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 14px;
+    overflow: hidden;
+    padding: 52px;
+    border-radius: 36px;
+    background: linear-gradient(145deg, #eaf6f9 0%, #c5e2ea 52%, #84b9c9 100%);
+    box-shadow: var(--shadow);
+  }
+
+  .location-visual > span {
+    color: var(--navy);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .location-visual > strong {
+    max-width: 500px;
+    font-size: clamp(2.2rem, 3.8vw, 4rem);
+    font-weight: 650;
+    letter-spacing: -0.05em;
+    line-height: 1.02;
+  }
+
+  .location-note {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    padding: 12px 17px;
+    border-radius: 999px;
+    color: var(--navy);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 30px rgba(17, 33, 46, 0.12);
+    font-size: 0.78rem;
+    font-weight: 750;
+  }
+
+  .location-intro,
+  .location-services,
+  .routine,
+  .location-faq,
+  .nearby {
+    padding: 112px 0;
+  }
+
+  .intro-grid,
+  .nearby-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    gap: 100px;
+    align-items: start;
+  }
+
+  .intro-copy,
+  .nearby-grid > div:last-child > p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .intro-copy p {
+    margin: 0 0 22px;
+  }
+
+  .location-services {
+    background: #f4f9fa;
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .focus-card {
+    min-height: 390px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: var(--paper);
+  }
+
+  .focus-card.featured {
+    color: white;
+    border-color: var(--navy);
+    background: var(--navy);
+    box-shadow: 0 24px 55px rgba(20, 70, 120, 0.18);
+    transform: translateY(-12px);
+  }
+
+  .focus-card > span {
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .focus-card h3 {
+    margin: 84px 0 20px;
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .focus-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .focus-card.featured p {
+    color: rgba(255, 255, 255, 0.74);
+  }
+
+  .service-links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 44px;
+  }
+
+  .service-links a {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 17px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    color: var(--navy);
+    background: rgba(255, 255, 255, 0.65);
+    font-size: 0.86rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .routine {
+    background: var(--pale);
+  }
+
+  .routine-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .routine-visual {
+    display: flex;
+    min-height: 590px;
+    align-items: flex-end;
+    padding: 34px;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #dff1f5 0%, #b9dce6 55%, #8fc4d5 100%);
+  }
+
+  .routine-visual > div {
+    display: grid;
+    width: 100%;
+    gap: 9px;
+    padding: 27px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 45px rgba(17, 33, 46, 0.12);
+  }
+
+  .routine-visual span {
+    color: var(--blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .routine-visual strong {
+    color: var(--navy);
+    font-size: 1.7rem;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .routine-copy > p:not(.eyebrow) {
+    margin: 28px 0 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .routine-list {
+    display: grid;
+    margin-top: 42px;
+    border-top: 1px solid #c8dce3;
+  }
+
+  .routine-list div {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid #c8dce3;
+  }
+
+  .routine-list span {
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .routine-list p {
+    margin: 0;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+    gap: 110px;
+    align-items: start;
+  }
+
+  .faq-intro {
+    position: sticky;
+    top: 110px;
+  }
+
+  .faq-intro > p:not(.eyebrow) {
+    margin: 28px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .faq-intro a {
+    color: var(--navy);
+    font-weight: 750;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-list details {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-list summary {
+    font-size: 1.2rem;
+    font-weight: 650;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .faq-list p {
+    margin: 18px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .nearby {
+    background: var(--pale);
+  }
+
+  .nearby-grid > div:last-child > p {
+    margin: 0 0 28px;
+  }
+
+  .nearby-grid a {
+    color: var(--navy);
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .location-cta {
+    padding: 112px 0;
+  }
+
+  .cta-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.55fr);
+    gap: 70px;
+    align-items: center;
+    padding: 68px;
+    border-radius: 32px;
+    color: white;
+    background: var(--navy);
+    box-shadow: 0 28px 70px rgba(20, 70, 120, 0.2);
+  }
+
+  .cta-card .eyebrow { color: #8cc9dc; }
+  .cta-card .section-title { color: white; }
+
+  .cta-actions {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+
+  .button-white {
+    color: var(--navy);
+    background: white;
+  }
+
+  .cta-actions > a:not(.button) {
+    color: white;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .cta-actions span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 991px) {
+    .location-hero-grid,
+    .intro-grid,
+    .routine-grid,
+    .faq-grid,
+    .nearby-grid,
+    .cta-card {
+      grid-template-columns: 1fr;
+    }
+
+    .location-hero-grid,
+    .routine-grid,
+    .faq-grid {
+      gap: 56px;
+    }
+
+    .location-visual {
+      min-height: 560px;
+    }
+
+    .focus-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .focus-card {
+      min-height: auto;
+    }
+
+    .focus-card.featured {
+      transform: none;
+    }
+
+    .focus-card h3 {
+      margin-top: 48px;
+    }
+
+    .service-links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .faq-intro {
+      position: static;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .location-hero {
+      padding: 62px 0 78px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .location-visual {
+      min-height: 430px;
+      padding: 28px;
+      border-radius: 26px;
+    }
+
+    .location-note {
+      top: 18px;
+      right: 18px;
+    }
+
+    .location-intro,
+    .location-services,
+    .routine,
+    .location-faq,
+    .nearby,
+    .location-cta {
+      padding: 78px 0;
+    }
+
+    .focus-card {
+      padding: 28px;
+      border-radius: 22px;
+    }
+
+    .service-links {
+      grid-template-columns: 1fr;
+    }
+
+    .routine-visual {
+      min-height: 430px;
+      padding: 20px;
+      border-radius: 26px;
+    }
+
+    .cta-card {
+      gap: 42px;
+      padding: 42px 26px;
+      border-radius: 26px;
+    }
+
+    .cta-actions,
+    .cta-actions .button {
+      width: 100%;
+    }
+  }
+</style>

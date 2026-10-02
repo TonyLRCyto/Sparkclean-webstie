@@ -1,0 +1,70 @@
+---
+import LocationPage from '../../components/LocationPage.astro';
+
+const page = {
+  city: 'Martinez',
+  metaTitle: 'House Cleaning in Martinez, CA | Sparkclean',
+  metaDescription:
+    'Request residential cleaning in Martinez, CA from Sparkclean. Recurring upkeep, detailed deep cleaning, moving cleaning, and cleaning after remodeling.',
+  heroTitle: 'Detailed home cleaning for every transition in Martinez.',
+  heroLead:
+    'From regular upkeep to moving-day preparation and post-remodel dust, Sparkclean provides residential cleaning shaped around the condition and priorities of Martinez homes.',
+  introEyebrow: 'From maintenance to a fresh start',
+  introTitle: 'Focused care for the moment your home is in.',
+  introParagraphs: [
+    'Some homes need a reliable routine. Others need a deeper reset, a cleaner handoff during a move, or detailed attention after home-improvement work.',
+    'Sparkclean begins by understanding the property and the result you want, then confirms the rooms, surfaces, and service details that matter most for the appointment.',
+  ],
+  focusTitle: 'Residential cleaning that meets a specific need.',
+  focusDescription:
+    'Rather than treating every appointment the same, Sparkclean uses the requested service and condition of the home to establish priorities.',
+  focusItems: [
+    {
+      title: 'Maintain the home',
+      copy: 'Recurring service supports kitchens, bathrooms, floors, bedrooms, and living areas that need consistent attention.',
+    },
+    {
+      title: 'Create a stronger reset',
+      copy: 'Deep cleaning addresses buildup and detailed surfaces when everyday upkeep is no longer enough.',
+    },
+    {
+      title: 'Finish a transition',
+      copy: 'Move-in, move-out, and post-remodel cleaning help prepare a home for its next use or next resident.',
+    },
+  ],
+  routineTitle: 'Clear details make Martinez appointments easier to plan.',
+  routineCopy:
+    'The city, approximate home size, requested service, current condition, and preferred timing help Sparkclean determine availability and establish the right scope.',
+  routineItems: [
+    'Describe whether the home is occupied, empty, or recently remodeled.',
+    'Identify the rooms and detailed requests that matter most.',
+    'Confirm the appointment scope and timing directly with Sparkclean.',
+  ],
+  faqTitle: 'Planning residential cleaning in Martinez.',
+  faqs: [
+    {
+      question: 'Does Sparkclean provide one-time cleaning in Martinez?',
+      answer:
+        'Yes. Deep cleaning, moving cleaning, and post-construction cleaning are designed for one-time needs. Recurring service can also be discussed for ongoing upkeep.',
+    },
+    {
+      question: 'Can a move-out cleaning be scheduled after belongings are removed?',
+      answer:
+        'That is generally the best time because empty rooms allow clearer access to floors and surfaces. Share your moving date as early as possible when requesting availability.',
+    },
+    {
+      question: 'Can I request cleaning after a kitchen or bathroom remodel?',
+      answer:
+        'Yes. Sparkclean provides residential post-construction cleaning after remodeling. Active work should be complete and large debris, tools, and materials should be removed before the appointment.',
+    },
+    {
+      question: 'What information helps with an accurate quote?',
+      answer:
+        'Include your Martinez location, approximate home size, service type, property condition, timing, and whether you need detailed items such as appliance or cabinet interiors.',
+    },
+  ],
+  nearby: ['Concord', 'Pleasant Hill', 'Walnut Creek', 'Orinda'],
+};
+---
+
+<LocationPage {page} />

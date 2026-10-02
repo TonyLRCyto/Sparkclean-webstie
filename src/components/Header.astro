@@ -2,7 +2,7 @@
 const links = [
   { href: '/#services', label: 'Services' },
   { href: '/#results', label: 'Our Work' },
-  { href: '/#areas', label: 'Service Areas' },
+  { href: '/service-areas/', label: 'Service Areas' },
   { href: '/about/', label: 'About' },
 ];
 ---
@@ -18,7 +18,7 @@ const links = [
       {links.map((link) => <a href={link.href}>{link.label}</a>)}
     </nav>
 
-    <a class="button button-primary header-cta" href="/#quote">Request a Quote</a>
+    <a class="button button-primary header-cta" href="/contact/">Request a Quote</a>
 
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">
       <span class="sr-only">Open menu</span>
@@ -30,7 +30,7 @@ const links = [
     <nav aria-label="Mobile navigation">
       {links.map((link) => <a href={link.href}>{link.label}</a>)}
       <a href="tel:+19258341815">Call (925) 834-1815</a>
-      <a class="button button-primary" href="/#quote">Request a Quote</a>
+      <a class="button button-primary" href="/contact/">Request a Quote</a>
     </nav>
   </div>
 </header>
