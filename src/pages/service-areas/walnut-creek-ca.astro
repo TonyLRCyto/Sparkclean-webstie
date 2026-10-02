@@ -1,0 +1,70 @@
+---
+import LocationPage from '../../components/LocationPage.astro';
+
+const page = {
+  city: 'Walnut Creek',
+  metaTitle: 'House Cleaning in Walnut Creek, CA | Sparkclean',
+  metaDescription:
+    'Request residential cleaning in Walnut Creek, CA from Sparkclean. Recurring upkeep, deep cleaning, moving cleaning, and cleaning after home remodeling.',
+  heroTitle: 'Thoughtful home cleaning for busy Walnut Creek households.',
+  heroLead:
+    'Sparkclean provides residential cleaning for ongoing home care, detailed one-time resets, moves, and the final cleaning stage after remodeling.',
+  introEyebrow: 'Cleaning that fits the home',
+  introTitle: 'Focused attention where it makes the greatest difference.',
+  introParagraphs: [
+    'The right cleaning service depends on more than the number of rooms. How the home is used, its current condition, and the details you want prioritized all help define the appointment.',
+    'Sparkclean works from those priorities to support regular maintenance or a more complete reset before guests, after a move, or once residential improvement work is finished.',
+  ],
+  focusTitle: 'Choose the level of cleaning your Walnut Creek home needs.',
+  focusDescription:
+    'Each service has a different purpose, so Sparkclean confirms the scope and priority areas before the appointment.',
+  focusItems: [
+    {
+      title: 'Support a consistent routine',
+      copy: 'Recurring cleaning helps keep high-use rooms, floors, and everyday surfaces maintained on an agreed schedule.',
+    },
+    {
+      title: 'Address overlooked details',
+      copy: 'Deep cleaning provides additional attention to buildup, fixtures, edges, and surfaces beyond standard maintenance.',
+    },
+    {
+      title: 'Complete a home transition',
+      copy: 'Moving and post-remodel cleaning help prepare an empty or recently improved home for what comes next.',
+    },
+  ],
+  routineTitle: 'Start with the home, priorities, and timing.',
+  routineCopy:
+    'Sparkclean uses the information in your request to confirm Walnut Creek availability and discuss a practical cleaning scope for the property.',
+  routineItems: [
+    'Share your Walnut Creek address area and approximate home size.',
+    'Describe whether you need ongoing upkeep or a one-time cleaning.',
+    'List any rooms, surfaces, or detailed items that should receive priority.',
+  ],
+  faqTitle: 'Before scheduling in Walnut Creek.',
+  faqs: [
+    {
+      question: 'Does Sparkclean provide recurring cleaning in Walnut Creek?',
+      answer:
+        'Yes, subject to schedule availability. Share your preferred frequency, approximate home size, and the rooms you want maintained when requesting a quote.',
+    },
+    {
+      question: 'Can I book a one-time deep cleaning?',
+      answer:
+        'Yes. Deep cleaning is available for homes that need more detailed attention than regular maintenance. The current condition and requested details help determine the scope.',
+    },
+    {
+      question: 'Is move-in or move-out cleaning available?',
+      answer:
+        'Yes. Sparkclean provides moving cleaning for empty or nearly empty homes. Include your moving timeline when requesting availability.',
+    },
+    {
+      question: 'How can I get a quote for a Walnut Creek home?',
+      answer:
+        'Use the quote request page or call (925) 834-1815. Include the city, home size, service type, preferred timing, and your most important cleaning priorities.',
+    },
+  ],
+  nearby: ['Concord', 'Pleasant Hill', 'Lafayette', 'Moraga'],
+};
+---
+
+<LocationPage {page} />

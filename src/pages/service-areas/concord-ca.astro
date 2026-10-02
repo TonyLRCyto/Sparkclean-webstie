@@ -1,0 +1,70 @@
+---
+import LocationPage from '../../components/LocationPage.astro';
+
+const page = {
+  city: 'Concord',
+  metaTitle: 'House Cleaning in Concord, CA | Sparkclean',
+  metaDescription:
+    'Sparkclean provides recurring, deep, move-in, move-out, and post-remodel house cleaning in Concord, CA. Request a cleaning quote for your home.',
+  heroTitle: 'House cleaning shaped around the way Concord homes are lived in.',
+  heroLead:
+    'Based in Concord, Sparkclean helps local households maintain everyday spaces, complete a more detailed reset, and prepare homes after a move or remodel.',
+  introEyebrow: 'Concord-based residential care',
+  introTitle: 'A cleaner home begins with the rooms that affect your day most.',
+  introParagraphs: [
+    'Kitchens, bathrooms, floors, bedrooms, and shared living spaces all require different levels of attention. Sparkclean starts by understanding the condition of the home and the result you want from the appointment.',
+    'That may mean dependable recurring upkeep, a one-time deep cleaning, support during a move, or final cleaning after residential remodeling work is complete.',
+  ],
+  focusTitle: 'Cleaning options for maintenance, details, and home transitions.',
+  focusDescription:
+    'Concord appointments are planned around the requested service, approximate home size, current condition, and priorities discussed before scheduling.',
+  focusItems: [
+    {
+      title: 'Maintain everyday spaces',
+      copy: 'Recurring cleaning supports the rooms and surfaces that need reliable attention throughout the month.',
+    },
+    {
+      title: 'Give the home a detailed reset',
+      copy: 'Deep cleaning focuses on buildup, edges, fixtures, and areas that are often missed during regular upkeep.',
+    },
+    {
+      title: 'Prepare for the next chapter',
+      copy: 'Move-in, move-out, and post-remodel cleaning help make a changing home feel more complete and ready to use.',
+    },
+  ],
+  routineTitle: 'A straightforward cleaning plan for your Concord home.',
+  routineCopy:
+    'A few practical details help Sparkclean recommend the right service and confirm what can be completed during the appointment.',
+  routineItems: [
+    'Share your Concord address area, approximate home size, and preferred timing.',
+    'Choose recurring, deep, moving, or residential post-construction cleaning.',
+    'Identify the rooms, surfaces, and detailed requests that matter most.',
+  ],
+  faqTitle: 'Planning house cleaning in Concord.',
+  faqs: [
+    {
+      question: 'What residential cleaning services are available in Concord?',
+      answer:
+        'Sparkclean offers recurring cleaning, deep cleaning, move-in and move-out cleaning, and residential post-construction cleaning. The exact scope is confirmed for each home before scheduling.',
+    },
+    {
+      question: 'Can I request ongoing cleaning for my Concord home?',
+      answer:
+        'Yes. Recurring cleaning can be discussed based on the home, the rooms you want maintained, your preferred frequency, and current schedule availability.',
+    },
+    {
+      question: 'Does Sparkclean clean homes after remodeling?',
+      answer:
+        'Yes. Residential post-construction cleaning is available after remodeling work is finished and contractors have removed tools, materials, and large debris.',
+    },
+    {
+      question: 'What should I include in my quote request?',
+      answer:
+        'Include your Concord location, approximate home size, requested service, preferred timing, current condition, and any priorities such as appliance or cabinet interiors.',
+    },
+  ],
+  nearby: ['Pleasant Hill', 'Martinez', 'Walnut Creek', 'Lafayette'],
+};
+---
+
+<LocationPage {page} />

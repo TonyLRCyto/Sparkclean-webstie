@@ -1,5 +1,8 @@
 ---
+import { instagramUrl } from '../data/site';
+
 const year = new Date().getFullYear();
+const showInstagram = Boolean(instagramUrl);
 ---
 
 <footer class="site-footer">
@@ -10,6 +13,7 @@ const year = new Date().getFullYear();
       <div class="footer-company-links">
         <a href="/about/">About Sparkclean</a>
         <a href="/service-areas/">Service areas</a>
+        {showInstagram && <a href={instagramUrl} target="_blank" rel="noopener noreferrer">Instagram ↗</a>}
       </div>
     </div>
 

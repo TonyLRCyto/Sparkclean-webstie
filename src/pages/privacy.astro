@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy | Sparkclean Cleaning Services"
+  description="Read how Sparkclean Cleaning Services handles information shared through its website, email, and phone communications."
+>
+  <section class="privacy-hero">
+    <div class="shell privacy-hero-grid">
+      <div class="reveal">
+        <p class="eyebrow">Privacy at Sparkclean</p>
+        <h1 class="display-title">Clear information about how your details are handled.</h1>
+      </div>
+      <div class="privacy-summary reveal">
+        <p>This policy explains what information may be received when you contact Sparkclean and how that information is used.</p>
+        <span>Effective October 1, 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-content">
+    <div class="shell privacy-grid">
+      <aside class="privacy-aside reveal">
+        <p class="eyebrow">Questions?</p>
+        <h2>Contact Sparkclean directly.</h2>
+        <a href="mailto:companysparkclean@gmail.com">companysparkclean@gmail.com</a>
+        <a href="tel:+19258341815">(925) 834-1815</a>
+      </aside>
+
+      <div class="policy reveal">
+        <section>
+          <h2>Information you choose to provide</h2>
+          <p>When you call, email, or use the quote-request page, you may choose to provide information such as your name, phone number, email address, city, service address, approximate home size, preferred service, scheduling needs, and cleaning priorities.</p>
+          <p>The current quote-request form opens a prefilled message in your email application. The website itself does not store the information entered into that form.</p>
+        </section>
+
+        <section>
+          <h2>Technical information</h2>
+          <p>The website hosting provider may automatically process limited technical information needed to deliver and protect the site, such as an IP address, browser or device type, request time, pages requested, and security logs.</p>
+        </section>
+
+        <section>
+          <h2>How information is used</h2>
+          <p>Information may be used to respond to questions, prepare or discuss a quote, confirm service availability, schedule cleaning, provide requested services, maintain customer communications, and protect the website from misuse.</p>
+        </section>
+
+        <section>
+          <h2>Sharing and selling information</h2>
+          <p>Sparkclean does not sell personal information. Information may be shared with service providers only when reasonably necessary to operate the website or provide requested services, or when disclosure is required by law.</p>
+        </section>
+
+        <section>
+          <h2>Cookies, analytics, and external links</h2>
+          <p>This version of the website does not use advertising cookies or third-party analytics. If those tools are added later, this policy should be updated. Links to services such as Instagram are governed by the privacy practices of those external services.</p>
+        </section>
+
+        <section>
+          <h2>Retention and your choices</h2>
+          <p>Communications and customer information are retained only as long as reasonably needed for service, business, recordkeeping, or legal purposes. You may contact Sparkclean to ask about information you previously provided or to request a correction or deletion, subject to applicable obligations.</p>
+        </section>
+
+        <section>
+          <h2>Children’s privacy</h2>
+          <p>This website and Sparkclean’s services are not directed to children under 13, and Sparkclean does not knowingly request personal information from children.</p>
+        </section>
+
+        <section>
+          <h2>Updates to this policy</h2>
+          <p>This policy may be updated when the website, communication tools, or business practices change. The effective date shown above will be revised when an update is published.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .privacy-hero {
+    padding: 110px 0;
+    background: linear-gradient(115deg, #ffffff 0%, #f8fcfd 58%, #e5f4f8 100%);
+  }
+
+  .privacy-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.55fr);
+    gap: 100px;
+    align-items: end;
+  }
+
+  .privacy-summary {
+    padding-left: 28px;
+    border-left: 1px solid var(--line);
+  }
+
+  .privacy-summary p {
+    margin: 0 0 22px;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+  }
+
+  .privacy-summary span {
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .privacy-content {
+    padding: 112px 0;
+  }
+
+  .privacy-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.45fr) minmax(0, 1fr);
+    gap: 110px;
+    align-items: start;
+  }
+
+  .privacy-aside {
+    position: sticky;
+    top: 116px;
+    display: grid;
+    gap: 13px;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--pale);
+  }
+
+  .privacy-aside .eyebrow {
+    margin-bottom: 4px;
+  }
+
+  .privacy-aside h2 {
+    margin: 0 0 12px;
+    font-size: 1.7rem;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  .privacy-aside a {
+    color: var(--navy);
+    font-size: 0.9rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .policy {
+    display: grid;
+    gap: 0;
+  }
+
+  .policy section {
+    padding: 0 0 46px;
+    margin-bottom: 46px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .policy section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .policy h2 {
+    margin: 0 0 18px;
+    font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+    letter-spacing: -0.035em;
+  }
+
+  .policy p {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.78;
+  }
+
+  @media (max-width: 900px) {
+    .privacy-hero-grid,
+    .privacy-grid {
+      grid-template-columns: 1fr;
+      gap: 54px;
+    }
+
+    .privacy-aside {
+      position: static;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .privacy-hero,
+    .privacy-content {
+      padding: 78px 0;
+    }
+
+    .privacy-summary {
+      padding: 0;
+      border-left: 0;
+    }
+  }
+</style>

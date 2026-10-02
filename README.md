@@ -12,8 +12,11 @@ Astro website prepared for deployment to Cloudflare Workers Static Assets.
 - `/about/` — About Sparkclean page
 - `/contact/` — quote-request and contact page
 - `/service-areas/` — service-area overview
+- `/service-areas/concord-ca/` — Concord location page
 - `/service-areas/pleasant-hill-ca/` — Pleasant Hill location page
 - `/service-areas/martinez-ca/` — Martinez location page
+- `/service-areas/walnut-creek-ca/` — Walnut Creek location page
+- `/privacy/` — privacy policy
 - `/404.html` — not-found page
 
 ## Local development
@@ -45,7 +48,7 @@ Wrangler will ask you to sign in to Cloudflare the first time.
 - Add the confirmed production domain to `astro.config.mjs` as the `site` value.
 - Update `public/robots.txt` with the production sitemap URL.
 - Replace all gradient photo placeholders with optimized Sparkclean images.
-- Add the remaining priority service-area, Privacy, and Thank You pages.
 - Optionally connect the quote form to a Cloudflare Worker and email delivery service. The current form opens a prefilled email in the visitor's email application.
+- Add Sparkclean's exact Instagram URL to `src/data/site.ts`; the Instagram links stay hidden until it is provided.
 - Confirm service inclusions, service areas, phone number, email, and business hours with the owner.
 - Run Lighthouse and structured-data validation on the production URL.
