@@ -1,0 +1,122 @@
+---
+import ServicePage from '../components/ServicePage.astro';
+
+const page = {
+  metaTitle: 'Move-In & Move-Out Cleaning in Concord, CA | Sparkclean',
+  metaDescription:
+    'Take cleaning off your moving checklist with move-in and move-out cleaning from Sparkclean in Concord, CA. Detailed care for empty homes and smoother transitions.',
+  schemaName: 'Move-In and Move-Out Cleaning in Concord, CA',
+  schemaDescription:
+    'Residential move-in and move-out cleaning for renters and homeowners in Concord and nearby East Bay communities.',
+  variant: 'move' as const,
+  heroEyebrow: 'Move-in & move-out cleaning · Concord, California',
+  heroTitle: 'Leave one home fresh. Begin the next one clean.',
+  heroLead:
+    'Sparkclean helps renters and homeowners take cleaning off the moving checklist with detailed service for empty or nearly empty homes throughout Concord and nearby East Bay communities.',
+  highlights: ['Moving-day support', 'Empty-home detailing', 'Renters & homeowners'],
+  photoLabel: 'Move-ready finish',
+  photoTitle: 'Move-in or move-out project image goes here.',
+  introEyebrow: 'A smoother home transition',
+  introTitle: 'One less major task during a busy move.',
+  introParagraphs: [
+    'Moving already requires packing, scheduling, paperwork, and countless small decisions. A dedicated cleaning visit helps prepare the home for its next resident—or gives you a cleaner place to begin settling in.',
+    'The service can be shaped around the condition of the property, the rooms that need attention, and whether appliance or cabinet interiors should be included.',
+  ],
+  includedEyebrow: 'What moving cleaning covers',
+  includedTitle: 'Focused care for an empty or changing home.',
+  includedDescription:
+    'We confirm the requested scope before service. These are common areas addressed during a move-in or move-out cleaning.',
+  cards: [
+    {
+      title: 'Kitchen',
+      items: [
+        'Countertops and accessible surfaces',
+        'Sink, faucet, and fixtures',
+        'Stovetop and appliance exteriors',
+        'Cabinet fronts and contact points',
+        'Vacuumed and mopped floors',
+      ],
+    },
+    {
+      title: 'Bathrooms',
+      items: [
+        'Toilets, sinks, and mirrors',
+        'Tub and shower surfaces',
+        'Counters and high-touch fixtures',
+        'Visible buildup in agreed areas',
+        'Detailed floor cleaning',
+      ],
+    },
+    {
+      title: 'Empty rooms',
+      items: [
+        'Dusting accessible surfaces',
+        'Baseboards and visible edges',
+        'Doors, frames, and contact points',
+        'Vacuuming and hard-floor mopping',
+        'A clean, move-ready presentation',
+      ],
+    },
+  ],
+  scopeNote:
+    'Mention appliance interiors, cabinet interiors, window tracks, or other detailed requests when requesting a quote so they can be included in the service plan.',
+  processTitle: 'Cleaning coordinated around your move.',
+  processDescription:
+    'A few key details help us understand the property and plan the cleaning around your timeline.',
+  steps: [
+    {
+      title: 'Share the moving details',
+      copy: 'Tell us the city, home size, moving date, property condition, and whether the home will be empty.',
+    },
+    {
+      title: 'Confirm the requested areas',
+      copy: 'We discuss kitchens, bathrooms, rooms, floors, and any appliance or cabinet interiors you want included.',
+    },
+    {
+      title: 'Prepare the home',
+      copy: 'Sparkclean completes the agreed cleaning so the property feels fresher for the next part of the move.',
+    },
+  ],
+  fitEyebrow: 'Who is this service for?',
+  fitTitle: 'A practical choice on either side of a move.',
+  fitDescription:
+    'Move-in and move-out cleaning supports people leaving a property, entering a new one, or preparing an empty home for its next resident.',
+  fitItems: [
+    'Renters preparing to return a home or apartment',
+    'Homeowners getting a property ready for a transition',
+    'Families who want a cleaner space before unpacking',
+  ],
+  statTitle: 'A cleaner handoff. A better beginning.',
+  statCopy: 'Detailed cleaning that helps the transition feel more manageable.',
+  localTitle: 'Move-in and move-out cleaning across the Concord area.',
+  localCopy:
+    'Sparkclean supports residential moves in Concord and nearby East Bay communities including Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, and Orinda.',
+  faqTitle: 'Before scheduling your moving clean.',
+  faqs: [
+    {
+      question: 'Does the home need to be completely empty?',
+      answer:
+        'An empty home generally allows better access to floors, rooms, and surfaces. If belongings will remain, describe the situation when requesting a quote so the scope can be planned correctly.',
+    },
+    {
+      question: 'Can appliance and cabinet interiors be cleaned?',
+      answer:
+        'Those details can be discussed when requesting service. Tell us which interiors you want addressed so they can be included in the quote and schedule.',
+    },
+    {
+      question: 'When should I schedule the cleaning?',
+      answer:
+        'Share your moving date as early as possible. Move-out cleaning is usually easiest after belongings are removed, while move-in cleaning is best completed before unpacking.',
+    },
+    {
+      question: 'Do you work with renters and homeowners?',
+      answer:
+        'Yes. Sparkclean provides move-in and move-out cleaning for renters, homeowners, and residential property transitions in the Concord area.',
+    },
+  ],
+  ctaEyebrow: 'Planning a move?',
+  ctaTitle: 'Take detailed cleaning off your moving checklist.',
+};
+---
+
+<ServicePage {page} />

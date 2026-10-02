@@ -1,0 +1,851 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Card {
+  title: string;
+  items: string[];
+}
+
+interface Step {
+  title: string;
+  copy: string;
+}
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+interface PageData {
+  metaTitle: string;
+  metaDescription: string;
+  schemaName: string;
+  schemaDescription: string;
+  variant: 'deep' | 'move' | 'construction';
+  heroEyebrow: string;
+  heroTitle: string;
+  heroLead: string;
+  highlights: string[];
+  photoLabel: string;
+  photoTitle: string;
+  introEyebrow: string;
+  introTitle: string;
+  introParagraphs: string[];
+  includedEyebrow: string;
+  includedTitle: string;
+  includedDescription: string;
+  cards: Card[];
+  scopeNote?: string;
+  processTitle: string;
+  processDescription: string;
+  steps: Step[];
+  fitEyebrow: string;
+  fitTitle: string;
+  fitDescription: string;
+  fitItems: string[];
+  statTitle: string;
+  statCopy: string;
+  localTitle: string;
+  localCopy: string;
+  faqTitle: string;
+  faqs: Faq[];
+  ctaEyebrow: string;
+  ctaTitle: string;
+}
+
+interface Props {
+  page: PageData;
+}
+
+const { page } = Astro.props;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: page.schemaName,
+  description: page.schemaDescription,
+  serviceType: page.schemaName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Sparkclean Cleaning Services',
+    telephone: '+1-925-834-1815',
+  },
+  areaServed: [
+    'Concord, CA',
+    'Pleasant Hill, CA',
+    'Martinez, CA',
+    'Walnut Creek, CA',
+    'Lafayette, CA',
+    'Moraga, CA',
+    'Orinda, CA',
+  ],
+};
+---
+
+<BaseLayout title={page.metaTitle} description={page.metaDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <div class="service-page" data-variant={page.variant}>
+    <section class="service-hero">
+      <div class="shell service-hero-grid">
+        <div class="service-hero-copy reveal">
+          <p class="eyebrow">{page.heroEyebrow}</p>
+          <h1 class="display-title">{page.heroTitle}</h1>
+          <p class="lead">{page.heroLead}</p>
+
+          <div class="service-actions">
+            <a class="button button-primary" href="/#quote">Request a Quote</a>
+            <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+          </div>
+
+          <div class="service-proof" aria-label="Service highlights">
+            {page.highlights.map((highlight) => <span>{highlight}</span>)}
+          </div>
+        </div>
+
+        <div class="service-visual reveal">
+          <div class="photo-placeholder" role="img" aria-label={`Placeholder for a Sparkclean ${page.schemaName.toLowerCase()} photograph`}>
+            <div>
+              <span>Final Sparkclean photo</span>
+              <strong>{page.photoTitle}</strong>
+            </div>
+          </div>
+          <div class="photo-note">
+            <span>{page.photoLabel}</span>
+            <strong>{page.statTitle}</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-intro">
+      <div class="shell intro-grid reveal">
+        <div>
+          <p class="eyebrow">{page.introEyebrow}</p>
+          <h2 class="section-title">{page.introTitle}</h2>
+        </div>
+        <div class="intro-copy">
+          {page.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="included">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">{page.includedEyebrow}</p>
+            <h2 class="section-title">{page.includedTitle}</h2>
+          </div>
+          <p>{page.includedDescription}</p>
+        </div>
+
+        <div class="room-grid">
+          {page.cards.map((card, index) => (
+            <article class:list={['room-card', { 'room-card-featured': index === 1 }, 'reveal']}>
+              <p class="card-number">{String(index + 1).padStart(2, '0')}</p>
+              <h3>{card.title}</h3>
+              <ul>{card.items.map((item) => <li>{item}</li>)}</ul>
+            </article>
+          ))}
+        </div>
+
+        {page.scopeNote && <p class="scope-note reveal">{page.scopeNote}</p>}
+      </div>
+    </section>
+
+    <section class="service-process">
+      <div class="shell">
+        <div class="section-heading section-heading-light reveal">
+          <div>
+            <p class="eyebrow">How it works</p>
+            <h2 class="section-title">{page.processTitle}</h2>
+          </div>
+          <p>{page.processDescription}</p>
+        </div>
+
+        <div class="process-grid">
+          {page.steps.map((step, index) => (
+            <article class="reveal">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="fit">
+      <div class="shell fit-grid">
+        <div class="fit-copy reveal">
+          <p class="eyebrow">{page.fitEyebrow}</p>
+          <h2 class="section-title">{page.fitTitle}</h2>
+          <p>{page.fitDescription}</p>
+
+          <div class="fit-list">
+            {page.fitItems.map((item, index) => (
+              <div><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="fit-visual reveal">
+          <div class="fit-stat">
+            <strong>{page.statTitle}</strong>
+            <span>{page.statCopy}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="local-service">
+      <div class="shell local-grid reveal">
+        <div>
+          <p class="eyebrow">Local home cleaning</p>
+          <h2 class="section-title">{page.localTitle}</h2>
+        </div>
+        <div>
+          <p>{page.localCopy}</p>
+          <a class="text-link" href="/#areas">Explore our service areas <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-faq">
+      <div class="shell faq-grid">
+        <div class="faq-intro reveal">
+          <p class="eyebrow">Frequently asked questions</p>
+          <h2 class="section-title">{page.faqTitle}</h2>
+          <p>Have a question that is not answered here? Call Sparkclean at <a href="tel:+19258341815">(925) 834-1815</a>.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          {page.faqs.map((faq, index) => (
+            <details open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="service-cta">
+      <div class="shell cta-card reveal">
+        <div>
+          <p class="eyebrow">{page.ctaEyebrow}</p>
+          <h2 class="section-title">{page.ctaTitle}</h2>
+        </div>
+        <div class="cta-actions">
+          <a class="button button-white" href="/#quote">Request a Quote</a>
+          <a class="call-link" href="tel:+19258341815">Call (925) 834-1815</a>
+          <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .service-hero {
+    padding: 92px 0 110px;
+    background: linear-gradient(115deg, #ffffff 0%, #f8fcfd 58%, #e5f4f8 100%);
+  }
+
+  .service-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 90px;
+    align-items: center;
+  }
+
+  .service-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .service-proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    margin-top: 34px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 650;
+  }
+
+  .service-proof span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .service-proof span::before {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue);
+    content: '';
+  }
+
+  .service-visual {
+    position: relative;
+  }
+
+  .photo-placeholder {
+    display: flex;
+    min-height: 650px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 36px;
+    background: linear-gradient(145deg, #eaf6f9 0%, #cce7ef 55%, #acd4e1 100%);
+    box-shadow: var(--shadow);
+  }
+
+  [data-variant='move'] .photo-placeholder {
+    background: linear-gradient(145deg, #eef7f7 0%, #c9e2e7 52%, #91bdc9 100%);
+  }
+
+  [data-variant='construction'] .photo-placeholder {
+    background: linear-gradient(145deg, #edf5f8 0%, #c6dce5 52%, #8eafbf 100%);
+  }
+
+  .photo-placeholder span,
+  .photo-placeholder strong {
+    display: block;
+    text-align: center;
+  }
+
+  .photo-placeholder span {
+    color: var(--blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .photo-placeholder strong {
+    max-width: 290px;
+    margin-top: 12px;
+    color: var(--navy);
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+
+  .photo-note {
+    position: absolute;
+    right: -24px;
+    bottom: 42px;
+    display: grid;
+    max-width: 280px;
+    gap: 9px;
+    padding: 22px 24px;
+    border-radius: 20px;
+    background: rgba(250, 252, 252, 0.96);
+    box-shadow: 0 18px 45px rgba(17, 33, 46, 0.14);
+  }
+
+  .photo-note span {
+    color: var(--blue);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .photo-note strong {
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  .service-intro,
+  .included,
+  .fit,
+  .local-service,
+  .service-faq {
+    padding: 112px 0;
+  }
+
+  .intro-grid,
+  .local-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    gap: 100px;
+    align-items: start;
+  }
+
+  .intro-copy,
+  .local-grid > div:last-child > p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .intro-copy p {
+    margin: 0 0 22px;
+  }
+
+  .included {
+    background: #f4f9fa;
+  }
+
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .room-card {
+    min-height: 430px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: var(--paper);
+  }
+
+  .room-card-featured {
+    color: white;
+    border-color: var(--navy);
+    background: var(--navy);
+    box-shadow: 0 24px 55px rgba(20, 70, 120, 0.18);
+    transform: translateY(-12px);
+  }
+
+  .card-number {
+    margin: 0 0 76px;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .room-card h3 {
+    margin: 0 0 24px;
+    font-size: 1.9rem;
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .room-card ul {
+    display: grid;
+    gap: 13px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .room-card li {
+    position: relative;
+    padding-left: 19px;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.45;
+  }
+
+  .room-card li::before {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    content: '';
+  }
+
+  .room-card-featured li {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .scope-note {
+    margin: 34px 0 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .service-process {
+    padding: 112px 0;
+    color: white;
+    background: var(--ink);
+  }
+
+  .section-heading-light .section-title,
+  .section-heading-light > p {
+    color: white;
+  }
+
+  .section-heading-light .eyebrow {
+    color: #8cc9dc;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 52px;
+  }
+
+  .process-grid article {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .process-grid span {
+    color: #8cc9dc;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .process-grid h3 {
+    margin: 38px 0 18px;
+    color: white;
+    font-size: 1.55rem;
+    font-weight: 650;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .process-grid p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+  }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .fit-copy > p:not(.eyebrow) {
+    max-width: 680px;
+    margin: 28px 0 0;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .fit-list {
+    display: grid;
+    margin-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+
+  .fit-list div {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .fit-list span {
+    padding-top: 3px;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .fit-list p {
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .fit-visual {
+    display: flex;
+    min-height: 600px;
+    align-items: flex-end;
+    padding: 34px;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #dff1f5 0%, #b9dce6 55%, #8fc4d5 100%);
+  }
+
+  [data-variant='move'] .fit-visual {
+    background: linear-gradient(145deg, #e8f4f5 0%, #bfdce2 55%, #86b2bf 100%);
+  }
+
+  [data-variant='construction'] .fit-visual {
+    background: linear-gradient(145deg, #e8f2f5 0%, #b9d0da 55%, #7899aa 100%);
+  }
+
+  .fit-stat {
+    display: grid;
+    width: 100%;
+    gap: 8px;
+    padding: 26px;
+    border-radius: 22px;
+    background: rgba(250, 252, 252, 0.94);
+    box-shadow: 0 18px 45px rgba(17, 33, 46, 0.12);
+  }
+
+  .fit-stat strong {
+    color: var(--navy);
+    font-size: 1.75rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .fit-stat span {
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  .local-service {
+    background: var(--pale);
+  }
+
+  .local-grid > div:last-child > p {
+    margin: 0 0 28px;
+  }
+
+  .text-link {
+    color: var(--navy);
+    font-size: 0.94rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .text-link span {
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 180ms ease;
+  }
+
+  .text-link:hover span {
+    transform: translateX(4px);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+    gap: 110px;
+    align-items: start;
+  }
+
+  .faq-intro {
+    position: sticky;
+    top: 110px;
+  }
+
+  .faq-intro > p:not(.eyebrow) {
+    margin: 28px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .faq-intro a {
+    color: var(--navy);
+    font-weight: 750;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-list details {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-list summary {
+    color: var(--ink);
+    font-size: 1.2rem;
+    font-weight: 650;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .faq-list details p {
+    max-width: 720px;
+    margin: 18px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .service-cta {
+    padding: 28px 0 112px;
+  }
+
+  .cta-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.55fr);
+    gap: 70px;
+    align-items: center;
+    padding: 68px;
+    border-radius: 32px;
+    color: white;
+    background: var(--navy);
+    box-shadow: 0 28px 70px rgba(20, 70, 120, 0.2);
+  }
+
+  .cta-card .eyebrow {
+    color: #8cc9dc;
+  }
+
+  .cta-card .section-title {
+    color: white;
+  }
+
+  .cta-actions {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+
+  .button-white {
+    color: var(--navy);
+    background: white;
+  }
+
+  .call-link {
+    color: white;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .cta-actions span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 991px) {
+    .service-hero-grid,
+    .intro-grid,
+    .local-grid,
+    .faq-grid,
+    .fit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-hero-grid,
+    .fit-grid {
+      gap: 62px;
+    }
+
+    .service-hero-copy {
+      max-width: 780px;
+    }
+
+    .photo-placeholder {
+      min-height: 560px;
+    }
+
+    .intro-grid,
+    .local-grid,
+    .faq-grid {
+      gap: 46px;
+    }
+
+    .room-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .room-card {
+      min-height: auto;
+    }
+
+    .room-card-featured {
+      transform: none;
+    }
+
+    .card-number {
+      margin-bottom: 42px;
+    }
+
+    .fit-visual {
+      min-height: 520px;
+    }
+
+    .faq-intro {
+      position: static;
+    }
+
+    .cta-card {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .service-hero {
+      padding: 62px 0 78px;
+    }
+
+    .service-actions {
+      flex-direction: column;
+    }
+
+    .service-proof {
+      display: grid;
+    }
+
+    .photo-placeholder {
+      min-height: 430px;
+      border-radius: 26px;
+    }
+
+    .photo-note {
+      position: static;
+      max-width: none;
+      margin-top: 14px;
+    }
+
+    .service-intro,
+    .included,
+    .service-process,
+    .fit,
+    .local-service,
+    .service-faq {
+      padding: 78px 0;
+    }
+
+    .room-card {
+      padding: 28px;
+      border-radius: 22px;
+    }
+
+    .process-grid {
+      gap: 40px;
+    }
+
+    .fit-visual {
+      min-height: 430px;
+      padding: 20px;
+      border-radius: 26px;
+    }
+
+    .fit-list div {
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+    }
+
+    .faq-list summary {
+      font-size: 1.08rem;
+    }
+
+    .service-cta {
+      padding: 16px 0 78px;
+    }
+
+    .cta-card {
+      gap: 42px;
+      padding: 42px 26px;
+      border-radius: 26px;
+    }
+
+    .cta-actions,
+    .cta-actions .button {
+      width: 100%;
+    }
+  }
+</style>

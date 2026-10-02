@@ -24,6 +24,14 @@ const services = [
     label: 'Move-ready finish',
     href: '/move-in-move-out-cleaning-concord-ca/',
   },
+  {
+    number: '04',
+    kicker: 'Post-construction cleaning',
+    title: 'A cleaner finish after remodeling or renovation.',
+    copy: 'Detailed residential cleaning helps address fine dust, fixtures, floors, and affected surfaces after home-improvement work is complete.',
+    label: 'Final project clean',
+    href: '/post-construction-cleaning-concord-ca/',
+  },
 ];
 ---
 
@@ -32,7 +40,7 @@ const services = [
     <div class="story-intro reveal">
       <p class="eyebrow">Thoughtful cleaning, room by room</p>
       <h2 class="section-title">The right level of clean for every season of home.</h2>
-      <p class="lead">From dependable recurring care to detailed move-in and move-out cleaning, Sparkclean gives Concord-area homes the focused attention they need.</p>
+      <p class="lead">From dependable recurring care to detailed moving and post-remodel cleaning, Sparkclean gives Concord-area homes the focused attention they need.</p>
     </div>
 
     <div class="story-layout">
@@ -48,6 +56,10 @@ const services = [
         <div class="story-photo" data-photo="2">
           <span>Move-ready finish</span>
           <strong>A cleaner transition from one home to the next.</strong>
+        </div>
+        <div class="story-photo" data-photo="3">
+          <span>Final project clean</span>
+          <strong>Help the finished remodel feel truly finished.</strong>
         </div>
         <p class="story-photo-note" data-story-label>{services[0].label}</p>
       </div>
@@ -146,6 +158,10 @@ const services = [
 
   .story-photo:nth-child(3) {
     background: linear-gradient(150deg, #eaf5f7 0%, #c2dfe5 48%, #6f9fae 100%);
+  }
+
+  .story-photo:nth-child(4) {
+    background: linear-gradient(150deg, #edf4f6 0%, #bcd3dc 48%, #708f9f 100%);
   }
 
   .story-photo.active {

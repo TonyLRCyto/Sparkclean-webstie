@@ -1,0 +1,636 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const principles = [
+  {
+    number: '01',
+    title: 'Attention to detail',
+    copy: 'The small surfaces and finishing touches shape how a clean home feels. Sparkclean gives thoughtful attention to the areas that are easy to overlook.',
+  },
+  {
+    number: '02',
+    title: 'Care that adapts',
+    copy: 'Every household uses its space differently. Cleaning priorities are discussed so the service fits the home instead of forcing every client into one routine.',
+  },
+  {
+    number: '03',
+    title: 'Dependable service',
+    copy: 'Clear communication, punctual care, and consistent work help build the kind of relationship that returning clients can rely on.',
+  },
+];
+
+const reviews = [
+  {
+    quote: 'They pay attention to detail, do a great job, and are always on time.',
+    attribution: 'Long-term Sparkclean customer',
+  },
+  {
+    quote: 'They use high-quality products, are thorough in the cleaning, and adapt to you as a client.',
+    attribution: 'Long-term Sparkclean customer',
+  },
+  {
+    quote: 'The details—from baseboards to fixtures—made the home feel refreshed.',
+    attribution: 'Concord-area customer',
+  },
+];
+---
+
+<BaseLayout
+  title="About Sparkclean Cleaning Services | Concord, CA"
+  description="Learn about Sparkclean's thoughtful approach to residential cleaning in Concord and the East Bay, built around detail, adaptability, and dependable service."
+>
+  <section class="about-hero">
+    <div class="shell about-hero-grid">
+      <div class="about-hero-copy reveal">
+        <p class="eyebrow">About Sparkclean Cleaning Services</p>
+        <h1 class="display-title">Cleaning built around the way people live.</h1>
+        <p class="lead">Sparkclean provides thoughtful residential cleaning for Concord and nearby East Bay communities, with a focus on dependable care, clear priorities, and the details that help a home feel refreshed.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/#quote">Request a Quote</a>
+          <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+        </div>
+      </div>
+
+      <div class="about-visual reveal" aria-label="Sparkclean service values">
+        <div class="value-chip value-chip-one">Thorough</div>
+        <div class="value-chip value-chip-two">Adaptable</div>
+        <div class="value-chip value-chip-three">Dependable</div>
+        <div class="visual-message">
+          <span>Local residential care</span>
+          <strong>Concord-based service with attention in every room.</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-intro">
+    <div class="shell intro-grid reveal">
+      <div>
+        <p class="eyebrow">A thoughtful approach</p>
+        <h2 class="section-title">A clean home should make everyday life feel easier.</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Sparkclean approaches each home with the understanding that no two households have the same routines, priorities, or problem areas. The service begins with a conversation about what matters most.</p>
+        <p>Whether the need is recurring upkeep, a detailed reset, support during a move, or cleaning after a remodel, the goal remains the same: provide focused care that leaves the home more comfortable to return to.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">What guides the work</p>
+          <h2 class="section-title">Professional care that feels personal.</h2>
+        </div>
+        <p>Customer relationships are built through the quality of each visit—not through complicated promises.</p>
+      </div>
+
+      <div class="principle-grid">
+        {principles.map((principle, index) => (
+          <article class:list={['principle-card', { featured: index === 1 }, 'reveal']}>
+            <span>{principle.number}</span>
+            <h3>{principle.title}</h3>
+            <p>{principle.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="customer-proof">
+    <div class="shell proof-grid">
+      <div class="proof-intro reveal">
+        <p class="eyebrow">Trusted by returning clients</p>
+        <h2 class="section-title">Consistency people notice—and choose again.</h2>
+        <p>Recent customer feedback repeatedly highlights thorough work, punctuality, adaptability, and the confidence that comes from seeing familiar care over time.</p>
+      </div>
+
+      <div class="review-stack">
+        {reviews.map((review) => (
+          <blockquote class="review-item reveal">
+            <p>“{review.quote}”</p>
+            <footer>{review.attribution} · Google review</footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="approach">
+    <div class="shell">
+      <div class="section-heading section-heading-light reveal">
+        <div>
+          <p class="eyebrow">The Sparkclean approach</p>
+          <h2 class="section-title">Clear priorities from the first conversation.</h2>
+        </div>
+        <p>The process stays straightforward so clients know what to expect before service begins.</p>
+      </div>
+
+      <div class="approach-grid">
+        <article class="reveal">
+          <span>01</span>
+          <h3>Listen first</h3>
+          <p>We begin with the home, requested service, schedule, and areas that need the most attention.</p>
+        </article>
+        <article class="reveal">
+          <span>02</span>
+          <h3>Confirm the scope</h3>
+          <p>The agreed priorities create a clearer plan for the cleaning and any detailed requests.</p>
+        </article>
+        <article class="reveal">
+          <span>03</span>
+          <h3>Care for the details</h3>
+          <p>Sparkclean works through the home with the thoughtful attention clients expect and remember.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-services">
+    <div class="shell services-grid">
+      <div class="reveal">
+        <p class="eyebrow">Residential cleaning services</p>
+        <h2 class="section-title">The right kind of care for the moment your home is in.</h2>
+      </div>
+      <div class="service-links reveal">
+        <a href="/recurring-cleaning-concord-ca/"><span>01</span><strong>Recurring cleaning</strong><i>→</i></a>
+        <a href="/deep-cleaning-concord-ca/"><span>02</span><strong>Deep cleaning</strong><i>→</i></a>
+        <a href="/move-in-move-out-cleaning-concord-ca/"><span>03</span><strong>Move-in &amp; move-out</strong><i>→</i></a>
+        <a href="/post-construction-cleaning-concord-ca/"><span>04</span><strong>Post-construction cleaning</strong><i>→</i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-local">
+    <div class="shell local-card reveal">
+      <div>
+        <p class="eyebrow">Concord &amp; the East Bay</p>
+        <h2 class="section-title">Local service for the communities Sparkclean calls home.</h2>
+      </div>
+      <div>
+        <p>Sparkclean is based in Concord and serves nearby communities including Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, and Orinda.</p>
+        <a href="/#areas">Explore service areas <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <div class="shell cta-card reveal">
+      <div>
+        <p class="eyebrow">Ready to talk about your home?</p>
+        <h2 class="section-title">Tell Sparkclean what a cleaner home would take off your list.</h2>
+      </div>
+      <div class="cta-actions">
+        <a class="button button-white" href="/#quote">Request a Quote</a>
+        <a href="tel:+19258341815">Call (925) 834-1815</a>
+        <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-hero {
+    padding: 92px 0 110px;
+    background: linear-gradient(115deg, #ffffff 0%, #f8fcfd 58%, #e5f4f8 100%);
+  }
+
+  .about-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 90px;
+    align-items: center;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .about-visual {
+    position: relative;
+    min-height: 650px;
+    overflow: hidden;
+    border-radius: 36px;
+    background: linear-gradient(145deg, #edf8fa 0%, #c6e4eb 50%, #7fb8c9 100%);
+    box-shadow: var(--shadow);
+  }
+
+  .value-chip {
+    position: absolute;
+    padding: 12px 18px;
+    border-radius: 999px;
+    color: var(--navy);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 30px rgba(17, 33, 46, 0.12);
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .value-chip-one { top: 36px; left: 36px; }
+  .value-chip-two { top: 42%; right: 28px; }
+  .value-chip-three { bottom: 36px; left: 44px; }
+
+  .visual-message {
+    position: absolute;
+    right: 38px;
+    bottom: 90px;
+    display: grid;
+    max-width: 330px;
+    gap: 10px;
+    padding: 26px;
+    border-radius: 22px;
+    background: rgba(20, 70, 120, 0.94);
+    box-shadow: 0 18px 45px rgba(17, 33, 46, 0.18);
+  }
+
+  .visual-message span {
+    color: #9ed3e2;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .visual-message strong {
+    color: white;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  .about-intro,
+  .principles,
+  .customer-proof,
+  .about-services,
+  .about-local {
+    padding: 112px 0;
+  }
+
+  .intro-grid,
+  .services-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    gap: 100px;
+    align-items: start;
+  }
+
+  .intro-copy {
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .intro-copy p {
+    margin: 0 0 22px;
+  }
+
+  .principles {
+    background: #f4f9fa;
+  }
+
+  .principle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .principle-card {
+    min-height: 390px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: var(--paper);
+  }
+
+  .principle-card.featured {
+    color: white;
+    border-color: var(--navy);
+    background: var(--navy);
+    box-shadow: 0 24px 55px rgba(20, 70, 120, 0.18);
+    transform: translateY(-12px);
+  }
+
+  .principle-card > span {
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .principle-card h3 {
+    margin: 88px 0 20px;
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .principle-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .principle-card.featured p {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+    gap: 110px;
+    align-items: start;
+  }
+
+  .proof-intro {
+    position: sticky;
+    top: 110px;
+  }
+
+  .proof-intro > p:last-child {
+    margin: 28px 0 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .review-stack {
+    display: grid;
+    border-top: 1px solid var(--line);
+  }
+
+  .review-item {
+    padding: 36px 0;
+    margin: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .review-item p {
+    margin: 0 0 22px;
+    font-size: clamp(1.65rem, 2.8vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.18;
+  }
+
+  .review-item footer {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .approach {
+    padding: 112px 0;
+    color: white;
+    background: var(--ink);
+  }
+
+  .section-heading-light .section-title,
+  .section-heading-light > p {
+    color: white;
+  }
+
+  .section-heading-light .eyebrow {
+    color: #8cc9dc;
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 52px;
+  }
+
+  .approach-grid article {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .approach-grid span {
+    color: #8cc9dc;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .approach-grid h3 {
+    margin: 38px 0 18px;
+    font-size: 1.55rem;
+    letter-spacing: -0.025em;
+  }
+
+  .approach-grid p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+  }
+
+  .service-links {
+    display: grid;
+    border-top: 1px solid var(--line);
+  }
+
+  .service-links a {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+  }
+
+  .service-links span {
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .service-links strong {
+    font-size: 1.15rem;
+  }
+
+  .service-links i {
+    color: var(--navy);
+    font-style: normal;
+    transition: transform 180ms ease;
+  }
+
+  .service-links a:hover i {
+    transform: translateX(4px);
+  }
+
+  .about-local {
+    background: var(--pale);
+  }
+
+  .local-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
+    gap: 80px;
+    align-items: center;
+  }
+
+  .local-card > div:last-child p {
+    margin: 0 0 28px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .local-card a {
+    color: var(--navy);
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .about-cta {
+    padding: 28px 0 112px;
+  }
+
+  .cta-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.55fr);
+    gap: 70px;
+    align-items: center;
+    padding: 68px;
+    border-radius: 32px;
+    color: white;
+    background: var(--navy);
+    box-shadow: 0 28px 70px rgba(20, 70, 120, 0.2);
+  }
+
+  .cta-card .eyebrow {
+    color: #8cc9dc;
+  }
+
+  .cta-card .section-title {
+    color: white;
+  }
+
+  .cta-actions {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+
+  .button-white {
+    color: var(--navy);
+    background: white;
+  }
+
+  .cta-actions > a:not(.button) {
+    color: white;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .cta-actions span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 991px) {
+    .about-hero-grid,
+    .intro-grid,
+    .services-grid,
+    .proof-grid,
+    .local-card {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero-grid,
+    .proof-grid {
+      gap: 62px;
+    }
+
+    .about-visual {
+      min-height: 560px;
+    }
+
+    .principle-grid,
+    .approach-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .principle-card {
+      min-height: auto;
+    }
+
+    .principle-card.featured {
+      transform: none;
+    }
+
+    .principle-card h3 {
+      margin-top: 48px;
+    }
+
+    .proof-intro {
+      position: static;
+    }
+
+    .cta-card {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-hero {
+      padding: 62px 0 78px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .about-visual {
+      min-height: 430px;
+      border-radius: 26px;
+    }
+
+    .visual-message {
+      right: 20px;
+      bottom: 72px;
+      left: 20px;
+      max-width: none;
+    }
+
+    .value-chip-one { top: 20px; left: 20px; }
+    .value-chip-two { top: 100px; right: 20px; }
+    .value-chip-three { display: none; }
+
+    .about-intro,
+    .principles,
+    .customer-proof,
+    .approach,
+    .about-services,
+    .about-local {
+      padding: 78px 0;
+    }
+
+    .principle-card {
+      padding: 28px;
+      border-radius: 22px;
+    }
+
+    .approach-grid {
+      gap: 40px;
+    }
+
+    .about-cta {
+      padding: 16px 0 78px;
+    }
+
+    .cta-card {
+      gap: 42px;
+      padding: 42px 26px;
+      border-radius: 26px;
+    }
+
+    .cta-actions,
+    .cta-actions .button {
+      width: 100%;
+    }
+  }
+</style>

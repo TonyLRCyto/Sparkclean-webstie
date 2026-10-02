@@ -1,0 +1,122 @@
+---
+import ServicePage from '../components/ServicePage.astro';
+
+const page = {
+  metaTitle: 'Deep Cleaning Services in Concord, CA | Sparkclean',
+  metaDescription:
+    'Reset your Concord home with detailed deep cleaning from Sparkclean. Focused care for kitchens, bathrooms, floors, buildup, and commonly overlooked surfaces.',
+  schemaName: 'Deep Cleaning Services in Concord, CA',
+  schemaDescription:
+    'Detailed residential deep cleaning for Concord-area homes, including kitchens, bathrooms, floors, high-touch fixtures, and commonly overlooked surfaces.',
+  variant: 'deep' as const,
+  heroEyebrow: 'Deep cleaning services · Concord, California',
+  heroTitle: 'A deeper clean for the spaces that need a reset.',
+  heroLead:
+    'Sparkclean reaches beyond regular upkeep to address built-up dust, kitchen residue, bathroom buildup, floors, fixtures, and commonly overlooked areas throughout your home.',
+  highlights: ['Detailed one-time care', 'Kitchen & bathroom focus', 'Concord & the East Bay'],
+  photoLabel: 'Detailed reset',
+  photoTitle: 'Deep-cleaning project image goes here.',
+  introEyebrow: 'Beyond the surface',
+  introTitle: 'A complete home reset.',
+  introParagraphs: [
+    'Regular cleaning maintains a home. Deep cleaning is for the moments when surfaces, edges, fixtures, and high-use rooms need more focused attention than everyday upkeep provides.',
+    'Sparkclean builds the scope around the condition of your home and the areas that will make the greatest visible difference, from kitchens and bathrooms to baseboards, floors, and detailed finishing work.',
+  ],
+  includedEyebrow: 'What deep cleaning covers',
+  includedTitle: 'Detailed attention where buildup tends to collect.',
+  includedDescription:
+    'The final scope depends on your home and priorities. These are common focus areas discussed before a deep-cleaning visit.',
+  cards: [
+    {
+      title: 'Kitchen details',
+      items: [
+        'Countertops and accessible surfaces',
+        'Stovetop and appliance exteriors',
+        'Sink, faucet, and fixture detailing',
+        'Cabinet fronts and high-touch areas',
+        'Floor edges and detailed mopping',
+      ],
+    },
+    {
+      title: 'Bathroom reset',
+      items: [
+        'Tub and shower surfaces',
+        'Toilets, sinks, and faucets',
+        'Mirrors, counters, and fixtures',
+        'Buildup around frequently used areas',
+        'Detailed vacuuming and mopping',
+      ],
+    },
+    {
+      title: 'Living spaces',
+      items: [
+        'Dusting accessible surfaces',
+        'Baseboards and commonly missed edges',
+        'Doors, frames, and high-touch points',
+        'Vacuuming rugs and floors',
+        'Window sills or tracks when agreed',
+      ],
+    },
+  ],
+  scopeNote:
+    'Inside appliances, cabinets, window tracks, and other detailed items should be requested when asking for a quote so the service scope can be confirmed.',
+  processTitle: 'A detailed service with clear priorities.',
+  processDescription:
+    'We confirm the condition of the home and the most important focus areas before cleaning begins.',
+  steps: [
+    {
+      title: 'Describe the home',
+      copy: 'Share the approximate size, current condition, and the rooms or surfaces that need the most attention.',
+    },
+    {
+      title: 'Confirm the scope',
+      copy: 'We discuss priorities and any requested detail work so expectations are clear before the appointment.',
+    },
+    {
+      title: 'Reset the space',
+      copy: 'Sparkclean works through the agreed areas with focused care and a refreshed finish throughout the home.',
+    },
+  ],
+  fitEyebrow: 'When is deep cleaning right for you?',
+  fitTitle: 'For homes that need more than routine upkeep.',
+  fitDescription:
+    'A deep clean can stand on its own or create a stronger starting point before beginning recurring service.',
+  fitItems: [
+    'Seasonal cleaning or a whole-home reset',
+    'Built-up dust, residue, or bathroom and kitchen buildup',
+    'Preparing to begin a recurring cleaning routine',
+  ],
+  statTitle: 'More detail. A fresher reset.',
+  statCopy: 'Focused attention for the areas routine cleaning can leave behind.',
+  localTitle: 'Deep cleaning for Concord and nearby East Bay homes.',
+  localCopy:
+    'Sparkclean provides residential deep cleaning in Concord and nearby communities including Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, and Orinda.',
+  faqTitle: 'Planning your deep cleaning.',
+  faqs: [
+    {
+      question: 'What is the difference between recurring and deep cleaning?',
+      answer:
+        'Recurring cleaning maintains the main areas of a home on a regular schedule. Deep cleaning allows more time and focus for buildup, edges, fixtures, and commonly overlooked surfaces.',
+    },
+    {
+      question: 'Are appliance and cabinet interiors included?',
+      answer:
+        'Interior appliance or cabinet cleaning should be requested when asking for a quote. We confirm those details as part of the agreed service scope.',
+    },
+    {
+      question: 'How long does a deep cleaning take?',
+      answer:
+        'Timing depends on the size and condition of the home, the number of rooms, and the requested detail work. Sharing that information helps us plan more accurately.',
+    },
+    {
+      question: 'Can deep cleaning come before recurring service?',
+      answer:
+        'Yes. When a home has heavier buildup, beginning with a deep cleaning can provide a stronger foundation for regular upkeep.',
+    },
+  ],
+  ctaEyebrow: 'Ready for a complete home reset?',
+  ctaTitle: 'Give your home the deeper clean it has been needing.',
+};
+---
+
+<ServicePage {page} />
