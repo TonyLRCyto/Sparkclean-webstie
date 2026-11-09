@@ -87,7 +87,7 @@
 /* Glisse's real Button supplies its own press spring; avoid a second squash. */
 .sc-glass-submit { cursor: pointer; font-family: inherit; }
 .sc-glass-control.sc-glass-submit[data-pressed] { transform: none; }
-.quote-form .sc-glass-submit { justify-self: start; margin-top: 6px; }
+.quote-form .sc-glass-submit { width: fit-content; max-width: 100%; justify-self: start; margin-top: 6px; }
 
 .sc-glass-compact .sc-glass-link {
   min-height: 44px;
