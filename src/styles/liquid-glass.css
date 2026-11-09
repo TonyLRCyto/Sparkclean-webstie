@@ -1,5 +1,6 @@
-/* Glisse is used only for the navigation lens and selected controls.
-   Text, photos, forms, and the full-screen mobile menu remain unfiltered. */
+/* Glisse is used for the navigation lens and selected native controls.
+   Floating labels use CSS frost only; body copy, photos, form fields,
+   and the full-screen mobile menu remain unfiltered. */
 .sc-glass-control {
   --lg-glass: rgba(250, 252, 252, 0.82);
   --lg-glass-active: rgba(239, 248, 251, 0.94);
@@ -44,7 +45,17 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 12px 28px rgba(20, 70, 120, 0.2);
 }
 
-.sc-glass-link {
+.sc-glass-light {
+  --lg-glass: rgba(250, 252, 252, 0.94);
+  --lg-glass-active: rgba(255, 255, 255, 0.99);
+  --lg-edge: rgba(255, 255, 255, 0.92);
+  --lg-rim-shine: 0.28;
+  color: var(--navy);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.sc-glass-link,
+.sc-glass-submit {
   position: relative;
   z-index: 1;
   display: inline-flex;
@@ -65,10 +76,18 @@
 }
 
 .sc-glass-link:focus-visible,
+.sc-glass-submit:focus-visible,
 .site-header .sc-glass-menu-button:focus-visible {
   outline: 3px solid #144678;
   outline-offset: 4px;
 }
+
+.sc-glass-light .sc-glass-link:focus-visible { outline-color: white; }
+
+/* Glisse's real Button supplies its own press spring; avoid a second squash. */
+.sc-glass-submit { cursor: pointer; font-family: inherit; }
+.sc-glass-submit[data-pressed] { transform: none; }
+.quote-form .sc-glass-submit { justify-self: start; margin-top: 6px; }
 
 .sc-glass-compact .sc-glass-link {
   min-height: 44px;
@@ -99,6 +118,32 @@
 }
 
 .sc-glass-actions { display: contents; }
+.sc-glass-action {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* A matching material for small existing labels, without filtering content
+   through the refraction engine or changing approved positioning. */
+.sc-frosted-note {
+  position: relative;
+  isolation: isolate;
+  -webkit-backdrop-filter: blur(12px) saturate(1.12);
+  backdrop-filter: blur(12px) saturate(1.12);
+}
+
+.sc-frosted-note::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 60%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(20, 70, 120, 0.06);
+  pointer-events: none;
+}
 
 .site-header .sc-glass-nav {
   position: relative;
@@ -182,10 +227,16 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 12px 28px rgba(20, 70, 120, 0.17);
   }
   .sc-glass-control[data-pressed] { transform: scale(1.015, 0.985); }
+  .sc-glass-submit[data-pressed] { transform: none; }
 }
 
 @media (max-width: 640px) {
-  .hero-actions .sc-glass-control { width: 100%; }
+  .sc-glass-action,
+  .hero-actions .sc-glass-control,
+  .service-actions .sc-glass-control,
+  .cta-actions .sc-glass-control,
+  .quote-actions .sc-glass-control,
+  .quote-form .sc-glass-submit { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -206,15 +257,19 @@
   .sc-glass-secondary,
   .sc-glass-icon,
   .site-header .sc-glass-menu-button { background-color: #f2f8fb; }
+  .sc-glass-light { background-color: #fafcfc; }
   .sc-glass-primary { background-color: #144678; }
   .sc-nav-lens { background-color: #e2f1f7; }
   .site-header { background: #fafcfc; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .sc-frosted-note { background: #fafcfc !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
 @media (forced-colors: active) {
   .sc-glass-control,
   .site-header .sc-glass-menu-button { background: Canvas; color: LinkText; border: 1px solid ButtonText; box-shadow: none; }
   .sc-glass-control::before,
+  .sc-frosted-note::before,
   .sc-nav-bed,
   .sc-nav-lens { display: none; }
+  .sc-frosted-note { background: Canvas !important; color: CanvasText !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
 }

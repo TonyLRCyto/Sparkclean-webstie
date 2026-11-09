@@ -4,7 +4,7 @@ import { useGlassEffects } from './preferences';
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'icon';
+  variant?: 'primary' | 'secondary' | 'icon' | 'light';
   compact?: boolean;
   className?: string;
 }
@@ -21,6 +21,7 @@ export default function GlassLink({ children, variant = 'secondary', compact = f
         if (!event.isPrimary || event.button !== 0) return;
         const element = event.currentTarget;
         const box = element.getBoundingClientRect();
+        if (!box.width || !box.height) return;
         element.style.setProperty('--lg-x', `${((event.clientX - box.left) / box.width) * 100}%`);
         element.style.setProperty('--lg-y', `${((event.clientY - box.top) / box.height) * 100}%`);
         element.dataset.pressed = '';

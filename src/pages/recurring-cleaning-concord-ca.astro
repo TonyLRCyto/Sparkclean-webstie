@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
+import GlassAction from '../components/liquid-glass/GlassAction';
 
 const faqs = [
   {
@@ -63,8 +65,7 @@ const serviceSchema = {
         </p>
 
         <div class="service-actions">
-          <a class="button button-primary" href="/contact/">Request a Quote</a>
-          <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+          <HeroGlassActions quoteHref="/contact/" client:load />
         </div>
 
         <div class="service-proof" aria-label="Service highlights">
@@ -79,7 +80,7 @@ const serviceSchema = {
           <span>Regular home care</span>
           <strong>A clean home, without the constant catch-up.</strong>
         </div>
-        <div class="photo-note">
+        <div class="photo-note sc-frosted-note">
           <span>Everyday upkeep</span>
           <strong>A calmer home starts with a reliable routine.</strong>
         </div>
@@ -234,7 +235,7 @@ const serviceSchema = {
         <h2 class="section-title">Request a Recurring Cleaning Quote</h2>
       </div>
       <div class="cta-actions">
-        <a class="button button-white" href="/contact/">Request a Quote</a>
+        <GlassAction href="/contact/" label="Request a Quote" variant="light" client:visible />
         <a class="call-link" href="tel:+19258341815">Call (925) 834-1815</a>
         <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
       </div>

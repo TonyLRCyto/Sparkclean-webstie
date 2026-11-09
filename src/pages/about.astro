@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
+import GlassAction from '../components/liquid-glass/GlassAction';
 
 const principles = [
   {
@@ -42,15 +44,14 @@ const reviews = [
         <h1 class="display-title">About Sparkclean</h1>
         <p class="lead">Concord-based home cleaning with a personal approach. We focus on thorough work, dependable service, and the details that matter to each household.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/contact/">Request a Quote</a>
-          <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+          <HeroGlassActions quoteHref="/contact/" client:load />
         </div>
       </div>
 
       <div class="about-visual reveal" aria-label="Sparkclean service values">
-        <div class="value-chip value-chip-one">Thorough</div>
-        <div class="value-chip value-chip-two">Adaptable</div>
-        <div class="value-chip value-chip-three">Dependable</div>
+        <div class="value-chip value-chip-one sc-frosted-note">Thorough</div>
+        <div class="value-chip value-chip-two sc-frosted-note">Adaptable</div>
+        <div class="value-chip value-chip-three sc-frosted-note">Dependable</div>
         <div class="visual-message">
           <span>Local residential care</span>
           <strong>Concord-based service with attention in every room.</strong>
@@ -170,7 +171,7 @@ const reviews = [
         <h2 class="section-title">Let’s Talk About Your Home</h2>
       </div>
       <div class="cta-actions">
-        <a class="button button-white" href="/contact/">Request a Quote</a>
+        <GlassAction href="/contact/" label="Request a Quote" variant="light" client:visible />
         <a href="tel:+19258341815">Call (925) 834-1815</a>
         <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
       </div>

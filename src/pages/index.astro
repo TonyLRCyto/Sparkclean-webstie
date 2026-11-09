@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ScrollStory from '../components/ScrollStory.astro';
 import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
+import GlassAction from '../components/liquid-glass/GlassAction';
 
 const areas = [
   { name: 'Concord', href: '/service-areas/concord-ca/' },
@@ -61,7 +62,7 @@ const faqs = [
           <span>Cleaning for everyday living</span>
           <strong>More time to enjoy a clean home.</strong>
         </div>
-        <div class="hero-note">
+        <div class="hero-note sc-frosted-note">
           <span>Care for your home</span>
           <strong>Care in the details. Calm in the result.</strong>
         </div>
@@ -210,7 +211,7 @@ const faqs = [
         <p>Tell us your city, home size, preferred service, and timing. We’ll help you plan the next step.</p>
       </div>
       <div class="quote-actions">
-        <a class="button quote-button" href="tel:+19258341815">Call (925) 834-1815</a>
+        <GlassAction href="tel:+19258341815" label="Call (925) 834-1815" variant="light" client:visible />
         <a class="email-link" href="mailto:companysparkclean@gmail.com">companysparkclean@gmail.com</a>
         <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
       </div>
