@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ScrollStory from '../components/ScrollStory.astro';
+import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 
 const areas = [
   { name: 'Concord', href: '/service-areas/concord-ca/' },
@@ -45,8 +46,7 @@ const faqs = [
         <p class="lead">A cleaner home, without losing your free time. Sparkclean provides recurring, deep, move-in/out, and post-remodel cleaning, with attention to the details that matter to you.</p>
 
         <div class="hero-actions">
-          <a class="button button-primary" href="#quote">Request a Quote</a>
-          <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+          <HeroGlassActions client:load />
         </div>
 
         <div class="trust-row" aria-label="Service information">

@@ -1,84 +1,12 @@
 ---
 import { instagramUrl } from '../data/site';
-
-const links = [
-  { href: '/#services', label: 'Services' },
-  { href: '/#results', label: 'Our Work' },
-  { href: '/service-areas/', label: 'Service Areas' },
-  { href: '/about/', label: 'About' },
-];
-
-const showInstagram = Boolean(instagramUrl);
+import LiquidHeader from './liquid-glass/LiquidHeader';
+import '../styles/liquid-glass.css';
 ---
 
-<header class="site-header">
-  <div class="header-shell">
-    <a class="brand" href="/" aria-label="Sparkclean home">
-      <img class="brand-logo" src="/images/sparkclean-logo.png" alt="" width="640" height="640" />
-    </a>
+<LiquidHeader instagramUrl={instagramUrl} client:load />
 
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      {links.map((link) => <a href={link.href}>{link.label}</a>)}
-    </nav>
-
-    <div class="header-actions">
-      {showInstagram && (
-        <a class="instagram-link" href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit Sparkclean on Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-            <circle cx="12" cy="12" r="4.25"></circle>
-            <circle class="instagram-dot" cx="17.4" cy="6.7" r="1"></circle>
-          </svg>
-        </a>
-      )}
-      <a class="button button-primary header-cta" href="/contact/">Request a Quote</a>
-    </div>
-
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">
-      <span class="sr-only">Open menu</span>
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <div class="mobile-menu" id="mobile-menu" hidden>
-    <nav aria-label="Mobile navigation">
-      {links.map((link) => <a href={link.href}>{link.label}</a>)}
-      {showInstagram && <a href={instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a>}
-      <a href="tel:+19258341815">Call (925) 834-1815</a>
-      <a class="button button-primary" href="/contact/">Request a Quote</a>
-    </nav>
-  </div>
-</header>
-
-<script>
-  const siteHeader = document.querySelector('.site-header');
-  const menuButton = document.querySelector('.menu-button');
-  const mobileMenu = document.querySelector('#mobile-menu');
-
-  const updateHeaderSize = () => {
-    siteHeader?.classList.toggle('is-compact', window.scrollY > 40);
-  };
-
-  updateHeaderSize();
-  window.addEventListener('scroll', updateHeaderSize, { passive: true });
-
-  menuButton?.addEventListener('click', () => {
-    const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', String(!isOpen));
-    if (mobileMenu instanceof HTMLElement) mobileMenu.hidden = isOpen;
-    document.body.classList.toggle('menu-open', !isOpen);
-  });
-
-  mobileMenu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      menuButton?.setAttribute('aria-expanded', 'false');
-      if (mobileMenu instanceof HTMLElement) mobileMenu.hidden = true;
-      document.body.classList.remove('menu-open');
-    });
-  });
-</script>
-
-<style>
+<style is:global>
   .site-header {
     position: sticky;
     top: 0;
