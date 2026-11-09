@@ -3,19 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const principles = [
   {
-    number: '01',
     title: 'Attention to detail',
-    copy: 'The small surfaces and finishing touches shape how a clean home feels. Sparkclean gives thoughtful attention to the areas that are easy to overlook.',
+    copy: 'From high-touch surfaces to easy-to-miss edges, we pay attention to the details that help a home feel clean.',
   },
   {
-    number: '02',
-    title: 'Care that adapts',
-    copy: 'Every household uses its space differently. Cleaning priorities are discussed so the service fits the home instead of forcing every client into one routine.',
+    title: 'Your priorities matter',
+    copy: 'Every household is different. We discuss what needs attention so the cleaning fits your home and routine.',
   },
   {
-    number: '03',
     title: 'Dependable service',
-    copy: 'Clear communication, punctual care, and consistent work help build the kind of relationship that returning clients can rely on.',
+    copy: 'Clear communication, punctuality, and consistent work are what keep customers returning.',
   },
 ];
 
@@ -37,14 +34,13 @@ const reviews = [
 
 <BaseLayout
   title="About Sparkclean Cleaning Services | Concord, CA"
-  description="Learn about Sparkclean's thoughtful approach to residential cleaning in Concord and the East Bay, built around detail, adaptability, and dependable service."
+  description="Meet Sparkclean, a Concord-based residential cleaning service for the East Bay. Learn about our attention to detail, dependable care, and personal approach."
 >
   <section class="about-hero">
     <div class="shell about-hero-grid">
       <div class="about-hero-copy reveal">
-        <p class="eyebrow">About Sparkclean Cleaning Services</p>
-        <h1 class="display-title">Cleaning built around the way people live.</h1>
-        <p class="lead">Sparkclean provides thoughtful residential cleaning for Concord and nearby East Bay communities, with a focus on dependable care, clear priorities, and the details that help a home feel refreshed.</p>
+        <h1 class="display-title">About Sparkclean</h1>
+        <p class="lead">Concord-based home cleaning with a personal approach. We focus on thorough work, dependable service, and the details that matter to each household.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="/contact/">Request a Quote</a>
           <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
@@ -66,12 +62,11 @@ const reviews = [
   <section class="about-intro">
     <div class="shell intro-grid reveal">
       <div>
-        <p class="eyebrow">A thoughtful approach</p>
-        <h2 class="section-title">A clean home should make everyday life feel easier.</h2>
+        <h2 class="section-title">Cleaning That Starts With You</h2>
       </div>
       <div class="intro-copy">
-        <p>Sparkclean approaches each home with the understanding that no two households have the same routines, priorities, or problem areas. The service begins with a conversation about what matters most.</p>
-        <p>Whether the need is recurring upkeep, a detailed reset, support during a move, or cleaning after a remodel, the goal remains the same: provide focused care that leaves the home more comfortable to return to.</p>
+        <p>We start with a conversation about your home, schedule, and the areas you want us to focus on.</p>
+        <p>Whether you need regular upkeep, deep cleaning, help during a move, or cleaning after a remodel, the goal is the same: a home that feels better to come back to.</p>
       </div>
     </div>
   </section>
@@ -80,16 +75,14 @@ const reviews = [
     <div class="shell">
       <div class="section-heading reveal">
         <div>
-          <p class="eyebrow">What guides the work</p>
-          <h2 class="section-title">Professional care that feels personal.</h2>
+          <h2 class="section-title">What You Can Expect</h2>
         </div>
-        <p>Customer relationships are built through the quality of each visit—not through complicated promises.</p>
+        <p>Good service comes down to the work we do and how we care for your home.</p>
       </div>
 
       <div class="principle-grid">
         {principles.map((principle, index) => (
           <article class:list={['principle-card', { featured: index === 1 }, 'reveal']}>
-            <span>{principle.number}</span>
             <h3>{principle.title}</h3>
             <p>{principle.copy}</p>
           </article>
@@ -101,9 +94,8 @@ const reviews = [
   <section class="customer-proof">
     <div class="shell proof-grid">
       <div class="proof-intro reveal">
-        <p class="eyebrow">Trusted by returning clients</p>
-        <h2 class="section-title">Consistency people notice—and choose again.</h2>
-        <p>Recent customer feedback repeatedly highlights thorough work, punctuality, adaptability, and the confidence that comes from seeing familiar care over time.</p>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p>Customers describe thorough work, punctual visits, and cleaning that adapts to their needs.</p>
       </div>
 
       <div class="review-stack">
@@ -121,10 +113,9 @@ const reviews = [
     <div class="shell">
       <div class="section-heading section-heading-light reveal">
         <div>
-          <p class="eyebrow">The Sparkclean approach</p>
-          <h2 class="section-title">Clear priorities from the first conversation.</h2>
+          <h2 class="section-title">How We Work</h2>
         </div>
-        <p>The process stays straightforward so clients know what to expect before service begins.</p>
+        <p>We agree on the cleaning details before your visit, so you know what to expect.</p>
       </div>
 
       <div class="approach-grid">
@@ -135,13 +126,13 @@ const reviews = [
         </article>
         <article class="reveal">
           <span>02</span>
-          <h3>Confirm the scope</h3>
-          <p>The agreed priorities create a clearer plan for the cleaning and any detailed requests.</p>
+          <h3>Agree on the details</h3>
+          <p>We confirm the rooms, tasks, and any detailed requests before your appointment.</p>
         </article>
         <article class="reveal">
           <span>03</span>
           <h3>Care for the details</h3>
-          <p>Sparkclean works through the home with the thoughtful attention clients expect and remember.</p>
+          <p>We clean the agreed areas with the attention our returning customers value.</p>
         </article>
       </div>
     </div>
@@ -150,14 +141,13 @@ const reviews = [
   <section class="about-services">
     <div class="shell services-grid">
       <div class="reveal">
-        <p class="eyebrow">Residential cleaning services</p>
-        <h2 class="section-title">The right kind of care for the moment your home is in.</h2>
+        <h2 class="section-title">Our Cleaning Services</h2>
       </div>
       <div class="service-links reveal">
-        <a href="/recurring-cleaning-concord-ca/"><span>01</span><strong>Recurring cleaning</strong><i>→</i></a>
-        <a href="/deep-cleaning-concord-ca/"><span>02</span><strong>Deep cleaning</strong><i>→</i></a>
-        <a href="/move-in-move-out-cleaning-concord-ca/"><span>03</span><strong>Move-in &amp; move-out</strong><i>→</i></a>
-        <a href="/post-construction-cleaning-concord-ca/"><span>04</span><strong>Post-construction cleaning</strong><i>→</i></a>
+        <a href="/recurring-cleaning-concord-ca/"><span aria-hidden="true">•</span><strong>Recurring Cleaning</strong><i>→</i></a>
+        <a href="/deep-cleaning-concord-ca/"><span aria-hidden="true">•</span><strong>Deep Cleaning</strong><i>→</i></a>
+        <a href="/move-in-move-out-cleaning-concord-ca/"><span aria-hidden="true">•</span><strong>Move-In &amp; Move-Out Cleaning</strong><i>→</i></a>
+        <a href="/post-construction-cleaning-concord-ca/"><span aria-hidden="true">•</span><strong>Post-Construction Cleaning</strong><i>→</i></a>
       </div>
     </div>
   </section>
@@ -165,8 +155,7 @@ const reviews = [
   <section class="about-local">
     <div class="shell local-card reveal">
       <div>
-        <p class="eyebrow">Concord &amp; the East Bay</p>
-        <h2 class="section-title">Local service for the communities Sparkclean calls home.</h2>
+        <h2 class="section-title">Concord-Based. Serving the East Bay.</h2>
       </div>
       <div>
         <p>Sparkclean is based in Concord and serves nearby communities including Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, and Orinda.</p>
@@ -178,8 +167,7 @@ const reviews = [
   <section class="about-cta">
     <div class="shell cta-card reveal">
       <div>
-        <p class="eyebrow">Ready to talk about your home?</p>
-        <h2 class="section-title">Tell Sparkclean what a cleaner home would take off your list.</h2>
+        <h2 class="section-title">Let’s Talk About Your Home</h2>
       </div>
       <div class="cta-actions">
         <a class="button button-white" href="/contact/">Request a Quote</a>

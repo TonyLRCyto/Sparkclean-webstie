@@ -11,6 +11,11 @@ interface Props {
 }
 
 const { title, description, canonical } = Astro.props;
+const isNotFound = /\/404(?:\.html)?\/?$/.test(Astro.url.pathname);
+const canonicalUrl = isNotFound
+  ? undefined
+  : canonical ?? (Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined);
+const sitemapUrl = Astro.site ? new URL('/sitemap-index.xml', Astro.site).href : undefined;
 
 const businessSchema = {
   '@context': 'https://schema.org',
@@ -39,6 +44,11 @@ const businessSchema = {
     },
   ],
   ...(instagramUrl ? { sameAs: [instagramUrl] } : {}),
+  ...(Astro.site ? {
+    '@id': new URL('/#business', Astro.site).href,
+    url: Astro.site.href,
+    logo: new URL('/images/sparkclean-logo.png', Astro.site).href,
+  } : {}),
 };
 ---
 
@@ -50,10 +60,15 @@ const businessSchema = {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#144678" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sparkclean Cleaning Services" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta name="twitter:card" content="summary_large_image" />
-    {canonical && <link rel="canonical" href={canonical} />}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {sitemapUrl && <link rel="sitemap" type="application/xml" href={sitemapUrl} />}
+    {isNotFound && <meta name="robots" content="noindex, follow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />

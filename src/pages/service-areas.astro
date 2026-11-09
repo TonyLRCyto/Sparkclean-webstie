@@ -58,12 +58,11 @@ const areas = [
   <section class="areas-hero">
     <div class="shell areas-hero-grid">
       <div class="reveal">
-        <p class="eyebrow">Sparkclean service areas</p>
-        <h1 class="display-title">Concord-based cleaning throughout the East Bay.</h1>
+        <h1 class="display-title">House Cleaning Service Areas</h1>
       </div>
       <div class="hero-copy reveal">
         <p class="lead">Sparkclean serves homes in Concord and nearby communities with recurring, deep, move-in/move-out, and post-construction cleaning.</p>
-        <p>Availability can vary by address, schedule, and service type. Contact us with your city and preferred timing to confirm your appointment area.</p>
+        <p>Share your address area and preferred timing so we can confirm availability.</p>
         <a class="button button-primary" href="/contact/">Check Availability</a>
       </div>
     </div>
@@ -73,16 +72,14 @@ const areas = [
     <div class="shell">
       <div class="section-heading reveal">
         <div>
-          <p class="eyebrow">Communities we serve</p>
-          <h2 class="section-title">Find residential cleaning near you.</h2>
+          <h2 class="section-title">Find Your Community</h2>
         </div>
-        <p>Dedicated pages are available for Sparkclean’s primary communities. For every other listed area, contact us to confirm availability for your address.</p>
+        <p>Explore our main service areas below. For other listed cities, select your area to contact us about availability.</p>
       </div>
 
       <div class="area-grid">
-        {areas.map((area, index) => (
+        {areas.map((area) => (
           <a class:list={['area-card', { featured: area.featured }, 'reveal']} href={area.href}>
-            <span>{String(index + 1).padStart(2, '0')}</span>
             <strong>{area.name}</strong>
             <p>{area.description}</p>
             <i aria-hidden="true">→</i>
@@ -97,19 +94,18 @@ const areas = [
       <div class="availability-visual reveal">
         <div>
           <span>Local availability</span>
-          <strong>Your address helps us confirm scheduling.</strong>
+          <strong>Let’s check availability for your home.</strong>
         </div>
       </div>
 
       <div class="availability-copy reveal">
-        <p class="eyebrow">How service-area availability works</p>
-        <h2 class="section-title">Start with your city, home, and preferred service.</h2>
-        <p>Sparkclean is a service-area business, so appointments are completed at clients’ homes rather than at a storefront. Travel time and scheduling are considered when confirming availability.</p>
+        <h2 class="section-title">Check Availability for Your Address</h2>
+        <p>We come to you. Appointment availability depends on your address, the service needed, and our schedule.</p>
 
         <div class="availability-list">
-          <div><span>01</span><p>Share your city and address area.</p></div>
-          <div><span>02</span><p>Describe the home and cleaning service needed.</p></div>
-          <div><span>03</span><p>Confirm timing and service availability directly with Sparkclean.</p></div>
+          <div><span aria-hidden="true">✓</span><p>Your city and address area</p></div>
+          <div><span aria-hidden="true">✓</span><p>Home size and cleaning service</p></div>
+          <div><span aria-hidden="true">✓</span><p>Your preferred dates or schedule</p></div>
         </div>
       </div>
     </div>
@@ -119,17 +115,16 @@ const areas = [
     <div class="shell">
       <div class="section-heading section-heading-light reveal">
         <div>
-          <p class="eyebrow">Services across our coverage area</p>
-          <h2 class="section-title">The right level of cleaning for the home you are in.</h2>
+          <h2 class="section-title">Our Cleaning Services</h2>
         </div>
-        <p>Service availability and exact scope are confirmed for each home before scheduling.</p>
+        <p>Choose regular upkeep, a detailed one-time clean, or help with a move or remodel.</p>
       </div>
 
       <div class="service-grid">
-        <a href="/recurring-cleaning-concord-ca/"><span>01</span><strong>Recurring cleaning</strong><p>Dependable upkeep for everyday living spaces.</p></a>
-        <a href="/deep-cleaning-concord-ca/"><span>02</span><strong>Deep cleaning</strong><p>A detailed reset beyond regular maintenance.</p></a>
-        <a href="/move-in-move-out-cleaning-concord-ca/"><span>03</span><strong>Move-in &amp; move-out</strong><p>Cleaning support during a home transition.</p></a>
-        <a href="/post-construction-cleaning-concord-ca/"><span>04</span><strong>Post-construction</strong><p>Final residential cleaning after remodeling.</p></a>
+        <a href="/recurring-cleaning-concord-ca/"><strong>Recurring Cleaning</strong><p>Dependable upkeep for everyday living spaces.</p></a>
+        <a href="/deep-cleaning-concord-ca/"><strong>Deep Cleaning</strong><p>Extra attention to buildup and overlooked details.</p></a>
+        <a href="/move-in-move-out-cleaning-concord-ca/"><strong>Move-In &amp; Move-Out Cleaning</strong><p>Cleaning before or after your move.</p></a>
+        <a href="/post-construction-cleaning-concord-ca/"><strong>Post-Construction Cleaning</strong><p>A final clean after residential remodeling.</p></a>
       </div>
     </div>
   </section>
@@ -137,8 +132,7 @@ const areas = [
   <section class="areas-cta">
     <div class="shell cta-card reveal">
       <div>
-        <p class="eyebrow">Is your community nearby?</p>
-        <h2 class="section-title">Ask Sparkclean to confirm availability for your address.</h2>
+        <h2 class="section-title">Don’t See Your City? Ask Us.</h2>
       </div>
       <div class="cta-actions">
         <a class="button button-white" href="/contact/">Request a Quote</a>

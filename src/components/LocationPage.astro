@@ -58,7 +58,6 @@ const localSchema = {
   <section class="location-hero">
     <div class="shell location-hero-grid">
       <div class="reveal">
-        <p class="eyebrow">House cleaning · {page.city}, California</p>
         <h1 class="display-title">{page.heroTitle}</h1>
         <p class="lead">{page.heroLead}</p>
         <div class="hero-actions">
@@ -69,7 +68,7 @@ const localSchema = {
 
       <div class="location-visual reveal">
         <span>{page.city}</span>
-        <strong>Residential cleaning with thoughtful attention to the details.</strong>
+        <strong>More time to enjoy a clean home.</strong>
         <div class="location-note">Concord-based East Bay service</div>
       </div>
     </div>
@@ -78,7 +77,6 @@ const localSchema = {
   <section class="location-intro">
     <div class="shell intro-grid reveal">
       <div>
-        <p class="eyebrow">{page.introEyebrow}</p>
         <h2 class="section-title">{page.introTitle}</h2>
       </div>
       <div class="intro-copy">
@@ -91,7 +89,6 @@ const localSchema = {
     <div class="shell">
       <div class="section-heading reveal">
         <div>
-          <p class="eyebrow">Residential cleaning options</p>
           <h2 class="section-title">{page.focusTitle}</h2>
         </div>
         <p>{page.focusDescription}</p>
@@ -100,7 +97,6 @@ const localSchema = {
       <div class="focus-grid">
         {page.focusItems.map((item, index) => (
           <article class:list={['focus-card', { featured: index === 1 }, 'reveal']}>
-            <span>{String(index + 1).padStart(2, '0')}</span>
             <h3>{item.title}</h3>
             <p>{item.copy}</p>
           </article>
@@ -108,10 +104,10 @@ const localSchema = {
       </div>
 
       <div class="service-links reveal">
-        <a href="/recurring-cleaning-concord-ca/">Recurring cleaning <span>→</span></a>
-        <a href="/deep-cleaning-concord-ca/">Deep cleaning <span>→</span></a>
-        <a href="/move-in-move-out-cleaning-concord-ca/">Move-in &amp; move-out <span>→</span></a>
-        <a href="/post-construction-cleaning-concord-ca/">Post-construction <span>→</span></a>
+        <a href="/recurring-cleaning-concord-ca/">Recurring Cleaning <span>→</span></a>
+        <a href="/deep-cleaning-concord-ca/">Deep Cleaning <span>→</span></a>
+        <a href="/move-in-move-out-cleaning-concord-ca/">Move-In &amp; Move-Out Cleaning <span>→</span></a>
+        <a href="/post-construction-cleaning-concord-ca/">Post-Construction Cleaning <span>→</span></a>
       </div>
     </div>
   </section>
@@ -120,13 +116,12 @@ const localSchema = {
     <div class="shell routine-grid">
       <div class="routine-visual reveal">
         <div>
-          <span>Thoughtful local care</span>
-          <strong>{page.city} appointments confirmed by address and availability.</strong>
+          <span>Local home cleaning</span>
+          <strong>Tell us about your {page.city} home.</strong>
         </div>
       </div>
 
       <div class="routine-copy reveal">
-        <p class="eyebrow">A straightforward process</p>
         <h2 class="section-title">{page.routineTitle}</h2>
         <p>{page.routineCopy}</p>
 
@@ -142,7 +137,6 @@ const localSchema = {
   <section class="location-faq">
     <div class="shell faq-grid">
       <div class="faq-intro reveal">
-        <p class="eyebrow">Frequently asked questions</p>
         <h2 class="section-title">{page.faqTitle}</h2>
         <p>Have another question? Call <a href="tel:+19258341815">(925) 834-1815</a> or send a quote request.</p>
       </div>
@@ -161,8 +155,7 @@ const localSchema = {
   <section class="nearby">
     <div class="shell nearby-grid reveal">
       <div>
-        <p class="eyebrow">Nearby service areas</p>
-        <h2 class="section-title">Sparkclean also serves surrounding communities.</h2>
+        <h2 class="section-title">Nearby Service Areas</h2>
       </div>
       <div>
         <p>{page.nearby.join(' · ')}</p>
@@ -174,8 +167,7 @@ const localSchema = {
   <section class="location-cta">
     <div class="shell cta-card reveal">
       <div>
-        <p class="eyebrow">Ready for a cleaner {page.city} home?</p>
-        <h2 class="section-title">Tell Sparkclean what service would make the greatest difference.</h2>
+        <h2 class="section-title">Request a Cleaning Quote in {page.city}</h2>
       </div>
       <div class="cta-actions">
         <a class="button button-white" href="/contact/">Request a Quote</a>

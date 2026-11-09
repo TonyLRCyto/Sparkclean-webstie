@@ -1,34 +1,26 @@
 ---
 const services = [
   {
-    number: '01',
-    kicker: 'Recurring cleaning',
-    title: 'A consistently clean home, without losing your time.',
-    copy: 'Scheduled residential cleaning keeps kitchens, bathrooms, floors, and everyday living spaces feeling cared for. We follow a thoughtful routine while giving extra attention where your home needs it most.',
+    title: 'Recurring Cleaning',
+    copy: 'Keep your home consistently clean without spending your free time catching up. Scheduled visits cover kitchens, bathrooms, floors, bedrooms, and living areas, with priorities agreed for your home.',
     label: 'Everyday care',
     href: '/recurring-cleaning-concord-ca/',
   },
   {
-    number: '02',
-    kicker: 'Deep cleaning',
-    title: 'A detailed reset for the spaces that need more.',
-    copy: 'Deep cleaning reaches beyond regular upkeep to address built-up dust, kitchen residue, bathroom buildup, and commonly overlooked areas throughout the home.',
+    title: 'Deep Cleaning',
+    copy: 'Give your home a more thorough clean when regular upkeep is not enough. We focus on built-up dust, kitchen residue, bathroom buildup, and details that are easy to overlook.',
     label: 'Detailed reset',
     href: '/deep-cleaning-concord-ca/',
   },
   {
-    number: '03',
-    kicker: 'Move-in & move-out',
-    title: 'Leave one home fresh. Begin the next one clean.',
-    copy: 'We help prepare empty homes for a smoother transition with detailed cleaning for renters, homeowners, and property changes throughout the Concord area.',
+    title: 'Move-In & Move-Out Cleaning',
+    copy: 'Leave one home fresh or start the next one clean. Detailed cleaning for empty or nearly empty homes takes one more task off your moving checklist.',
     label: 'Move-ready finish',
     href: '/move-in-move-out-cleaning-concord-ca/',
   },
   {
-    number: '04',
-    kicker: 'Post-construction cleaning',
-    title: 'A cleaner finish after remodeling or renovation.',
-    copy: 'Detailed residential cleaning helps address fine dust, fixtures, floors, and affected surfaces after home-improvement work is complete.',
+    title: 'Post-Construction Cleaning',
+    copy: 'Enjoy the finished remodel without the leftover dust. Once home-improvement work is complete, we clean affected surfaces, fixtures, and floors so the space is ready to use.',
     label: 'Final project clean',
     href: '/post-construction-cleaning-concord-ca/',
   },
@@ -38,28 +30,27 @@ const services = [
 <section class="story" id="services">
   <div class="shell">
     <div class="story-intro reveal">
-      <p class="eyebrow">Thoughtful cleaning, room by room</p>
-      <h2 class="section-title">The right level of clean for every season of home.</h2>
-      <p class="lead">From dependable recurring care to detailed moving and post-remodel cleaning, Sparkclean gives Concord-area homes the focused attention they need.</p>
+      <h2 class="section-title">Home Cleaning Services</h2>
+      <p class="lead">From regular upkeep to cleaning for a move or remodel, find the service your home needs. Explore each option below.</p>
     </div>
 
     <div class="story-layout">
       <div class="story-visual" aria-live="polite">
         <div class="story-photo active" data-photo="0">
           <span>Kitchen care</span>
-          <strong>Everyday spaces, consistently refreshed.</strong>
+          <strong>A consistently clean home, without the catch-up.</strong>
         </div>
         <div class="story-photo" data-photo="1">
           <span>Bathroom reset</span>
-          <strong>Focused attention beyond routine upkeep.</strong>
+          <strong>More attention to buildup and overlooked details.</strong>
         </div>
         <div class="story-photo" data-photo="2">
           <span>Move-ready finish</span>
-          <strong>A cleaner transition from one home to the next.</strong>
+          <strong>Leave one home fresh. Begin the next one clean.</strong>
         </div>
         <div class="story-photo" data-photo="3">
           <span>Final project clean</span>
-          <strong>Help the finished remodel feel truly finished.</strong>
+          <strong>The work is done. Let us handle the dust.</strong>
         </div>
         <p class="story-photo-note" data-story-label>{services[0].label}</p>
       </div>
@@ -67,11 +58,9 @@ const services = [
       <div class="story-steps">
         {services.map((service, index) => (
           <article class="story-step" data-step={index}>
-            <p class="story-number">{service.number}</p>
-            <p class="story-kicker">{service.kicker}</p>
             <h3>{service.title}</h3>
             <p>{service.copy}</p>
-            <a href={service.href}>Explore this service <span aria-hidden="true">→</span></a>
+            <a href={service.href}>See what’s included <span aria-hidden="true">→</span></a>
           </article>
         ))}
       </div>
