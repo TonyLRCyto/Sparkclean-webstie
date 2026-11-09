@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroGlassActions from './liquid-glass/HeroGlassActions';
+import GlassAction from './liquid-glass/GlassAction';
 
 interface Card {
   title: string;
@@ -93,8 +95,7 @@ const serviceSchema = {
           <p class="lead">{page.heroLead}</p>
 
           <div class="service-actions">
-            <a class="button button-primary" href="/contact/">Request a Quote</a>
-            <a class="button button-secondary" href="tel:+19258341815">Call (925) 834-1815</a>
+            <HeroGlassActions quoteHref="/contact/" client:load />
           </div>
 
           <div class="service-proof" aria-label="Service highlights">
@@ -109,7 +110,7 @@ const serviceSchema = {
               <strong>{page.photoTitle}</strong>
             </div>
           </div>
-          <div class="photo-note">
+          <div class="photo-note sc-frosted-note">
             <span>{page.photoLabel}</span>
             <strong>{page.statTitle}</strong>
           </div>
@@ -185,7 +186,7 @@ const serviceSchema = {
         </div>
 
         <div class="fit-visual reveal">
-          <div class="fit-stat">
+          <div class="fit-stat sc-frosted-note">
             <strong>{page.statTitle}</strong>
             <span>{page.statCopy}</span>
           </div>
@@ -229,7 +230,7 @@ const serviceSchema = {
           <h2 class="section-title">{page.ctaTitle}</h2>
         </div>
         <div class="cta-actions">
-          <a class="button button-white" href="/contact/">Request a Quote</a>
+          <GlassAction href="/contact/" label="Request a Quote" variant="light" client:visible />
           <a class="call-link" href="tel:+19258341815">Call (925) 834-1815</a>
           <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
         </div>

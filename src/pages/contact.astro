@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GlassSubmitButton from '../components/liquid-glass/GlassSubmitButton';
 
 const services = [
   'Recurring cleaning',
@@ -90,7 +91,7 @@ const services = [
           <textarea name="details" rows="6" placeholder="Tell us about the home, its current condition, and the areas that need attention." required></textarea>
         </label>
 
-        <button class="button button-primary" type="submit">Prepare Email Request</button>
+        <GlassSubmitButton client:visible />
         <p class="form-note">This opens a draft—not a sent request. You’ll need to press Send in your email app. No email app set up? Call us or email companysparkclean@gmail.com directly.</p>
         <p class="form-status" data-form-status aria-live="polite"></p>
       </form>

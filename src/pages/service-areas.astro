@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GlassAction from '../components/liquid-glass/GlassAction';
 
 const areas = [
   {
@@ -63,7 +64,7 @@ const areas = [
       <div class="hero-copy reveal">
         <p class="lead">Sparkclean serves homes in Concord and nearby communities with recurring, deep, move-in/move-out, and post-construction cleaning.</p>
         <p>Share your address area and preferred timing so we can confirm availability.</p>
-        <a class="button button-primary" href="/contact/">Check Availability</a>
+        <GlassAction href="/contact/" label="Check Availability" client:load />
       </div>
     </div>
   </section>
@@ -135,7 +136,7 @@ const areas = [
         <h2 class="section-title">Don’t See Your City? Ask Us.</h2>
       </div>
       <div class="cta-actions">
-        <a class="button button-white" href="/contact/">Request a Quote</a>
+        <GlassAction href="/contact/" label="Request a Quote" variant="light" client:visible />
         <a href="tel:+19258341815">Call (925) 834-1815</a>
         <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
       </div>

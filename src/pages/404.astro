@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GlassAction from '../components/liquid-glass/GlassAction';
 ---
 
 <BaseLayout title="Page Not Found | Sparkclean" description="The requested Sparkclean page could not be found.">
@@ -8,7 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="eyebrow">404 · Page not found</p>
       <h1 class="display-title">This page needs a little tidying up.</h1>
       <p class="lead">The page you requested does not exist or may have moved.</p>
-      <a class="button button-primary" href="/">Return home</a>
+      <GlassAction href="/" label="Return home" client:load />
     </div>
   </section>
 </BaseLayout>

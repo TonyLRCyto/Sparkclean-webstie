@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import react from '@astrojs/react';
 
 // Set this build variable to the confirmed custom domain before launch.
 // Leaving it unset keeps review builds free of guessed canonical URLs.
@@ -9,6 +10,7 @@ export default defineConfig({
   site: productionSite,
   output: 'static',
   integrations: [
+    react(),
     sitemap({
       filter: (page) => !/\/404(?:\.html)?\/?$/.test(new URL(page).pathname),
     }),
