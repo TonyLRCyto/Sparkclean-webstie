@@ -70,10 +70,10 @@ const faqs = [
     </div>
   </section>
 
-  <section class="intro">
+  <section class="intro" aria-labelledby="home-intro-title">
     <div class="shell intro-grid reveal">
       <div>
-        <h2 class="section-title">Cleaning for the Rooms You Use Every Day</h2>
+        <h2 class="section-title" id="home-intro-title">Cleaning for the Rooms You Use Every Day</h2>
       </div>
       <div class="intro-copy">
         <p>From kitchen counters to bathroom fixtures and bedroom floors, we focus on the spaces your household uses most.</p>
@@ -325,7 +325,6 @@ const faqs = [
     line-height: 1.35;
   }
 
-  .intro,
   .results,
   .why,
   .areas,
@@ -333,21 +332,35 @@ const faqs = [
     padding: 112px 0;
   }
 
+  .intro {
+    padding: 88px 0;
+    background: linear-gradient(135deg, #edf7fa 0%, #f3f8fa 55%, #f8fbfc 100%);
+  }
+
   .intro-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
-    gap: 100px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    max-width: 1040px;
+  }
+
+  .intro .section-title {
+    max-width: 900px;
+    font-size: clamp(2.15rem, 4.3vw, 3.75rem);
   }
 
   .intro-copy {
+    max-width: 820px;
     color: var(--muted);
     font-size: 1.08rem;
     line-height: 1.75;
   }
 
   .intro-copy p {
-    margin: 0 0 22px;
+    margin: 0 0 14px;
   }
+
+  .intro-copy p:last-child { margin-bottom: 0; }
 
   .results {
     background: #f3f8fa;
@@ -665,7 +678,6 @@ const faqs = [
       gap: 64px;
     }
 
-    .intro-grid,
     .faq-grid {
       gap: 44px;
     }
@@ -713,7 +725,6 @@ const faqs = [
       margin-top: 14px;
     }
 
-    .intro,
     .results,
     .process,
     .why,
@@ -721,6 +732,8 @@ const faqs = [
     .faq {
       padding: 82px 0;
     }
+
+    .intro { padding: 64px 0; }
 
     .results-grid,
     .area-grid {
