@@ -337,12 +337,12 @@ const serviceSchema = {
     gap: 9px;
     padding: 22px 24px;
     border-radius: 20px;
-    background: rgba(250, 252, 252, 0.96);
+    background: var(--sc-note-surface, rgba(250, 252, 252, 0.96));
     box-shadow: 0 18px 45px rgba(17, 33, 46, 0.14);
   }
 
   .photo-note span {
-    color: var(--blue);
+    color: var(--sc-note-ink, var(--blue));
     font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -576,19 +576,19 @@ const serviceSchema = {
     gap: 8px;
     padding: 26px;
     border-radius: 22px;
-    background: rgba(250, 252, 252, 0.94);
+    background: var(--sc-note-surface, rgba(250, 252, 252, 0.94));
     box-shadow: 0 18px 45px rgba(17, 33, 46, 0.12);
   }
 
   .fit-stat strong {
-    color: var(--navy);
+    color: var(--sc-note-ink, var(--navy));
     font-size: 1.75rem;
     letter-spacing: -0.03em;
     line-height: 1.1;
   }
 
   .fit-stat span {
-    color: var(--muted);
+    color: var(--sc-note-ink, var(--muted));
     font-size: 0.94rem;
   }
 
