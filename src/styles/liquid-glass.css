@@ -1,26 +1,27 @@
 /* Glisse is used for the navigation lens and selected native controls.
-   Floating labels use CSS frost only; body copy, photos, form fields,
+   Floating labels use clear CSS glass only; body copy, photos, form fields,
    and the full-screen mobile menu remain unfiltered. */
 .sc-glass-control {
-  --lg-glass: rgba(250, 252, 252, 0.82);
-  --lg-glass-active: rgba(239, 248, 251, 0.94);
-  --lg-edge: rgba(255, 255, 255, 0.78);
+  --lg-glass: rgba(250, 252, 252, 0.1);
+  --lg-glass-active: rgba(225, 244, 250, 0.24);
+  --lg-edge: rgba(255, 255, 255, 0.95);
   --lg-drop: rgba(20, 70, 120, 0.12);
-  --lg-rim-shine: 0.22;
-  --lg-glass-bend: 0.14;
-  --lg-glass-dispersion: 0.07;
+  --lg-rim-shine: 0.46;
+  --lg-glass-bend: 0.28;
+  --lg-glass-dispersion: 0.09;
+  --sc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(20, 70, 120, 0.12), 0 6px 18px rgba(20, 70, 120, 0.1);
   position: relative;
   display: inline-flex;
   flex: 0 0 auto;
   isolation: isolate;
   width: fit-content;
-  border: 1px solid rgba(186, 213, 223, 0.9);
+  border: 1px solid rgba(143, 184, 203, 0.5);
   border-radius: 999px;
   color: var(--navy);
   background-color: var(--lg-glass);
-  -webkit-backdrop-filter: blur(10px) var(--lg-filter, saturate(1.12));
-  backdrop-filter: blur(10px) var(--lg-filter, saturate(1.12));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 8px 20px rgba(20, 70, 120, 0.1);
+  -webkit-backdrop-filter: blur(2px) var(--lg-filter, saturate(1.25));
+  backdrop-filter: blur(2px) var(--lg-filter, saturate(1.25));
+  box-shadow: var(--sc-glass-shadow);
   transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1.2), box-shadow 180ms ease, background-color 180ms ease;
 }
 
@@ -30,28 +31,31 @@
   inset: 1px;
   z-index: 0;
   border-radius: inherit;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), transparent 48%);
+  background: radial-gradient(ellipse at var(--sc-light-x, 28%) var(--sc-light-y, 0%), rgba(255, 255, 255, 0.46), transparent 64%), linear-gradient(172deg, rgba(255, 255, 255, 0.2), transparent 42%, transparent 70%, rgba(255, 255, 255, 0.12));
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.42), inset -1px 0 0 rgba(255, 255, 255, 0.18);
   pointer-events: none;
 }
 
+/* Retain the polished edge even after Glisse generates its refractive rim. */
+.sc-glass-control.lg-glass[data-rim] { box-shadow: var(--sc-glass-shadow); }
+
 .sc-glass-primary {
-  --lg-glass: rgba(20, 70, 120, 0.96);
-  --lg-glass-active: rgba(25, 84, 139, 0.98);
-  --lg-edge: rgba(255, 255, 255, 0.24);
-  --lg-rim-shine: 0.12;
-  --lg-glass-bend: 0.09;
-  color: #ffffff;
-  border-color: rgba(20, 70, 120, 0.82);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 12px 28px rgba(20, 70, 120, 0.2);
+  --lg-glass: rgba(88, 168, 199, 0.18);
+  --lg-glass-active: rgba(88, 168, 199, 0.26);
+  --lg-rim-shine: 0.52;
+  --sc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(20, 70, 120, 0.2), 0 8px 22px rgba(20, 70, 120, 0.14);
+  color: var(--navy);
+  border-color: rgba(20, 70, 120, 0.42);
 }
 
 .sc-glass-light {
-  --lg-glass: rgba(250, 252, 252, 0.94);
-  --lg-glass-active: rgba(255, 255, 255, 0.99);
+  --lg-glass: rgba(250, 252, 252, 0.08);
+  --lg-glass-active: rgba(250, 252, 252, 0.15);
   --lg-edge: rgba(255, 255, 255, 0.92);
-  --lg-rim-shine: 0.28;
-  color: var(--navy);
-  border-color: rgba(255, 255, 255, 0.8);
+  --lg-rim-shine: 0.5;
+  --sc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), inset 0 -1px 0 rgba(4, 20, 37, 0.2), 0 8px 22px rgba(4, 20, 37, 0.2);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .sc-glass-link,
@@ -128,10 +132,12 @@
 /* A matching material for small existing labels, without filtering content
    through the refraction engine or changing approved positioning. */
 .sc-frosted-note {
+  --sc-note-surface: rgba(250, 252, 252, 0.58);
+  --sc-note-ink: var(--ink);
   position: relative;
   isolation: isolate;
-  -webkit-backdrop-filter: blur(12px) saturate(1.12);
-  backdrop-filter: blur(12px) saturate(1.12);
+  -webkit-backdrop-filter: blur(3px) saturate(1.18);
+  backdrop-filter: blur(3px) saturate(1.18);
 }
 
 .sc-frosted-note::before {
@@ -140,8 +146,8 @@
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 60%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(20, 70, 120, 0.06);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.28), transparent 45%, transparent 72%, rgba(255, 255, 255, 0.12));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 1px 0 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(20, 70, 120, 0.14);
   pointer-events: none;
 }
 
@@ -177,11 +183,11 @@
 .site-header .sc-nav-link[aria-current] { color: var(--navy); }
 
 .sc-nav-lens {
-  --lg-glass: rgba(226, 241, 247, 0.8);
-  --lg-edge: rgba(255, 255, 255, 0.8);
-  --lg-glass-bend: 0.16;
-  --lg-glass-dispersion: 0.06;
-  --lg-rim-shine: 0.18;
+  --lg-glass: rgba(145, 201, 220, 0.16);
+  --lg-edge: rgba(255, 255, 255, 0.95);
+  --lg-glass-bend: 0.3;
+  --lg-glass-dispersion: 0.09;
+  --lg-rim-shine: 0.48;
   position: absolute;
   top: 0;
   left: 0;
@@ -199,15 +205,17 @@
 .sc-nav-lens[data-visible] { opacity: 1; }
 
 .site-header .sc-glass-menu-button {
-  --lg-glass: rgba(246, 251, 253, 0.96);
-  --lg-glass-active: rgba(224, 242, 249, 0.98);
-  --lg-glass-bend: 0.1;
-  --lg-glass-dispersion: 0.04;
-  --lg-rim-shine: 0.18;
+  --lg-glass: rgba(246, 251, 253, 0.12);
+  --lg-glass-active: rgba(224, 242, 249, 0.26);
+  --lg-glass-bend: 0.28;
+  --lg-glass-dispersion: 0.08;
+  --lg-rim-shine: 0.46;
   width: 44px;
   min-width: 44px;
   height: 44px;
   padding: 0;
+  border-color: rgba(143, 184, 203, 0.5);
+  background-color: var(--lg-glass);
   color: var(--navy);
 }
 
@@ -222,9 +230,9 @@
 
 @media (hover: hover) and (pointer: fine) {
   .sc-glass-control:hover {
+    --sc-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(20, 70, 120, 0.18), 0 10px 24px rgba(20, 70, 120, 0.16);
     transform: translateY(-1px);
     background-color: var(--lg-glass-active);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 12px 28px rgba(20, 70, 120, 0.17);
   }
   .sc-glass-control[data-pressed] { transform: scale(1.015, 0.985); }
   .sc-glass-submit[data-pressed] { transform: none; }
@@ -257,20 +265,22 @@
   }
   .sc-glass-secondary,
   .sc-glass-icon,
-  .site-header .sc-glass-menu-button { background-color: #f2f8fb; }
-  .sc-glass-light { background-color: #fafcfc; }
-  .sc-glass-primary { background-color: #144678; }
+  .site-header .sc-glass-menu-button { --lg-glass: #f2f8fb; --lg-glass-active: #e2f1f7; background-color: var(--lg-glass); }
+  .sc-glass-light { --lg-glass: #fafcfc; --lg-glass-active: #ffffff; background-color: var(--lg-glass); color: #144678; }
+  .sc-glass-primary { --lg-glass: #144678; --lg-glass-active: #19548b; background-color: var(--lg-glass); color: #ffffff; }
   .sc-nav-lens { background-color: #e2f1f7; }
   .site-header { background: #fafcfc; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .sc-glass-control::before { display: none; }
   .sc-frosted-note { background: #fafcfc !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
 @media (forced-colors: active) {
   .sc-glass-control,
-  .site-header .sc-glass-menu-button { background: Canvas; color: LinkText; border: 1px solid ButtonText; box-shadow: none; }
+  .sc-glass-control:hover,
+  .site-header .sc-glass-menu-button { --lg-glass: Canvas; --lg-glass-active: Canvas; --sc-glass-shadow: none; background: Canvas; color: LinkText; border: 1px solid ButtonText; box-shadow: none; }
   .sc-glass-control::before,
   .sc-frosted-note::before,
   .sc-nav-bed,
   .sc-nav-lens { display: none; }
-  .sc-frosted-note { background: Canvas !important; color: CanvasText !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .sc-frosted-note { --sc-note-ink: CanvasText; background: Canvas !important; color: CanvasText !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
