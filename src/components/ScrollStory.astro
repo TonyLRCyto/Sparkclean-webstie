@@ -1,4 +1,6 @@
 ---
+import GlassAction from './liquid-glass/GlassAction';
+
 const services = [
   {
     title: 'Recurring Cleaning',
@@ -60,7 +62,15 @@ const services = [
           <article class="story-step" data-step={index}>
             <h3>{service.title}</h3>
             <p>{service.copy}</p>
-            <a href={service.href}>See what’s included <span aria-hidden="true">→</span></a>
+            <div class="story-service-action">
+              <GlassAction
+                href={service.href}
+                label="See what’s included"
+                ariaLabel={`See what’s included: ${service.title}`}
+                showArrow
+                client:visible
+              />
+            </div>
           </article>
         ))}
       </div>
@@ -232,22 +242,10 @@ const services = [
     line-height: 1.72;
   }
 
-  .story-step a {
+  .story-service-action {
     width: fit-content;
+    max-width: 100%;
     margin-top: 28px;
-    color: var(--navy);
-    font-weight: 750;
-    text-decoration: none;
-  }
-
-  .story-step a span {
-    display: inline-block;
-    margin-left: 6px;
-    transition: transform 180ms ease;
-  }
-
-  .story-step a:hover span {
-    transform: translateX(4px);
   }
 
   @media (max-width: 900px) {
@@ -269,6 +267,8 @@ const services = [
   }
 
   @media (max-width: 640px) {
+    .story-service-action { width: 100%; }
+
     .story {
       padding: 82px 0;
     }
