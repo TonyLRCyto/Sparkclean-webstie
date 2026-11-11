@@ -37,23 +37,12 @@ const services = [
     </div>
 
     <div class="story-layout">
-      <div class="story-visual" aria-live="polite">
-        <div class="story-photo active" data-photo="0">
-          <span>Kitchen care</span>
-          <strong>A consistently clean home, without the catch-up.</strong>
-        </div>
-        <div class="story-photo" data-photo="1">
-          <span>Bathroom reset</span>
-          <strong>More attention to buildup and overlooked details.</strong>
-        </div>
-        <div class="story-photo" data-photo="2">
-          <span>Move-ready finish</span>
-          <strong>Leave one home fresh. Begin the next one clean.</strong>
-        </div>
-        <div class="story-photo" data-photo="3">
-          <span>Final project clean</span>
-          <strong>The work is done. Let us handle the dust.</strong>
-        </div>
+      <div class="story-visual" aria-hidden="true">
+        <!-- Photo slots: replace each with an owner-supplied photo for that service. -->
+        <div class="story-photo active" data-photo="0"></div>
+        <div class="story-photo" data-photo="1"></div>
+        <div class="story-photo" data-photo="2"></div>
+        <div class="story-photo" data-photo="3"></div>
         <p class="story-photo-note" data-story-label>{services[0].label}</p>
       </div>
 

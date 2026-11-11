@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GlassSubmitButton from '../components/liquid-glass/GlassSubmitButton';
+import { quoteEmail, serviceAreas } from '../data/site';
+
+// PUBLIC_QUOTE_SENDING=on switches the form from "open an email draft" to sending
+// through /api/quote. Turn it on only after the Worker's email binding is connected.
+const sendingOn = import.meta.env.PUBLIC_QUOTE_SENDING === 'on';
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY?.trim();
 
 const services = [
   'Recurring cleaning',
@@ -35,16 +41,29 @@ const services = [
     <div class="shell quote-grid">
       <div class="quote-intro reveal">
         <h2 class="section-title">Tell Us About Your Home</h2>
-        <p>This form opens a draft in your email app. Review it and press Send to deliver your request. The website does not store your form details.</p>
+        {sendingOn
+          ? <p>Send the form and your request goes straight to our inbox. We’ll reply by phone or email. The website does not store your form details.</p>
+          : <p>This form opens a draft in your email app. Review it and press Send to deliver your request. The website does not store your form details.</p>}
 
         <div class="help-list">
           <div><span aria-hidden="true">✓</span><p>Your city and approximate home size</p></div>
           <div><span aria-hidden="true">✓</span><p>The cleaning service you need</p></div>
           <div><span aria-hidden="true">✓</span><p>Preferred timing and any special requests</p></div>
         </div>
+
+        <h3 class="good-to-know-title">Good to know</h3>
+        <ul class="good-to-know">
+          <li>Pricing depends on your home’s size, condition, and how much cleaning it needs.</li>
+          <li>We bring our own cleaning supplies and equipment.</li>
+          <li>You don’t need to be home. We’ll agree on how we get in when you book.</li>
+          <li>Pets are welcome. Just let us know about them.</li>
+        </ul>
       </div>
 
-      <form class="quote-form reveal" data-quote-form>
+      <form class="quote-form reveal" data-quote-form data-sending={sendingOn ? 'on' : 'off'} action="/api/quote" method="post">
+        <div class="hp-field" aria-hidden="true">
+          <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+        </div>
         <div class="field-grid">
           <label>
             <span>Name *</span>
@@ -91,9 +110,12 @@ const services = [
           <textarea name="details" rows="6" placeholder="Tell us about the home, its current condition, and the areas that need attention." required></textarea>
         </label>
 
-        <GlassSubmitButton client:visible />
-        <p class="form-note">This opens a draft—not a sent request. You’ll need to press Send in your email app. No email app set up? Call us or email companysparkclean@gmail.com directly.</p>
-        <p class="form-status" data-form-status aria-live="polite"></p>
+        {sendingOn && turnstileSiteKey && <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>}
+        <GlassSubmitButton label={sendingOn ? 'Send Quote Request' : 'Prepare Email Request'} client:visible />
+        {sendingOn
+          ? <p class="form-note">Prefer to talk? Call (925) 834-1815, Monday–Saturday, 9:00 AM–4:00 PM.</p>
+          : <p class="form-note">This opens a draft—not a sent request. You’ll need to press Send in your email app. No email app set up? Call us or email {quoteEmail} directly.</p>}
+        <div class="form-status" data-form-status role="status" aria-live="polite"></div>
       </form>
     </div>
   </section>
@@ -122,23 +144,23 @@ const services = [
         <h2 class="section-title">Check Availability in Your Area</h2>
       </div>
       <div>
-        <p>Contact Sparkclean to confirm availability for your address in Concord, Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, Orinda, or another nearby community.</p>
+        <p>Contact Sparkclean to confirm availability for your address in {serviceAreas.map((area) => area.name).slice(0, -1).join(', ')}, or {serviceAreas[serviceAreas.length - 1].name}.</p>
         <a href="/service-areas/">View service areas <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
+{sendingOn && turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+
 <script>
-  const quoteForm = document.querySelector('[data-quote-form]');
-  const formStatus = document.querySelector('[data-form-status]');
+  const quoteForm = document.querySelector<HTMLFormElement>('[data-quote-form]');
+  const formStatus = document.querySelector<HTMLElement>('[data-form-status]');
+  const QUOTE_EMAIL = 'companysparkclean@gmail.com';
+  let sending = false;
 
-  quoteForm?.addEventListener('submit', (event) => {
-    if (!(quoteForm instanceof HTMLFormElement)) return;
-    event.preventDefault();
-    if (!quoteForm.reportValidity()) return;
-
-    const data = new FormData(quoteForm);
+  const draftHref = (form: HTMLFormElement) => {
+    const data = new FormData(form);
     const value = (name: string) => String(data.get(name) || '').trim();
     const subject = `Sparkclean quote request — ${value('service')} — ${value('city')}`;
     const body = [
@@ -153,12 +175,56 @@ const services = [
       'Cleaning details:',
       value('details'),
     ].join('\n');
+    return `mailto:${QUOTE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
-    if (formStatus) {
-      formStatus.textContent = 'Opening your email application with the quote details…';
+  const showStatus = (state: string, html: string) => {
+    if (!formStatus) return;
+    formStatus.dataset.state = state;
+    formStatus.innerHTML = html;
+  };
+
+  const setBusy = (form: HTMLFormElement, busy: boolean) => {
+    sending = busy;
+    form.setAttribute('aria-busy', String(busy));
+    form.querySelectorAll<HTMLButtonElement>('button[type="submit"]').forEach((button) => {
+      button.disabled = busy;
+    });
+  };
+
+  const offerDraft = (form: HTMLFormElement, message: string) => {
+    showStatus('fallback', `${message} <a href="${draftHref(form)}">Open it as an email instead</a> or call <a href="tel:+19258341815">(925) 834-1815</a>. Your answers are still in the form.`);
+  };
+
+  quoteForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!quoteForm.reportValidity() || sending) return;
+
+    if (quoteForm.dataset.sending !== 'on') {
+      showStatus('info', 'Opening your email application with the quote details…');
+      window.location.href = draftHref(quoteForm);
+      return;
     }
 
-    window.location.href = `mailto:companysparkclean@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setBusy(quoteForm, true);
+    showStatus('sending', 'Sending your request…');
+    try {
+      const response = await fetch('/api/quote', { method: 'POST', body: new FormData(quoteForm) });
+      const result = (await response.json().catch(() => ({}))) as { status?: string; message?: string };
+      if (response.ok && result.status === 'sent') {
+        quoteForm.reset();
+        showStatus('sent', 'Thanks! Your request was sent. We’ll get back to you by phone or email.');
+      } else if (result.status === 'invalid' && result.message) {
+        showStatus('error', result.message);
+      } else {
+        offerDraft(quoteForm, 'We couldn’t send your request just now.');
+      }
+    } catch {
+      offerDraft(quoteForm, 'We couldn’t reach the server.');
+    } finally {
+      setBusy(quoteForm, false);
+      (window as unknown as { turnstile?: { reset: () => void } }).turnstile?.reset();
+    }
   });
 </script>
 
@@ -329,6 +395,48 @@ const services = [
     color: var(--muted);
     font-size: 0.8rem;
     line-height: 1.5;
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .good-to-know-title {
+    margin: 40px 0 12px;
+    font-size: 1.05rem;
+  }
+
+  .good-to-know {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .form-status[data-state='sent'] {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #e6f4ea;
+    color: #1d5b33;
+  }
+
+  .form-status[data-state='error'],
+  .form-status[data-state='fallback'] {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #fdf1ee;
+    color: #8a2c17;
+  }
+
+  .form-status a {
+    color: inherit;
+    font-weight: 800;
   }
 
   .form-status {

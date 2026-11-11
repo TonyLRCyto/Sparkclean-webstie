@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 import GlassAction from '../components/liquid-glass/GlassAction';
+import { instagramUrl } from '../data/site';
 
 const principles = [
   {
@@ -68,6 +69,21 @@ const reviews = [
       <div class="intro-copy">
         <p>We start with a conversation about your home, schedule, and the areas you want us to focus on.</p>
         <p>Whether you need regular upkeep, deep cleaning, help during a move, or cleaning after a remodel, the goal is the same: a home that feels better to come back to.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-owner" aria-labelledby="owner-title">
+    <div class="shell intro-grid reveal">
+      <div>
+        <h2 class="section-title" id="owner-title">Meet Adan</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Sparkclean is owned and run by Adan. He’s the person behind the work and the face of the business.</p>
+        <p>
+          On Instagram, Adan shares videos of how he cleans, so you can see the care that goes into a Sparkclean visit before you book.
+          {instagramUrl && <> <a href={instagramUrl} target="_blank" rel="noopener noreferrer">Watch on Instagram <span aria-hidden="true">↗</span></a></>}
+        </p>
       </div>
     </div>
   </section>
@@ -252,11 +268,21 @@ const reviews = [
   }
 
   .about-intro,
+  .about-owner,
   .principles,
   .customer-proof,
   .about-services,
   .about-local {
     padding: 112px 0;
+  }
+
+  .about-owner {
+    padding-top: 0;
+  }
+
+  .about-owner a {
+    color: var(--navy);
+    font-weight: 700;
   }
 
   .intro-grid,
@@ -590,12 +616,17 @@ const reviews = [
     .value-chip-three { display: none; }
 
     .about-intro,
+    .about-owner,
     .principles,
     .customer-proof,
     .approach,
     .about-services,
     .about-local {
       padding: 78px 0;
+    }
+
+    .about-owner {
+      padding-top: 0;
     }
 
     .principle-card {

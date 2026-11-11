@@ -2,9 +2,22 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sparkclean-website",
   "compatibility_date": "2026-10-01",
+  // The Worker only handles /api/* (the quote form). Every other path is served from ./dist.
+  "main": "./worker/index.ts",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
   },
+  "vars": {
+    // Must be an address on a domain with Cloudflare Email Routing enabled.
+    "QUOTE_FROM": "quotes@sparkclean-inc.com"
+  },
+  // Turn this on after sparkclean-inc.com is on Cloudflare, Email Routing is enabled,
+  // and companysparkclean@gmail.com is a verified destination address:
+  // "send_email": [
+  //   { "name": "QUOTE_EMAIL", "destination_address": "companysparkclean@gmail.com" }
+  // ],
   "previews": {}
 }
