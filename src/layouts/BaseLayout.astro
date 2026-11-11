@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { instagramUrl } from '../data/site';
+import { instagramUrl, areaServedSchema } from '../data/site';
 
 interface Props {
   title: string;
@@ -16,6 +16,12 @@ const canonicalUrl = isNotFound
   ? undefined
   : canonical ?? (Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined);
 const sitemapUrl = Astro.site ? new URL('/sitemap-index.xml', Astro.site).href : undefined;
+// Until the production domain is set at build time, every page asks search engines not to index it.
+const isPreviewBuild = !Astro.site;
+// Share previews need an absolute URL; the workers.dev address is used until the domain is set.
+const shareImage = new URL('/images/sparkclean-logo.png', Astro.site ?? 'https://sparkclean-website.gabe-tony-lr.workers.dev').href;
+// Cloudflare Web Analytics (cookieless). Set PUBLIC_CF_BEACON_TOKEN in the build to turn it on.
+const analyticsToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN?.trim();
 
 const businessSchema = {
   '@context': 'https://schema.org',
@@ -24,17 +30,7 @@ const businessSchema = {
   description,
   telephone: '+1-925-834-1815',
   email: 'companysparkclean@gmail.com',
-  areaServed: [
-    'Concord, CA',
-    'Pleasant Hill, CA',
-    'Martinez, CA',
-    'Walnut Creek, CA',
-    'Lafayette, CA',
-    'Moraga, CA',
-    'Orinda, CA',
-    'Berkeley, CA',
-    'San Francisco, CA',
-  ],
+  areaServed: areaServedSchema,
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -64,11 +60,13 @@ const businessSchema = {
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:alt" content="Sparkclean Cleaning Services logo" />
+    <meta name="twitter:card" content="summary" />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     {sitemapUrl && <link rel="sitemap" type="application/xml" href={sitemapUrl} />}
-    {isNotFound && <meta name="robots" content="noindex, follow" />}
+    {(isNotFound || isPreviewBuild) && <meta name="robots" content="noindex, follow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
@@ -80,6 +78,14 @@ const businessSchema = {
       <slot />
     </main>
     <Footer />
+    {analyticsToken && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: analyticsToken })}
+      ></script>
+    )}
 
     <script>
       const revealItems = document.querySelectorAll('.reveal');

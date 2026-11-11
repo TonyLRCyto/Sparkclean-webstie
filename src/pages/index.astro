@@ -3,17 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ScrollStory from '../components/ScrollStory.astro';
 import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 import GlassAction from '../components/liquid-glass/GlassAction';
+import { serviceAreas, goodToKnowFaqs } from '../data/site';
 
-const areas = [
-  { name: 'Concord', href: '/service-areas/concord-ca/' },
-  { name: 'Pleasant Hill', href: '/service-areas/pleasant-hill-ca/' },
-  { name: 'Martinez', href: '/service-areas/martinez-ca/' },
-  { name: 'Walnut Creek', href: '/service-areas/walnut-creek-ca/' },
-  { name: 'Lafayette', href: '/service-areas/' },
-  { name: 'Moraga', href: '/service-areas/' },
-  { name: 'Orinda', href: '/service-areas/' },
-  { name: 'Berkeley', href: '/service-areas/' },
-];
+const areas = serviceAreas;
 
 const faqs = [
   {
@@ -22,12 +14,13 @@ const faqs = [
   },
   {
     question: 'Which areas do you serve?',
-    answer: 'Our service area includes Concord, Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, Orinda, Berkeley, and select nearby Bay Area communities. Contact us to confirm availability for your address.',
+    answer: 'Our service area includes Concord, Pleasant Hill, Martinez, Walnut Creek, Lafayette, Moraga, Orinda, Berkeley, and San Francisco. Contact us to confirm availability for your address.',
   },
   {
     question: 'How do I request a cleaning quote?',
-    answer: 'Call (925) 834-1815 or visit our Contact page to prepare an email request. Include your city, approximate home size, preferred service, and timing.',
+    answer: 'Call (925) 834-1815 or fill out the quote form on our Contact page. Include your city, approximate home size, preferred service, and timing.',
   },
+  ...goodToKnowFaqs.slice(0, 4),
   {
     question: 'Can cleaning priorities be adjusted for my home?',
     answer: 'Yes. Every home is different, so we discuss the rooms and surfaces that need the most attention before service begins.',
@@ -58,10 +51,8 @@ const faqs = [
       </div>
 
       <div class="hero-visual reveal">
-        <div class="hero-photo" role="img" aria-label="Placeholder for a Sparkclean kitchen cleaning photograph">
-          <span>Cleaning for everyday living</span>
-          <strong>More time to enjoy a clean home.</strong>
-        </div>
+        <!-- Photo slot: replace with an owner-supplied kitchen photo (add alt text then). -->
+        <div class="hero-photo" aria-hidden="true"></div>
         <div class="hero-note sc-frosted-note">
           <span>Care for your home</span>
           <strong>Care in the details. Calm in the result.</strong>
@@ -95,17 +86,14 @@ const faqs = [
 
       <div class="results-grid">
         <article class="result-card result-card-large reveal">
-          <span>Surfaces &amp; appliances</span>
           <h3>Kitchen detailing</h3>
           <p>Attention to counters, stovetops, sinks, and everyday buildup.</p>
         </article>
         <article class="result-card reveal">
-          <span>Fixtures &amp; surfaces</span>
           <h3>Bathroom cleaning</h3>
           <p>Focused care for sinks, showers, toilets, mirrors, and floors.</p>
         </article>
         <article class="result-card reveal">
-          <span>Beyond the obvious</span>
           <h3>Finishing details</h3>
           <p>Dust, edges, and high-touch areas, with detailed requests agreed before your visit.</p>
         </article>
@@ -211,7 +199,8 @@ const faqs = [
         <p>Tell us your city, home size, preferred service, and timing. We’ll help you plan the next step.</p>
       </div>
       <div class="quote-actions">
-        <GlassAction href="tel:+19258341815" label="Call (925) 834-1815" variant="light" client:visible />
+        <GlassAction href="/contact/" label="Fill out the quote form" variant="light" client:visible />
+        <a class="email-link" href="tel:+19258341815">Call (925) 834-1815</a>
         <a class="email-link" href="mailto:companysparkclean@gmail.com">companysparkclean@gmail.com</a>
         <span>Monday–Saturday · 9:00 AM–4:00 PM</span>
       </div>

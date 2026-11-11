@@ -1,4 +1,5 @@
 ---
+import { areaServedSchema, goodToKnowFaqs } from '../data/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 import GlassAction from '../components/liquid-glass/GlassAction';
@@ -38,15 +39,7 @@ const serviceSchema = {
     name: 'Sparkclean Cleaning Services',
     telephone: '+1-925-834-1815',
   },
-  areaServed: [
-    'Concord, CA',
-    'Pleasant Hill, CA',
-    'Martinez, CA',
-    'Walnut Creek, CA',
-    'Lafayette, CA',
-    'Moraga, CA',
-    'Orinda, CA',
-  ],
+  areaServed: areaServedSchema,
 };
 ---
 
@@ -76,10 +69,8 @@ const serviceSchema = {
       </div>
 
       <div class="service-visual reveal">
-        <div class="photo-placeholder" role="img" aria-label="Placeholder for a Sparkclean recurring-cleaning photograph">
-          <span>Regular home care</span>
-          <strong>A clean home, without the constant catch-up.</strong>
-        </div>
+        <!-- Photo slot: replace with an owner-supplied recurring-cleaning photo (add alt text then). -->
+        <div class="photo-placeholder" aria-hidden="true"></div>
         <div class="photo-note sc-frosted-note">
           <span>Everyday upkeep</span>
           <strong>A calmer home starts with a reliable routine.</strong>
@@ -219,7 +210,7 @@ const serviceSchema = {
       </div>
 
       <div class="faq-list reveal">
-        {faqs.map((faq, index) => (
+        {[...faqs, goodToKnowFaqs[0]].map((faq, index) => (
           <details open={index === 0}>
             <summary>{faq.question}</summary>
             <p>{faq.answer}</p>
