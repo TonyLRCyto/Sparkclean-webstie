@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ScrollStory from '../components/ScrollStory.astro';
 import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 import GlassAction from '../components/liquid-glass/GlassAction';
-import { serviceAreas, goodToKnowFaqs } from '../data/site';
+import { serviceAreas, faqPrice, faqInsured, faqSupplies, faqHome, faqPets, faqCancel, foundingYear } from '../data/site';
 
 const areas = serviceAreas;
 
@@ -20,7 +20,12 @@ const faqs = [
     question: 'How do I request a cleaning quote?',
     answer: 'Call (925) 834-1815 or fill out the quote form on our Contact page. Include your city, approximate home size, preferred service, and timing.',
   },
-  ...goodToKnowFaqs.slice(0, 4),
+  faqPrice,
+  faqInsured,
+  faqSupplies,
+  faqHome,
+  faqPets,
+  faqCancel,
   {
     question: 'Can cleaning priorities be adjusted for my home?',
     answer: 'Yes. Every home is different, so we discuss the rooms and surfaces that need the most attention before service begins.',
@@ -44,9 +49,10 @@ const faqs = [
         </div>
 
         <div class="trust-row" aria-label="Service information">
-          <span>Monday–Saturday</span>
-          <span>9:00 AM–4:00 PM</span>
-          <span>Concord-based service</span>
+          <span>Since {foundingYear}</span>
+          <span>Bonded &amp; insured</span>
+          <span>Background-checked team</span>
+          <span>Mon–Sat, 9:00 AM–4:00 PM</span>
         </div>
       </div>
 
@@ -140,6 +146,7 @@ const faqs = [
           <div><span aria-hidden="true">✓</span><p>Attention to often-overlooked details</p></div>
           <div><span aria-hidden="true">✓</span><p>Cleaning priorities that fit your home</p></div>
           <div><span aria-hidden="true">✓</span><p>Dependable care that keeps customers coming back</p></div>
+          <div><span aria-hidden="true">✓</span><p>Bonded and insured, with a background-checked team</p></div>
         </div>
       </div>
 

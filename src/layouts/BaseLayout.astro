@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { instagramUrl, areaServedSchema } from '../data/site';
+import { instagramUrl, areaServedSchema, foundingYear } from '../data/site';
 
 interface Props {
   title: string;
@@ -30,6 +30,7 @@ const businessSchema = {
   description,
   telephone: '+1-925-834-1815',
   email: 'companysparkclean@gmail.com',
+  foundingDate: String(foundingYear),
   areaServed: areaServedSchema,
   openingHoursSpecification: [
     {
