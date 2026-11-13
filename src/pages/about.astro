@@ -77,6 +77,24 @@ const reviews = [
     <div class="shell intro-grid reveal">
       <div>
         <h2 class="section-title" id="owner-title">Meet Adan</h2>
+        <picture>
+          <source
+            type="image/webp"
+            srcset="/images/adan-sparkclean-owner-640.webp 640w, /images/adan-sparkclean-owner.webp 1024w"
+            sizes="(max-width: 860px) calc(100vw - 32px), 420px"
+          />
+          <img
+            class="owner-photo"
+            src="/images/adan-sparkclean-owner-640.jpg"
+            srcset="/images/adan-sparkclean-owner-640.jpg 640w, /images/adan-sparkclean-owner.jpg 1024w"
+            sizes="(max-width: 860px) calc(100vw - 32px), 420px"
+            width="1024"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+            alt="Adan, owner of Sparkclean Cleaning Services"
+          />
+        </picture>
       </div>
       <div class="intro-copy">
         <p>Sparkclean started in {foundingYear} as a family business, founded by Adan’s mom. Today Adan owns and runs it. He’s the person behind the work and the face of the business.</p>
@@ -284,6 +302,16 @@ const reviews = [
   .about-owner a {
     color: var(--navy);
     font-weight: 700;
+  }
+
+  .owner-photo {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    margin-top: 32px;
+    border-radius: 28px;
+    box-shadow: var(--shadow);
   }
 
   .intro-grid,
