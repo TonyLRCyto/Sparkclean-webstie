@@ -1,5 +1,5 @@
 ---
-import { areaServedSchema, goodToKnowFaqs } from '../data/site';
+import { areaServedSchema, faqPrice, faqInsured } from '../data/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroGlassActions from './liquid-glass/HeroGlassActions';
 import GlassAction from './liquid-glass/GlassAction';
@@ -203,7 +203,7 @@ const serviceSchema = {
         </div>
 
         <div class="faq-list reveal">
-          {[...page.faqs, goodToKnowFaqs[0]].map((faq, index) => (
+          {[...page.faqs, faqPrice, faqInsured].map((faq, index) => (
             <details open={index === 0}>
               <summary>{faq.question}</summary>
               <p>{faq.answer}</p>

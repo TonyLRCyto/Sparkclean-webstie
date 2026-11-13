@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroGlassActions from './liquid-glass/HeroGlassActions';
 import GlassAction from './liquid-glass/GlassAction';
+import { recurringFrequencies } from '../data/site';
 
 interface FocusItem {
   title: string;
@@ -67,9 +68,9 @@ const localSchema = {
         </div>
       </div>
 
+      <!-- Photo/video slot: add one of Adan's videos or photos from this city here. -->
       <div class="location-visual reveal">
         <span>{page.city}</span>
-        <strong>More time to enjoy a clean home.</strong>
         <div class="location-note sc-frosted-note">Concord-based East Bay service</div>
       </div>
     </div>
@@ -82,6 +83,12 @@ const localSchema = {
       </div>
       <div class="intro-copy">
         {page.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <ul class="city-facts">
+          <li>Our team cleans in {page.city} at least every two weeks, and often more.</li>
+          <li>All four services are available here: recurring, deep, move-in/move-out, and post-construction cleaning.</li>
+          <li>Recurring visits can be {recurringFrequencies}.</li>
+          <li>Bonded and insured, with background-checked cleaners.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -115,12 +122,8 @@ const localSchema = {
 
   <section class="routine">
     <div class="shell routine-grid">
-      <div class="routine-visual reveal">
-        <div>
-          <span>Local home cleaning</span>
-          <strong>Tell us about your {page.city} home.</strong>
-        </div>
-      </div>
+      <!-- Photo slot: replace with an owner-supplied photo from this city. -->
+      <div class="routine-visual reveal" aria-hidden="true"></div>
 
       <div class="routine-copy reveal">
         <h2 class="section-title">{page.routineTitle}</h2>
@@ -227,6 +230,16 @@ const localSchema = {
     font-weight: 650;
     letter-spacing: -0.05em;
     line-height: 1.02;
+  }
+
+  .city-facts {
+    display: grid;
+    gap: 10px;
+    margin: 6px 0 0;
+    padding-left: 20px;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .location-note {

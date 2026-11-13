@@ -1,5 +1,5 @@
 ---
-import { areaServedSchema, goodToKnowFaqs } from '../data/site';
+import { areaServedSchema, faqPrice, faqInsured, recurringFrequencies } from '../data/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 import GlassAction from '../components/liquid-glass/GlassAction';
@@ -8,7 +8,7 @@ const faqs = [
   {
     question: 'How often can recurring cleaning be scheduled?',
     answer:
-      'Scheduling depends on your home and current availability. Contact Sparkclean to discuss the frequency that best fits your household and cleaning priorities.',
+      `Choose ${recurringFrequencies}. We’ll confirm the schedule based on your home and current availability.`,
   },
   {
     question: 'Will every visit follow the same priorities?',
@@ -62,7 +62,7 @@ const serviceSchema = {
         </div>
 
         <div class="service-proof" aria-label="Service highlights">
-          <span>Flexible scheduling</span>
+          <span>Weekly, every 2 or 4 weeks</span>
           <span>Consistent home care</span>
           <span>Concord &amp; the East Bay</span>
         </div>
@@ -86,7 +86,7 @@ const serviceSchema = {
       </div>
       <div class="intro-copy">
         <p>Regular visits help keep dust, fingerprints, crumbs, and bathroom buildup under control, so cleaning does not keep falling to the bottom of your list.</p>
-        <p>We agree on a routine based on your home, preferred frequency, and the rooms that need the most attention.</p>
+        <p>We agree on a routine based on your home, how often you want visits ({recurringFrequencies}), and the rooms that need the most attention.</p>
       </div>
     </div>
   </section>
@@ -210,7 +210,7 @@ const serviceSchema = {
       </div>
 
       <div class="faq-list reveal">
-        {[...faqs, goodToKnowFaqs[0]].map((faq, index) => (
+        {[...faqs, faqPrice, faqInsured].map((faq, index) => (
           <details open={index === 0}>
             <summary>{faq.question}</summary>
             <p>{faq.answer}</p>
