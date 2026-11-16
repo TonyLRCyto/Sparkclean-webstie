@@ -136,8 +136,8 @@
   vertical-align: middle;
 }
 
-/* Thick, clear glass for the homepage location cards. The light bed gives the
-   refractive edges something to bend without filtering any text or photos. */
+/* Clear, gently beveled glass for the homepage location cards. The light bed
+   gives the edges something to refract without filtering any text or photos. */
 .sc-area-grid {
   position: relative;
   display: grid;
@@ -152,8 +152,8 @@
   border-radius: 30px;
   pointer-events: none;
   background:
-    linear-gradient(126deg, transparent 8%, rgba(255, 255, 255, 0.9) 23%, rgba(255, 255, 255, 0.06) 29%, transparent 41%),
-    linear-gradient(126deg, transparent 48%, rgba(157, 202, 218, 0.2) 63%, rgba(255, 255, 255, 0.7) 68%, transparent 82%);
+    linear-gradient(126deg, transparent 8%, rgba(255, 255, 255, 0.6) 23%, rgba(255, 255, 255, 0.04) 29%, transparent 41%),
+    linear-gradient(126deg, transparent 48%, rgba(157, 202, 218, 0.14) 63%, rgba(255, 255, 255, 0.46) 68%, transparent 82%);
 }
 
 .sc-area-item {
@@ -164,15 +164,15 @@
 
 .sc-glass-control.sc-glass-area {
   --lg-glass: rgba(255, 255, 255, 0.035);
-  --lg-glass-active: rgba(255, 255, 255, 0.09);
-  --lg-glass-bend: 0.64;
-  --lg-glass-dispersion: 0.18;
-  --lg-rim-shine: 0.92;
-  --lg-edge: rgba(255, 255, 255, 0.98);
-  --sc-glass-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.98), inset -1px -1px 1px rgba(20, 70, 120, 0.28), inset 4px 5px 9px rgba(255, 255, 255, 0.34), inset -4px -5px 8px rgba(20, 70, 120, 0.08), 0 12px 25px rgba(20, 70, 120, 0.12), 0 2px 4px rgba(20, 70, 120, 0.08);
+  --lg-glass-active: rgba(255, 255, 255, 0.07);
+  --lg-glass-bend: 0.46;
+  --lg-glass-dispersion: 0.12;
+  --lg-rim-shine: 0.68;
+  --lg-edge: rgba(255, 255, 255, 0.84);
+  --sc-glass-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.84), inset -1px -1px 1px rgba(20, 70, 120, 0.18), inset 2px 3px 6px rgba(255, 255, 255, 0.22), inset -2px -3px 6px rgba(20, 70, 120, 0.05), 0 8px 20px rgba(20, 70, 120, 0.1), 0 1px 3px rgba(20, 70, 120, 0.06);
   display: block;
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 20px;
   background-image: var(--lg-rim, none);
   background-size: 100% 100%;
@@ -182,10 +182,10 @@
 
 .sc-glass-area::before {
   inset: 1px;
-  padding: 5px;
+  padding: 2.5px;
   background:
-    radial-gradient(ellipse at var(--sc-light-x, 18%) var(--sc-light-y, 0%), white, transparent 65%),
-    linear-gradient(142deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.12) 30%, rgba(20, 70, 120, 0.18) 62%, rgba(255, 255, 255, 0.95));
+    radial-gradient(ellipse at var(--sc-light-x, 18%) var(--sc-light-y, 0%), rgba(255, 255, 255, 0.78), transparent 65%),
+    linear-gradient(142deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.08) 30%, rgba(20, 70, 120, 0.12) 62%, rgba(255, 255, 255, 0.72));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -196,14 +196,14 @@
 .sc-glass-area::after {
   content: '';
   position: absolute;
-  inset: 5px;
+  inset: 4px;
   z-index: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(ellipse at var(--sc-light-x, 24%) var(--sc-light-y, 0%), rgba(255, 255, 255, 0.85), transparent 62%);
+  background: radial-gradient(ellipse at var(--sc-light-x, 24%) var(--sc-light-y, 0%), rgba(255, 255, 255, 0.68), transparent 62%);
   -webkit-mask: linear-gradient(#000, transparent 60%);
   mask: linear-gradient(#000, transparent 60%);
-  opacity: 0.56;
+  opacity: 0.38;
   transition: opacity 180ms ease;
 }
 
@@ -337,10 +337,10 @@
   .sc-glass-control[data-pressed] { transform: scale(1.015, 0.985); }
   .sc-glass-submit[data-pressed] { transform: none; }
   .sc-glass-control.sc-glass-area:hover {
-    --sc-glass-shadow: inset 1px 1px 1px white, inset -1px -1px 1px rgba(20, 70, 120, 0.32), inset 4px 5px 10px rgba(255, 255, 255, 0.5), inset -4px -5px 9px rgba(20, 70, 120, 0.1), 0 16px 30px rgba(20, 70, 120, 0.17), 0 2px 4px rgba(20, 70, 120, 0.08);
-    transform: translateY(-2px);
+    --sc-glass-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.94), inset -1px -1px 1px rgba(20, 70, 120, 0.22), inset 3px 4px 8px rgba(255, 255, 255, 0.3), inset -2px -3px 7px rgba(20, 70, 120, 0.07), 0 12px 24px rgba(20, 70, 120, 0.13), 0 1px 3px rgba(20, 70, 120, 0.06);
+    transform: translateY(-1px);
   }
-  .sc-glass-area:hover::after { opacity: 0.85; }
+  .sc-glass-area:hover::after { opacity: 0.58; }
 }
 
 @media (max-width: 640px) {
