@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ScrollStory from '../components/ScrollStory.astro';
 import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 import GlassAction from '../components/liquid-glass/GlassAction';
+import AreaGlassLink from '../components/liquid-glass/AreaGlassLink';
 import { serviceAreas, faqPrice, faqInsured, faqSupplies, faqHome, faqPets, faqCancel, foundingYear } from '../data/site';
 
 // Keep the confirmed service-area list unchanged; the final card is a contact CTA.
@@ -170,14 +171,11 @@ const faqs = [
         <p>Based in Concord, we serve nearby East Bay communities. Explore your area or contact us to check availability for your address.</p>
       </div>
 
-      <div class="area-grid">
+      <div class="sc-area-grid" data-theme="light">
+        <div class="sc-area-light-bed" data-glisse-backdrop="" aria-hidden="true"></div>
         {areas.map((area) => (
-          <div class="reveal">
-            <a class="sc-glass-control sc-glass-secondary sc-glass-link" href={area.href}>
-              <span aria-hidden="true">•</span>
-              <strong>{area.name}</strong>
-              <i aria-hidden="true">→</i>
-            </a>
+          <div class="sc-area-item reveal">
+            <AreaGlassLink name={area.name} href={area.href} client:visible />
           </div>
         ))}
       </div>
@@ -526,45 +524,6 @@ const faqs = [
     background: var(--pale);
   }
 
-  .area-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .area-grid a {
-    display: grid;
-    grid-template-columns: 48px 1fr auto;
-    gap: 18px;
-    align-items: center;
-    width: 100%;
-    min-height: 112px;
-    padding: 24px 28px;
-    border-radius: 20px;
-    font: inherit;
-    text-decoration: none;
-  }
-
-  .area-grid a > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .area-grid span {
-    color: var(--blue);
-    font-size: 0.73rem;
-    font-weight: 800;
-  }
-
-  .area-grid strong {
-    font-size: 1.35rem;
-  }
-
-  .area-grid i {
-    color: var(--navy);
-    font-style: normal;
-  }
-
   .faq-grid {
     display: grid;
     grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
@@ -733,8 +692,7 @@ const faqs = [
 
     .intro { padding: 64px 0; }
 
-    .results-grid,
-    .area-grid {
+    .results-grid {
       grid-template-columns: 1fr;
     }
 
@@ -748,11 +706,6 @@ const faqs = [
       min-height: 460px;
       padding: 34px 28px;
       border-radius: 26px;
-    }
-
-    .area-grid a {
-      grid-template-columns: 36px 1fr auto;
-      padding: 20px;
     }
 
     .quote {
