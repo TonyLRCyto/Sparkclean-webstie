@@ -73,30 +73,28 @@ const reviews = [
     </div>
   </section>
 
-  <section class="about-owner" aria-labelledby="owner-title">
-    <div class="shell intro-grid reveal">
-      <div>
+  <section class="about-owner" id="meet-adan" aria-labelledby="owner-title">
+    <div class="shell owner-grid reveal">
+      <picture class="owner-portrait">
+        <source
+          type="image/webp"
+          srcset="/images/adan-sparkclean-owner-640.webp 640w, /images/adan-sparkclean-owner.webp 1024w"
+          sizes="(max-width: 452px) calc(100vw - 32px), 420px"
+        />
+        <img
+          class="owner-photo"
+          src="/images/adan-sparkclean-owner-640.jpg"
+          srcset="/images/adan-sparkclean-owner-640.jpg 640w, /images/adan-sparkclean-owner.jpg 1024w"
+          sizes="(max-width: 452px) calc(100vw - 32px), 420px"
+          width="1024"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+          alt="Adan, owner of Sparkclean Cleaning Services"
+        />
+      </picture>
+      <div class="intro-copy owner-copy">
         <h2 class="section-title" id="owner-title">Meet Adan</h2>
-        <picture>
-          <source
-            type="image/webp"
-            srcset="/images/adan-sparkclean-owner-640.webp 640w, /images/adan-sparkclean-owner.webp 1024w"
-            sizes="(max-width: 860px) calc(100vw - 32px), 420px"
-          />
-          <img
-            class="owner-photo"
-            src="/images/adan-sparkclean-owner-640.jpg"
-            srcset="/images/adan-sparkclean-owner-640.jpg 640w, /images/adan-sparkclean-owner.jpg 1024w"
-            sizes="(max-width: 860px) calc(100vw - 32px), 420px"
-            width="1024"
-            height="1024"
-            loading="lazy"
-            decoding="async"
-            alt="Adan, owner of Sparkclean Cleaning Services"
-          />
-        </picture>
-      </div>
-      <div class="intro-copy">
         <p>Sparkclean started in {foundingYear} as a family business, founded by Adan’s mom. Today Adan owns and runs it. He’s the person behind the work and the face of the business.</p>
         <p>Adan leads a team of cleaners, and everyone on the team goes through a background check. Sparkclean is bonded and insured.</p>
         <p>
@@ -297,6 +295,34 @@ const reviews = [
 
   .about-owner {
     padding-top: 0;
+    scroll-margin-top: 128px;
+  }
+
+  .owner-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: clamp(48px, 7vw, 100px);
+    align-items: center;
+  }
+
+  .owner-portrait {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .owner-copy {
+    max-width: 640px;
+  }
+
+  .owner-copy .section-title {
+    margin-bottom: 28px;
+    color: var(--ink);
+    scroll-margin-top: 128px;
+  }
+
+  .owner-copy > p:last-child {
+    margin-bottom: 0;
   }
 
   .about-owner a {
@@ -309,7 +335,7 @@ const reviews = [
     width: 100%;
     max-width: 420px;
     height: auto;
-    margin-top: 32px;
+    margin: 0;
     border-radius: 28px;
     box-shadow: var(--shadow);
   }
@@ -578,6 +604,7 @@ const reviews = [
   @media (max-width: 991px) {
     .about-hero-grid,
     .intro-grid,
+    .owner-grid,
     .services-grid,
     .proof-grid,
     .local-card {
@@ -587,6 +614,15 @@ const reviews = [
     .about-hero-grid,
     .proof-grid {
       gap: 62px;
+    }
+
+    .owner-grid {
+      gap: 36px;
+    }
+
+    .owner-portrait,
+    .owner-copy {
+      margin-inline: auto;
     }
 
     .about-visual {

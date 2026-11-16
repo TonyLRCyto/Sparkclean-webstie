@@ -7,12 +7,13 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: 'primary' | 'secondary' | 'icon' | 'light';
   compact?: boolean;
   className?: string;
+  surfaceClassName?: string;
 }
 
-export default function GlassLink({ children, variant = 'secondary', compact = false, className = '', ...props }: Props) {
+export default function GlassLink({ children, variant = 'secondary', compact = false, className = '', surfaceClassName = '', ...props }: Props) {
   const enhanced = useGlassEffects();
   const Surface = enhanced ? Glass : 'div';
-  const surfaceClass = `sc-glass-control sc-glass-${variant}${compact ? ' sc-glass-compact' : ''}`;
+  const surfaceClass = `sc-glass-control sc-glass-${variant}${compact ? ' sc-glass-compact' : ''}${surfaceClassName ? ` ${surfaceClassName}` : ''}`;
   const positionLight = (event: PointerEvent<HTMLElement>) => {
     const element = event.currentTarget;
     const box = element.getBoundingClientRect();
