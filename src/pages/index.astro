@@ -5,7 +5,8 @@ import HeroGlassActions from '../components/liquid-glass/HeroGlassActions';
 import GlassAction from '../components/liquid-glass/GlassAction';
 import { serviceAreas, faqPrice, faqInsured, faqSupplies, faqHome, faqPets, faqCancel, foundingYear } from '../data/site';
 
-const areas = serviceAreas;
+// Keep the confirmed service-area list unchanged; the final card is a contact CTA.
+const areas = [...serviceAreas, { name: 'Other locations', href: '/contact/' }];
 
 const faqs = [
   {
@@ -171,11 +172,13 @@ const faqs = [
 
       <div class="area-grid">
         {areas.map((area) => (
-          <a class="reveal" href={area.href}>
-            <span aria-hidden="true">•</span>
-            <strong>{area.name}</strong>
-            <i aria-hidden="true">→</i>
-          </a>
+          <div class="reveal">
+            <a class="sc-glass-control sc-glass-secondary sc-glass-link" href={area.href}>
+              <span aria-hidden="true">•</span>
+              <strong>{area.name}</strong>
+              <i aria-hidden="true">→</i>
+            </a>
+          </div>
         ))}
       </div>
     </div>
@@ -534,18 +537,17 @@ const faqs = [
     grid-template-columns: 48px 1fr auto;
     gap: 18px;
     align-items: center;
+    width: 100%;
     min-height: 112px;
     padding: 24px 28px;
-    border: 1px solid var(--line);
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.74);
+    font: inherit;
     text-decoration: none;
-    transition: transform 180ms ease, background-color 180ms ease;
   }
 
-  .area-grid a:hover {
-    transform: translateY(-3px);
-    background: white;
+  .area-grid a > * {
+    position: relative;
+    z-index: 1;
   }
 
   .area-grid span {
